@@ -32,6 +32,30 @@ Rubygogo is a web application inspired by Indiegogo built using Ruby on Rails an
 
 ## Implementation Timeline
 
-### Phase 1: backend setup and front end user auth
+### Phase 1: backend and auth - 2 days
+set up models and backend, and get front end auth working along with header (2 days)
 
-### phase 2:
+### phase 2: campaigns - 2 day
+be able to see basic campaign info in a workable css layout
+
+### phase 3: contributions - 2 days
+allow users to make a contribution, select perks, and have it show on all relevant pages
+
+### phase 4: user profiles - 1 day
+be able to see profiles, and edit your own
+
+### phase 5: create campaigns- 2 days
+users can create a campaign using the interactive site
+
+### phase 6: comments - 1 day
+users can leave comments, creators can leave updates
+
+### phase 7: category View - 1 day
+can browse campaigns by category
+
+### bonus
+- search campaigns
+- trending campaigns and categories
+- user profile page
+- image uploader and hosting
+- tags
