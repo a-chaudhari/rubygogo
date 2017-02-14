@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Rubygogo!</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      <% if logged_in? %>
+        window.currentUser =  <%= render("api/users/user.json.jbuilder", user: current_user).html_safe %>
+      <% end %>
+    </script>
+    <main id="root"></main>
+  </body>
+</html>
