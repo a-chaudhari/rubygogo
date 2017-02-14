@@ -1,9 +1,13 @@
 import React from 'react';
 import SignIn from './session/sign_in';
+import UserMenu from './session/user_menu';
 
 class Header extends React.Component{
   constructor(props){
     super(props);
+    this.state={
+      showUserMenu: false
+    }
   }
 
 
@@ -12,13 +16,23 @@ class Header extends React.Component{
     console.log("new props!");
   }
 
+  toggleUserMenu(e){
+    this.setState({
+      showUserMenu: !this.state.showUserMenu
+    });
+  }
+
+  signOut(){
+    this.props.logOut().then(()=>(this.setState({showUserMenu: false})))
+  }
+
   render(){
     let rightHeader="";
     if(this.props.session.email !== undefined){
       rightHeader=(
         <div className="header-right-signedin">
-          welcome: {this.props.session.email}
-          <button onClick={this.props.logOut.bind(this)}>Sign Out</button>
+          <button onClick={this.toggleUserMenu.bind(this)}>{this.props.session.firstName + " "+this.props.session.lastName}</button>
+          <UserMenu logOut={this.signOut.bind(this)} show={this.state.showUserMenu}/>
         </div>
       );
     }

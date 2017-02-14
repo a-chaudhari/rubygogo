@@ -16,7 +16,7 @@ const mapDispatchToProps=(dispatch)=>{
     {
       logIn: info=>dispatch(logIn(info)),
       logOut: ()=>dispatch(logOut()),
-      signUp: (user)=>dispatch(signUp())
+      signUp: (user)=>dispatch(signUp(user))
     }
   );
 };
