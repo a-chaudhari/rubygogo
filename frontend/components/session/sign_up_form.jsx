@@ -28,7 +28,7 @@ import React from 'react'
           <input placeholder="Password" value={this.state.password} onChange={this.update('password').bind(this)}   /><br/>
           <input placeholder="First Name" value={this.state.firstName} onChange={this.update('firstName').bind(this)}   /><br/>
           <input placeholder="Last Name" value={this.state.lastName} onChange={this.update('lastName').bind(this)}   /><br/>
-          <input type="submit" value="Sign Up!" readOnly={true}/>
+          <button>Sign Up!</button>
       </form>
  	    );
  	  }
