@@ -26,7 +26,7 @@ import React from 'react'
         <form onSubmit={this.handleLogin.bind(this)}>
           <input placeholder="Email"  value={this.state.email} onChange={this.update('email').bind(this)}/><br/>
           <input  placeholder="Password" value={this.state.password}  onChange={this.update('password').bind(this)}/><br/>
-          <button onClick={this.handleLogin.bind(this)}>Sign In</button>
+          <div onClick={this.handleLogin.bind(this)}>LOG IN</div>
         </form>
  	    );
  	  }

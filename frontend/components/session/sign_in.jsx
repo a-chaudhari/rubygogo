@@ -28,6 +28,7 @@ import SignUpForm from './sign_up_form';
     }
 
     closeWindow(){
+      console.log("closing sign in")
       this.setState({show:false});
     }
 
@@ -36,27 +37,33 @@ import SignUpForm from './sign_up_form';
 
       let form = (<SignInForm  logIn={this.props.logIn} />)
 
-      let text = "Don't have an account? "
-      let switcher = (<a onClick={this.toggleWindow.bind(this)}>Sign Up Instead</a>)
+      let text = "New to Rubygogo? "
+      let switcher = (<a onClick={this.toggleWindow.bind(this)}>Sign Up</a>)
 
       if(!this.state.login){
         form = (<SignUpForm signUp={this.props.signUp}/>)
         text= "Already have an account? "
-        switcher = (<a onClick={this.toggleWindow.bind(this)}>Log In Instead</a>)
+        switcher = (<a onClick={this.toggleWindow.bind(this)}>Log In</a>)
       }
 
       const cname = "header-login-container " + ( this.state.show ? "" : " header-hide")
+      console.log(switcher);
  	    return(
         <div className="header-right-signedout">
-          <button onClick={this.logInButton.bind(this)}>Sign In</button>
-          <button onClick={this.signUpButton.bind(this)}>Sign Up</button>
+          <ul className="header-right-ul">
+            <li className="header-create-button">START A CAMPAIGN</li>
+            <li onClick={this.signUpButton.bind(this)}>Sign Up</li>
+            <li onClick={this.logInButton.bind(this)}>Log In</li>
+          </ul>
           <div className={cname}>
             <div className="header-login-form">
               <div onClick={this.closeWindow.bind(this)} className="header-login-x">
                 ✕
               </div>
               {form}
-              {text}{switcher}
+              <div className="header-hint">
+                {text}{switcher}
+              </div>
             </div>
           </div>
         </div>

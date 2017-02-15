@@ -17,6 +17,7 @@ class Header extends React.Component{
   }
 
   toggleUserMenu(e){
+    // console.log("toggling")
     this.setState({
       showUserMenu: !this.state.showUserMenu
     });
@@ -31,7 +32,8 @@ class Header extends React.Component{
     if(this.props.session.email !== undefined){
       rightHeader=(
         <div className="header-right-signedin">
-          <button onClick={this.toggleUserMenu.bind(this)}>{this.props.session.firstName + " "+this.props.session.lastName}</button>
+          <div className="header-create-button">START A CAMPAIGN</div>
+          <div onClick={this.toggleUserMenu.bind(this)}>{this.props.session.firstName + " "+this.props.session.lastName}</div>
           <UserMenu logOut={this.signOut.bind(this)} show={this.state.showUserMenu}/>
         </div>
       );
@@ -45,7 +47,11 @@ class Header extends React.Component{
     return(
       <header className="site-header">
         <div className="header-left">
-          RubyGOGO Explore How it works
+          <ul>
+            <li>RUBYGOGO</li>
+            <li>Explore</li>
+            <li>How It Works</li>
+          </ul>
         </div>
         {rightHeader}
 
