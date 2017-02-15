@@ -32,6 +32,12 @@ import SignUpForm from './sign_up_form';
       this.setState({show:false});
     }
 
+    guestSignIn(){
+      this.props.logIn({
+        email:'guest',
+        password:'password'
+      });
+    }
 
  	  render(){
 
@@ -62,7 +68,8 @@ import SignUpForm from './sign_up_form';
               </div>
               {form}
               <div className="header-hint">
-                {text}{switcher}
+                {text}{switcher}<br/>
+              <div onClick={this.guestSignIn.bind(this)}>Guest Sign In</div>
               </div>
             </div>
           </div>

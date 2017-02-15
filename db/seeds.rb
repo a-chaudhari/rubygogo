@@ -15,6 +15,14 @@ amit = User.create!(
   avatar_img_url: "http://lorempixel.com/90/90"
 )
 
+guest = User.create!(
+  email: 'guest',
+  password: 'password',
+  firstName: 'Guest',
+  lastName: 'User',
+  avatar_img_url: "http://lorempixel.com/90/90"
+)
+
 
 Campaign.destroy_all
 2.times do

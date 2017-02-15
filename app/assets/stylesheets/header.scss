@@ -271,6 +271,23 @@ html, body, ul{
           a:hover{
             text-decoration: underline;
           }
+          div{
+            margin-top: 10px;
+            height: 40px;
+            background-color: $indie-pink;
+            // width: 100px;
+            // justify-content: flex-end;
+            padding: 0 10px 0 10px;
+            text-align: center;
+            display: inline-block;
+            font-weight: bold;
+            font-family: $indie-font-family;
+            float: right;
+            color: white;
+            font-size: 14px;
+            line-height: 250%;
+            cursor: pointer;
+          }
         }
       }
     }
