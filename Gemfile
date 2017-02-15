@@ -30,6 +30,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+ gem 'faker'
+
 group :production do
   gem 'newrelic_rpm'
   gem 'rails_12factor'
