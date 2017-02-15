@@ -30,7 +30,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
- gem 'faker'
+ gem 'faker', branch: 'master' , git: 'https://github.com/stympy/faker.git'
 
 group :production do
   gem 'newrelic_rpm'

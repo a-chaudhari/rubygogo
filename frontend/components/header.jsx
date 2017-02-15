@@ -40,7 +40,7 @@ class Header extends React.Component{
     }
     else{
       rightHeader=(
-        <SignIn signUp = {this.props.signUp} logIn = {this.props.logIn}/>
+        <SignIn clear={this.props.clear} uErrors={this.props.user.errors} errors={this.props.session.errors} signUp = {this.props.signUp} logIn = {this.props.logIn}/>
       );
     }
 

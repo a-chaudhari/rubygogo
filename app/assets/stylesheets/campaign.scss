@@ -1,0 +1,161 @@
+.campaign{
+//root of the campaign page
+// background-color: black;
+
+  width: 90%;
+  margin: 0 auto;
+
+  .campaign-TopChunk{
+    display: flex;
+    font-family: $indie-font-family;
+    margin-top: 40px;
+
+    h1{
+      font-size: 24px;
+      font-weight: normal;
+      color: $indie-gray;
+      font-weight: bold;
+    }
+    h2{
+      font-size: 16px;
+      font-weight: normal;
+      color: $indie-xgray;
+    }
+
+    .campaign-TopChunk-right{
+      // border: 1px solid black;
+      margin-left: 20px;
+      padding: 0 12px 0 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+
+      ul{
+        list-style: none;
+      }
+
+      .campaign-author-info{
+        margin-left: 30px;
+        margin-bottom: 15px;
+        display: flex;
+        // background-color: black;
+        // border: 1px solid black;
+        font-size: 12px;
+        img{
+          width: 50px;
+          height: 50px;
+          margin-right: 10px;
+        }
+        color: $indie-xgray;
+      }
+
+      .statusArea{
+        // border: 1px solid black;
+
+        font-size: 14px;
+        li:first-of-type{
+          font-size: 16px;
+        }
+
+        .campaign-bar-background{
+          margin: 5px 0 5px 0;
+          width: 100%;
+          height: 10px;
+          background-color: $indie-lightgray;
+          position: relative;
+        }
+        .campaign-bar-foreground{
+          background-color: $indie-aqua;
+          height: 10px;
+          position: absolute;
+          // width: 30%;
+        }
+
+      }
+      .campaign-backit-button{
+        border: 1px solid $indie-pink;
+        background-color: $indie-pink;
+        color: white;
+        letter-spacing: 1px;
+        border-radius: 2px;
+        font-size: 14px;
+        width: 160px;
+        height: 40px;
+        line-height: 250%;
+        text-align: center;
+      }
+
+    }
+
+  }
+
+  .campaign-overview{
+    width: 60%;
+    font-family: $indie-font-family;
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: row;
+    // border: 1px solid black;
+    // padding: 10px;
+    // align-content: center;
+    // align-items: center;
+
+    .overview-title{
+      // width: 100%;
+      flex: 0 0 100%;
+      // flex-basis: auto;
+      // display: block;
+      color: $indie-xgray;
+      h3{
+        font-size: 16px;
+        font-weight: normal;
+        font-family: $indie-font-family;
+      }
+      border-bottom: 1px solid $indie-lightgray;
+    }
+    img{
+      margin: 20px 20px 20px 0;
+      // background-color: yellow;
+      // flex-basis: 70%;
+      width: 250px;
+      height: 190px;
+    }
+    div{
+      margin-top: 20px;
+
+      // flex: 0 0 auto;
+      // flex-basis: 30%;
+      width: 400px;
+      box-sizing: border-box;
+      // border: 1px solid black;
+    }
+  }
+
+  .campaign-dynamicbox{
+    width: 60%;
+    font-family: $indie-font-family;
+    min-height: 1000px;
+    .dynamicbox-navbar{
+      border-bottom: 1px solid $indie-lightgray;
+      padding-bottom: 5px;
+      ul{
+        display: flex;
+        list-style: none;
+        li{
+          margin-right: 10px;
+          cursor: pointer;
+          color: $indie-xgray;
+        }
+        li:hover{
+          color: $indie-pink-hover;
+        }
+
+        .dynamic-selected{
+          color: $indie-pink;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

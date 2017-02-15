@@ -35,13 +35,13 @@ import SignUpForm from './sign_up_form';
 
  	  render(){
 
-      let form = (<SignInForm  logIn={this.props.logIn} />)
+      let form = (<SignInForm  errors={this.props.errors} logIn={this.props.logIn} />)
 
       let text = "New to Rubygogo? "
       let switcher = (<a onClick={this.toggleWindow.bind(this)}>Sign Up</a>)
 
       if(!this.state.login){
-        form = (<SignUpForm signUp={this.props.signUp}/>)
+        form = (<SignUpForm clear={this.props.clear} errors={this.props.uErrors} signUp={this.props.signUp}/>)
         text= "Already have an account? "
         switcher = (<a onClick={this.toggleWindow.bind(this)}>Log In</a>)
       }

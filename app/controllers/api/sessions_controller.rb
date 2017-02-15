@@ -6,7 +6,8 @@ class Api::SessionsController < ApplicationController
       sign_in(@user)
       render partial: 'api/users/public_user'
     else
-      render json: {"errors"=>"invalid credentials"}
+      # debugger
+      render json: {"errors"=>"invalid credentials"}, status: 422
     end
   end
 

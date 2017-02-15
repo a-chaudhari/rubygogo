@@ -11,10 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214153337) do
+ActiveRecord::Schema.define(version: 20170215193814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "campaigns", force: :cascade do |t|
+    t.string   "title",                                   null: false
+    t.integer  "user_id",                                 null: false
+    t.integer  "goal_amount",                             null: false
+    t.string   "currency",              default: "USD",   null: false
+    t.string   "tagline"
+    t.string   "campaign_card_img_url"
+    t.integer  "duration",                                null: false
+    t.string   "funding_type",                            null: false
+    t.string   "video_url"
+    t.string   "main_img_url"
+    t.string   "overview_img_url"
+    t.integer  "current_cash",          default: 0,       null: false
+    t.string   "status",                default: "draft", null: false
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "overview_text"
+    t.text     "pitch_text"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
@@ -24,6 +45,7 @@ ActiveRecord::Schema.define(version: 20170214153337) do
     t.string   "lastName",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_img_url"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

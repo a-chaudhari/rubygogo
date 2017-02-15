@@ -11,7 +11,8 @@ class Api::UsersController < ApplicationController
       sign_in(@user)
       render partial: 'api/users/public_user'
     else
-      render json: @user.errors.full_messages
+      # debugger
+      render json: @user.errors.messages, status: 422
     end
   end
 
