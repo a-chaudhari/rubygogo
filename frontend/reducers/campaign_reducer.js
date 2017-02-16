@@ -9,6 +9,10 @@ const CampaignReducer = (state={}, action) =>{
       // debugger
       return action.campaign;
 
+    case RECEIVE_CAMPAIGNS:
+      // debugger
+      return action.campaigns;
+
     default:
       return state;
   }

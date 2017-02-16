@@ -1,5 +1,6 @@
 import React from 'react';
 import HeaderContainer from './header_container';
+import Debug from './debug';
 
 class App extends React.Component{
   constructor(props){
@@ -11,6 +12,7 @@ class App extends React.Component{
       <div>
         <HeaderContainer/>
         {this.props.children}
+        <Debug/>
       </div>
     );
   }
