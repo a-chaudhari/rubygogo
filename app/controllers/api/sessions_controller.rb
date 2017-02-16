@@ -4,7 +4,7 @@ class Api::SessionsController < ApplicationController
     @user = User.find_by_credentials(params[:email], params[:password])
     if @user
       sign_in(@user)
-      render partial: 'api/users/public_user'
+      render partial: 'api/users/user_private', locals: {user: @user}
     else
       # debugger
       render json: {"errors"=>"invalid credentials"}, status: 422

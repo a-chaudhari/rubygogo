@@ -1,10 +1,11 @@
 import { connect  } from 'react-redux';
-import PerksBox from './perks_box';
+import Profile from './profile';
+import {fetchUser, updateUser} from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) =>{
   return(
     {
-      id: ownProps.id
+      user: state.users.user
     }
   );
 };
@@ -12,7 +13,8 @@ const mapStateToProps = (state, ownProps) =>{
 const mapDispatchToProps = (dispatch, ownProps) =>{
   return(
     {
-
+      fetchUser: id=>dispatch(fetchUser(id)),
+      updateUser: user=>dispatch(updateUser(user))
     }
   );
 };
@@ -21,4 +23,4 @@ const mapDispatchToProps = (dispatch, ownProps) =>{
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(PerksBox);
+)(Profile);

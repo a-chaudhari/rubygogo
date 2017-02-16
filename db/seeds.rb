@@ -7,12 +7,40 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.destroy_all
+users = [];
+
+10.times do
+  user = User.create!(
+    email: Faker::Internet.unique.email,
+    password: 'password',
+    firstName: Faker::Name.unique.first_name,
+    lastName: Faker::Name.unique.last_name,
+    avatar_img_url: "http://lorempixel.com/90/90",
+    address: Faker::Address.street_address,
+    city: Faker::Address.city,
+    postal_code: Faker::Address.postcode,
+    short_desc: Faker::ChuckNorris.fact,
+    about_me: Faker::Hipster.paragraph(20),
+    profile_img_url: "http://lorempixel.com/460/285",
+    country: Faker::Address.country
+  )
+  users.push(user)
+end
+
+
 amit = User.create!(
   email: 'test',
   password: 'password',
   firstName: 'Amit',
   lastName: 'Chaudhari',
-  avatar_img_url: "http://lorempixel.com/90/90"
+  avatar_img_url: "http://lorempixel.com/90/90",
+  address: '123 Main St',
+  city: 'Anywheresville',
+  postal_code: '12345',
+  short_desc: 'A really cool guy',
+  about_me: Faker::Hipster.paragraph(20),
+  profile_img_url: "http://lorempixel.com/460/285",
+  country: "United States"
 )
 
 guest = User.create!(
@@ -20,7 +48,14 @@ guest = User.create!(
   password: 'password',
   firstName: 'Guest',
   lastName: 'User',
-  avatar_img_url: "http://lorempixel.com/90/90"
+  avatar_img_url: "http://lorempixel.com/90/90",
+  address: Faker::Address.street_address,
+  city: Faker::Address.city,
+  postal_code: Faker::Address.postcode,
+  short_desc: Faker::ChuckNorris.fact,
+  about_me: Faker::Hipster.paragraph(20),
+  profile_img_url: "http://lorempixel.com/460/285",
+  country: "United States"
 )
 
 
