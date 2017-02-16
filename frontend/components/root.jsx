@@ -8,6 +8,10 @@ import Comments from './campaign/comments';
 import Backers from './campaign/backers';
 import Updates from './campaign/updates';
 import ProfileContainer from './profile/profile_container';
+import ProfileDetails from './profile/profile_details';
+import Contributions from './profile/contributions';
+import Activity from './profile/activity';
+import Campaigns from './profile/campaigns';
 
 const Root = (props) =>{
   return(
@@ -22,7 +26,11 @@ const Root = (props) =>{
             <Route path='backers' component={Backers}/>
           </Route>
           <Route path='profile/:profile_id' component={ProfileContainer}>
-            
+            <IndexRoute component={ProfileDetails}/>
+            <Route path='profiledetails' component={ProfileDetails}/>
+            <Route path='contributions' component={Contributions}/>
+            <Route path='activity' component={Activity}/>
+            <Route path='campaigns' component={Campaigns}/>
           </Route>
         </Route>
       </Router>

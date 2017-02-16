@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'react-router';
 
  class UserMenu extends React.Component{
  	  constructor(props){
@@ -12,7 +13,7 @@ import React from 'react'
           <ul>
             <li>My Campaigns</li>
             <li>My Contributions</li>
-            <li>My Profile</li>
+            <li><Link to={`/profile/${this.props.userId}`}>My Profile</Link></li>
             <li>My Settings</li>
             <li onClick={this.props.logOut}>Log Out</li>
           </ul>

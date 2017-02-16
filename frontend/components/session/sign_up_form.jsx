@@ -18,7 +18,6 @@ import React from 'react'
 
     handleSubmit(e){
       e.preventDefault();
-      console.log("in handle submit")
       this.props.signUp({
         email: this.state.email,
         password: this.state.password,
@@ -27,10 +26,6 @@ import React from 'react'
       });
     }
 
-    componentWillReceiveProps(newProps){
-      console.log("new props in sign up form");
-      console.log(newProps.errors);
-    }
 
     getError(pname,field){
       if(this.props.errors !== undefined && this.props.errors[field] !== undefined && this.props.errors !== null){
@@ -40,7 +35,6 @@ import React from 'react'
     }
 
     componentWillUnmount(){
-      console.log("unmount!");
       this.props.clear();
     }
 

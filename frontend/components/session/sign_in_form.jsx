@@ -12,8 +12,6 @@ import React from 'react'
  	  }
 
     componentWillReceiveProps(newProps){
-      console.log("new props sign in");
-      console.log(newProps.errors);
       // debugger
       this.setState({errors:newProps.errors})
     }

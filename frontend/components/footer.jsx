@@ -1,15 +1,15 @@
 import React from 'react'
 
-class Contributions extends React.Component{
+class Footer extends React.Component{
   constructor(props){
     super(props);
   }
 
   render(){
     return(
-      <h1>contributions file</h1>
+      <div className="footer"></div>
     );
   }
 }
 
-export default Contributions;
+export default Footer;

@@ -33,6 +33,7 @@ class Api::UsersController < ApplicationController
     user = User.find_by(id: params[:id])
     if user && user.id == current_user.id
       user.update(user_params)
+      session[:session_token]=user.session_token
       render partial: 'api/users/user_private', locals: {user: user}
     else
       render json: 'unauthorized', status: 401

@@ -1,0 +1,142 @@
+.blackHeader{
+  height: 50px;
+  width: 100%;
+  background-color: $indie-gray;
+  .profile-editHeader{
+    // padding: 0;
+    // margin-left: -100%;
+    // margin-right: -30px;
+    // margin: 0;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+  }
+
+}
+
+.profile{
+  font-family: $indie-font-family;
+  padding: 0 30px 0 30px;
+  width: 95;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  h3{
+    font-size: 12px;
+  }
+
+  .profile-dynamicbox-menu{
+    // margin-left: 30px;
+    // margin-left:
+    // border: 1px solid black;
+    border-bottom: 1px solid $indie-lightgray;
+    list-style: none;
+    // display: inline;
+    li{
+      display: inline-block;
+      margin-right: 25px;
+      cursor: pointer;
+    }
+    .dynamicbox-menu-selected{
+      color: $indie-pink;
+      // text-decoration: underline;
+      border-bottom: 3px solid $indie-pink;
+      font-weight: bold;
+    }
+  }
+
+  .profile-dynamicbox{
+    // border: 1px solid black;
+    // border-top: 0;
+
+    .profile-profiledetails{
+      .profile-profiledetails-left{
+        width: 60%;
+        border: 1px solid black;
+        display: inline-block;
+      }
+
+      .profile-profiledetails-right{
+        width: 39%;
+        display: inline-block;
+        vertical-align: top;
+        border: 1px solid black;
+        .profile-aboutme{
+          // width: 35%;
+          // display: flex;
+          .img-box{
+            display: flex;
+          }
+          ul{
+            list-style: none;
+            li{
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .profile-editbox{
+    form{
+      div{
+        // margin-top
+        background-color: $indie-form-gray;
+        padding: 15px;
+        margin-bottom: 15px;
+
+        h2{
+          color: $indie-gray;
+          border-bottom: 1px solid $indie-lightgray;
+          font-weight: normal;
+          font-size: 24px;
+
+        }
+        label{
+          display: block;
+          font-size: 11px;
+          color: $indie-xgray;
+          margin-top: 10px;
+          // margin-bottom: 10px;
+        }
+        input{
+          width: 60%;
+          max-width: 600px;
+          margin-top: 5px;
+          height: 28px;
+          padding-left: 10px;
+          // padding: 0;
+          // border: 0;
+          // box-sizing: border-box;
+          display: block;
+        }
+        textarea{
+          display: block;
+          margin-top: 5px;
+          width: 60%;
+          max-width: 600px;
+          height: 400px;
+          padding: 10px;
+          font-size: 12px;
+        }
+      }
+      .edit-submit{
+        font-family: $indie-font-family;
+        background-color: $indie-pink;
+        height: 40px;
+        color: white;
+        border: none;
+        border-radius: 2px;
+        float: right;
+        letter-spacing: 1px;
+        font-size: 14px;
+        // font-weight: bold;
+        padding:0;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+  }
+}

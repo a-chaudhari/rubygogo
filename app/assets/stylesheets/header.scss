@@ -113,6 +113,13 @@ html, body, ul{
           // text-align: center;
           line-height: 200%;
           cursor: pointer;
+          a{
+            color: $indie-gray;
+            text-decoration: none;
+          }
+          a:hover{
+            color: $indie-pink;
+          }
         }
         li:last-of-type{
           border: none;

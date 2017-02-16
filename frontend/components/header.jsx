@@ -11,11 +11,6 @@ class Header extends React.Component{
   }
 
 
-
-  componentWillReceiveProps(newProps){
-    console.log("new props!");
-  }
-
   toggleUserMenu(e){
     // console.log("toggling")
     this.setState({
@@ -30,11 +25,13 @@ class Header extends React.Component{
   render(){
     let rightHeader="";
     if(this.props.session.email !== undefined){
+    
+
       rightHeader=(
         <div className="header-right-signedin">
           <div className="header-create-button">START A CAMPAIGN</div>
           <div onClick={this.toggleUserMenu.bind(this)}>{this.props.session.firstName + " "+this.props.session.lastName}</div>
-          <UserMenu logOut={this.signOut.bind(this)} show={this.state.showUserMenu}/>
+          <UserMenu userId={this.props.session.id} logOut={this.signOut.bind(this)} show={this.state.showUserMenu}/>
         </div>
       );
     }
