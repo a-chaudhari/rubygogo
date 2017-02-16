@@ -28,9 +28,9 @@ class ProfileDetails extends React.Component{
               <h2>About Me</h2>
             </div>
             <ul>
-              <li><strong>-1</strong> Campaigns</li>
-              <li><strong>-1</strong> Comments</li>
-              <li><strong>-1</strong> Contributions</li>
+              <li><span><strong>{u.stats.campaigns} </strong></span><span>Campaigns</span></li>
+              <li><span><strong>{u.stats.comments} </strong></span><span>Comments</span></li>
+              <li><span><strong>{u.stats.contributions} </strong></span><span>Contributions</span></li>
             </ul>
           </div>
         </div>
@@ -39,6 +39,9 @@ class ProfileDetails extends React.Component{
   }
 }
 
+// <li><strong>{u.stats.campaigns}</strong> Campaigns</li>
+// <li><strong>{u.stats.comments}</strong>Comments</li>
+// <li><strong>{u.stats.contributions}</strong> Contributions</li>
 
 import { connect  } from 'react-redux';
 

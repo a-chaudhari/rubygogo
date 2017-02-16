@@ -176,13 +176,91 @@
   }
 
   .campaign-perks-box{
-    border: 1px solid black;
+    // border: 1px solid black;
     width: 40%;
     position: absolute;
     right: 50px;
-    top: 550px;
+    top: 547px;
     min-height: 800px;
     display: flex;
     flex-direction: column;
+    h3{
+      width: 60%;
+      color: $indie-xgray;
+      font-size: 16px;
+      font-weight: normal;
+      font-family: $indie-font-family;
+      margin: 0;
+      padding: 0;
+      margin-top: 20px;
+      border-bottom: 1px solid $indie-lightgray;
+      margin-bottom: 20px;
+    }
+    .perkbox{
+      cursor: pointer;
+      box-sizing: border-box;
+      width: 60%;
+      border: 1px solid $indie-lightgray;
+      margin-bottom: 15px;
+      // display: flex;
+      // flex-direction: column;
+      // justify-content: space-between;
+      font-family: $indie-font-family;
+      // padding: 20px;
+      ul{
+        margin: 20px;
+        list-style: none;
+        .perk-price{
+          font-size: 24px;
+          font-weight: bold;
+        }
+        .perk-title{
+          margin-top: 5px;
+
+        }
+        .perk-desc{
+          margin-top: 5px;
+          font-size: 14px;
+
+        }
+        .perk-rem{
+          color: $indie-perk-text-gray;
+          font-size: 12px;
+          margin-bottom: 20px;
+        }
+      }
+      .perk-eta{
+        // display: none;
+        box-sizing: border-box;
+        // position: absolute;
+        width: 100%;
+        // border: 1px solid $indie-lightgray;
+        // border-top: 0;
+        color: $indie-xgray;
+        text-align: center;
+        line-height: 300%;
+        text-transform: uppercase;
+        left: 0;
+        height: 40px;
+        font-size: 12px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        background-color: $indie-perk-gray;
+        position: relative;
+      }
+      .perk-eta-selected{
+        background-color: $indie-pink;
+        color: white;
+        position: absolute;
+        width: 100%;
+        margin: 0;
+        bottom: 0;
+        // top: 0;
+        box-sizing: border-box;
+      }
+      .perk-eta-hidden{
+        display: none;
+      }
+    }
   }
 }

@@ -6,3 +6,7 @@ json.daysLeft -1
 json.creator do
   json.partial! '/api/users/user', user: @campaign.user
 end
+
+json.perks do
+  json.array! @campaign.perks
+end

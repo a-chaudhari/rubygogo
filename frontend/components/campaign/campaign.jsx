@@ -10,8 +10,15 @@ class Campaign extends React.Component{
   }
 
   componentDidMount(){
-    console.log("did mount");
+    // console.log("did mount");
     this.props.fetchCampaign(this.props.routeParams.id);
+  }
+
+  componentWillReceiveProps(newProps){
+    // console.log("new props -> new camp")
+    if(newProps.params.id !== this.props.params.id){
+      this.props.fetchCampaign(this.props.params.id);
+    }
   }
 
   overview(){
@@ -40,7 +47,7 @@ class Campaign extends React.Component{
       <div className='campaign'>
         <TopChunk campaign={this.props.campaign}/>
         {this.overview()}
-        <PerksBox id={this.props.campaign.id}/>
+        <PerksBox perks={this.props.campaign.perks}/>
         <DynamicBox children={this.props.children} campaign={this.props.campaign}/>
       </div>
     );

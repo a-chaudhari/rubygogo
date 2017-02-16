@@ -69,8 +69,25 @@
             display: flex;
           }
           ul{
+            margin-top: 20px;
             list-style: none;
+            // padding-left: 20px;
             li{
+              // margin-left: 20px;
+              position: relative;
+              // strong{
+              //   left: -25px;
+              //   text-align: right;
+              //   position: absolute;
+              // }
+              span:first-of-type{
+                display: inline-block;
+                width:30px;
+                font-size: 18px;
+                text-align: right;
+                margin-right: 5px;
+                // background-color: black;
+              }
               margin-left: 10px;
             }
           }

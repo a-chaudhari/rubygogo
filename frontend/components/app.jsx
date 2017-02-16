@@ -14,7 +14,6 @@ class App extends React.Component{
       <div>
         <HeaderContainer/>
         {this.props.children}
-        <Footer/>
       </div>
     );
   }

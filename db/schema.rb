@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170216143108) do
+ActiveRecord::Schema.define(version: 20170216201341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,20 @@ ActiveRecord::Schema.define(version: 20170216143108) do
     t.text     "overview_text"
     t.text     "pitch_text"
   end
+
+  create_table "perks", force: :cascade do |t|
+    t.string   "title",                      null: false
+    t.text     "description",                null: false
+    t.integer  "campaign_id",                null: false
+    t.integer  "price",                      null: false
+    t.integer  "number_claimed", default: 0, null: false
+    t.integer  "total_number",               null: false
+    t.string   "eta"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "perks", ["campaign_id"], name: "index_perks_on_campaign_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
