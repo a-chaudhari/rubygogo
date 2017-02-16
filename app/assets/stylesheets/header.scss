@@ -34,7 +34,8 @@ html, body, ul{
 
       // height: auto;
       }
-      li:first-of-type{
+      li:first-of-type a {
+        text-decoration: none;
         font-size: 30px;
         margin: 10px;
         margin-left: 15px;

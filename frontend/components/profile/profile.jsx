@@ -7,11 +7,13 @@ class Profile extends React.Component{
     super(props);
     this.state={
       mode: 'profile',
-      edit: false
+      edit: (this.props.location.search === "" ? false : true)
     };
+
   }
 
   componentDidMount(){
+    // debugger
     this.props.fetchUser(this.props.params.profile_id)
   }
 
@@ -48,6 +50,19 @@ class Profile extends React.Component{
 
   showMode(){
     this.setState({edit: false});
+  }
+
+  componentWillReceiveProps(newProps){
+
+    if(this.props.params.profile_id !== newProps.params.profile_id){
+      this.props.fetchUser(newProps.params.profile_id)
+    }
+    else if(this.props.location.search !== newProps.location.search){
+      this.setState({
+        edit: (newProps.location.search === "" ? false : true)
+      });
+    }
+
   }
 
   editMode(){

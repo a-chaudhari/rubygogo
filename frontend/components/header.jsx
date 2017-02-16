@@ -1,6 +1,7 @@
 import React from 'react';
 import SignIn from './session/sign_in';
 import UserMenu from './session/user_menu';
+import { withRouter} from 'react-router';
 
 class Header extends React.Component{
   constructor(props){
@@ -25,7 +26,7 @@ class Header extends React.Component{
   render(){
     let rightHeader="";
     if(this.props.session.email !== undefined){
-    
+
 
       rightHeader=(
         <div className="header-right-signedin">
@@ -45,7 +46,7 @@ class Header extends React.Component{
       <header className="site-header">
         <div className="header-left">
           <ul>
-            <li>RUBYGOGO</li>
+            <li><a href="/#/">RUBYGOGO</a></li>
             <li>Explore</li>
             <li>How It Works</li>
           </ul>
@@ -58,4 +59,4 @@ class Header extends React.Component{
 
 }
 
-export default Header;
+export default withRouter(Header);
