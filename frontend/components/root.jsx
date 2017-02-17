@@ -13,6 +13,7 @@ import Contributions from './profile/contributions';
 import Activity from './profile/activity';
 import Campaigns from './profile/campaigns';
 import Debug from './debug';
+import ContributionContainer from './contribution/contribution_container';
 
 const Root = (props) =>{
   return(
@@ -33,6 +34,7 @@ const Root = (props) =>{
             <Route path='activity' component={Activity}/>
             <Route path='campaigns' component={Campaigns}/>
           </Route>
+          <Route path='contribute' component={ContributionContainer}/>
           <Route path='debug' component={Debug}/>
         </Route>
       </Router>

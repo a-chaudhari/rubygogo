@@ -85,6 +85,9 @@
         }
 
       }
+      a{
+        text-decoration: none;
+      }
       .campaign-backit-button{
         border: 1px solid $indie-pink;
         background-color: $indie-pink;
@@ -94,8 +97,12 @@
         font-size: 14px;
         width: 160px;
         height: 40px;
-        line-height: 250%;
+        line-height: 275%;
         text-align: center;
+        a{
+          text-decoration: none;
+          color: white;
+        }
       }
 
     }

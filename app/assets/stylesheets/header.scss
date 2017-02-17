@@ -201,7 +201,7 @@ html, body, ul{
         // box-shadow: 5px 5px 5px #888888;
         box-shadow: 0 0 5px 2px #888888;
         // box-shadow: -1px 1px 5px 9px rgba(0,0,0,0.25);
-        position: fixed;
+        position: absolute;
         height: 500px;
         width: 300px;
         border: solid 1px $indie-lightgray;

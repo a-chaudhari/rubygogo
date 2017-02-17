@@ -1,5 +1,6 @@
 import React from 'react'
 import Creator from './creator';
+import {withRouter} from 'react-router';
 
 class TopChunk extends React.Component{
   constructor(props){
@@ -9,6 +10,10 @@ class TopChunk extends React.Component{
   numberWithCommas(x) {
     // debugger
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  donate(pid=null){
+    this.props.router.push({pathname:'/contribute', state: {'campaign_id': this.props.campaign.id, 'perk_id': undefined}});
   }
 
   render(){
@@ -44,11 +49,11 @@ class TopChunk extends React.Component{
             <li>{camp.percentDone}% of ${this.numberWithCommas(camp.goal_amount)} {camp.funding_type} goal</li>
             <li>{camp.daysLeft} days left</li>
           </ul>
-          <div className="campaign-backit-button">BACK IT</div>
+          <a><div onClick={this.donate.bind(this)} className="campaign-backit-button">BACK IT</div></a>
         </div>
       </div>
     );
   }
 }
 
-export default TopChunk;
+export default withRouter(TopChunk);

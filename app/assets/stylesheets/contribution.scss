@@ -1,0 +1,338 @@
+.contribution{
+//the entire contribution box
+  box-sizing: border-box;
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: $indie-font-family;
+  margin-top: 50px;
+
+  h1, h2, h3, h4{
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+  }
+
+  h1{
+    font-weight: bold;
+    margin-bottom: 40px;
+  }
+
+  .contribution-left{
+    width: 65%;
+    // border: 1px solid black;
+    box-sizing: border-box;
+    display: inline-block;
+    h3{
+      margin-top: 10px;
+      // margin-bottom: 15px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    h4{
+        font-size: 13px;
+    }
+
+    .contribution-self{
+      //the about me type box
+
+      display: flex;
+      // flex-direction: row;
+      img{
+        height: 50px;
+        width: 50px;
+      }
+      ul{
+        margin-left: 20px;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-between;
+      }
+    }
+
+    .contribution-form{
+      margin-top: 40px;
+      //the entirity of the contribition form
+      font-family: $indie-font-family;
+      .contribution-ccbox{
+        margin-top: 20px;
+        // display: flex;
+        // flex-direction: row;
+        height: 110px;
+        margin-bottom: 10px;
+        div{
+          display: flex;
+          margin-bottom: 10px;
+
+          // justify-content: center;
+          input{
+            margin-right: 10px;
+            flex-grow: 1;
+            height: 50px;
+            display: inline-block;
+            box-sizing: border-box;
+            // border: none;
+            border: 1px solid $indie-lightgray;
+            padding-left: 10px;
+            border-radius: 2px;
+          }
+          input:last-of-type{
+            margin-right: 0;
+          }
+        }
+        //the container for the cc details form elements
+      }
+
+      .contribution-visibility{
+        margin-top: 50px;
+        //holds the entire radio stucture
+
+        h4{
+          margin-bottom: 20px;
+        }
+
+
+        .contribution-visibility-list{
+          //holds the radio divs
+          .list-element{
+            background-color: white;
+            // box-sizing: content-box;
+            width: 100%;
+            height: 50px;
+            border: 1px solid $indie-lightgray;
+            margin-bottom: 10px;
+
+            h4{
+              font-weight: normal;
+              margin: 0;
+              padding: 0;
+              font-size: 14px;
+              display: inline-block;
+              // border: 1px solid red;
+              height: 100%;
+              vertical-align: top;
+              line-height: 325%;
+              color: $indie-xgray;
+            }
+            .circle-container{
+              // border: 1px solid purple;
+              width: 5%;
+              display: inline-block;
+              height: 100%;
+              // padding: 5px;
+              .custom-circle{
+                box-sizing: border-box;
+                border: 1px solid $indie-gray;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                display: inline-block;
+                margin: 8px;
+                margin-top: 12px;
+
+              }
+              .custom-circle-selected{
+                // border-color: black;
+                border: 7px solid black;
+              }
+            }
+          }
+          .list-element-selected{
+            background-color: $indie-contrib-babyblue;
+          }
+          .otherBox{
+            // box-sizing: border-box;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            // background-color: green;
+            .inner-div{
+              box-sizing: border-box;
+              width: 94%;
+              display: inline-block;
+              background-color: inherit;
+              // background-color: orange;
+              height: 100%;
+              box-sizing: border-box;
+              margin: 0;
+              padding: 0;
+              position: relative;
+              vertical-align: top;
+              // background-color: purple;
+              h4{
+                margin: 0;
+                padding: 0;
+                // z-index: 10;
+
+              }
+              .otherField{
+                // display: none;
+                box-sizing: border-box;
+                position: absolute;
+                // right: 0;
+                top: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
+                border: none;
+                font-size: 16px;
+                background-color: inherit;
+                // display:
+                // z-index: 11;
+              }
+
+              .otherhidden{
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .contribution-right{
+    //the right column
+    width: 35%;
+    box-sizing: border-box;
+    // border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+    padding-top: 100px;
+    padding-left: 100px;
+
+    .contribution-summary{
+      //the floating box
+      width: 100%;
+      // min-height: 500px;
+      border: 1px solid $indie-lightgray;
+      .contribution-perk{
+        //the info about the perk selected
+        // padding: 20px;
+        background-color: $indie-contrib-babyblue;
+        .perk-none{
+          height: 100%;
+          // background-color: inherit;
+          .perk-hint{
+            margin-left: 20px;
+            margin-right: 20px;
+            padding-top: 30px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            // margin-top: 20px;
+            background-color: $indie-contrib-babyblue;
+            a{
+              margin-left: 5px;
+              color: $indie-pink;
+            }
+          }
+          .input-container{
+            position: relative;
+            display: inline-block;
+            // margin: 0;
+            padding: 0;
+            width: 85%;
+            height: 100%;
+            margin: 0 auto;
+            .perk-amount-input{
+              // display:block;
+              height: 50px;
+              box-sizing: border-box;
+              width: 100%;
+              margin: 0 auto;
+              margin-bottom: 30px;
+              padding-left: 20px;
+              font-size: 16px;
+              // margin: 20px;
+            }
+            .input-overlay{
+              position: absolute;
+              display: flex;
+              width: 100%;
+              justify-content: space-between;
+              // align-items:
+              top: 16px;
+              padding-left: 5px;
+              // padding-right: 20px;
+              border: 1px solid black;
+              // margin-right: 10px;
+              left: 0;
+              span{
+                display: inline-block;
+              }
+            }
+          }
+        }
+
+
+
+
+      }
+
+      .contribution-review{
+        //the total price and other stuff
+        background-color: $indie-form-gray;
+        display: flex;
+        flex-direction: column;
+        border-top: 1px solid $indie-lightgray;
+        .total-section{
+          margin: 0 20px 0 20px;
+          // height: 200px;
+          // height: 400px;
+          div{
+            display: flex;
+            justify-content: space-between;
+          }
+          h2{
+            font-size: 16px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+            margin-top: 20px;
+          }
+          h3{
+            font-size: 16px;
+            display: inline-block;
+          }
+          .total-line{
+            padding-bottom: 20px;
+            border-bottom: 1px solid $indie-perk-text-gray;
+            // margin-bottom: 20px;
+
+          }
+        }
+        h4{
+          font-size: 12px;
+          color: $indie-perk-text-gray;
+          margin-left: 20px;
+          margin-right: 20px;
+        }
+
+        .contribution-submit{
+          //the button to submit a payment
+          align-self: flex-end;
+
+          vertical-align: bottom;
+          width: 85%;
+          background-color: $indie-pink;
+          color: white;
+          height: 50px;
+          text-align: center;
+          text-transform: uppercase;
+          line-height: 300%;
+          margin: 0 auto;
+          margin-bottom: 20px;
+          margin-top: 20px;
+          cursor: pointer;
+        }
+      }
+
+
+
+    }
+
+
+  }
+}

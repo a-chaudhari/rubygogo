@@ -5,9 +5,14 @@ class Perk < ActiveRecord::Base
   belongs_to :campaign
 
   def receive_perk
-    return false if self.number_available - self.number_claimed <= 0
+    return false unless self.enough_inventory?
     self.number_claimed+=1
     self.save!
+    true
+  end
+
+  def enough_inventory?
+    return false if self.total_number - self.number_claimed <= 0
     true
   end
 

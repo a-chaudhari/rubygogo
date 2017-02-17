@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {withRouter} from 'react-router';
 
 class Perk extends React.Component{
   constructor(props){
@@ -6,6 +7,7 @@ class Perk extends React.Component{
     this.state={
       hover: false
     };
+    this.donate = this.donate.bind(this);
   }
 
   onOver(){
@@ -16,7 +18,10 @@ class Perk extends React.Component{
     this.setState({hover:false});
   }
 
-
+  donate(pid){
+    // console.log("perk donate button")
+    return ()=>this.props.router.push({pathname:'/contribute', state: {'campaign_id': this.props.params.id, 'perk_id': pid}});
+  }
 
   render(){
     // debugger
@@ -41,7 +46,7 @@ class Perk extends React.Component{
         </ul>
         <div className="perk-eta">
           {eta}
-          <div className={etaClass}>
+          <div onClick={this.donate(p.id)} className={etaClass}>
             GET THIS PERK
           </div>
         </div>
@@ -50,4 +55,4 @@ class Perk extends React.Component{
   }
 }
 
-export default Perk;
+export default withRouter(Perk);

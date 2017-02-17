@@ -42,6 +42,7 @@ amit = User.create!(
   profile_img_url: "http://lorempixel.com/460/285",
   country: "United States"
 )
+users.push(amit)
 
 guest = User.create!(
   email: 'guest',
@@ -57,8 +58,11 @@ guest = User.create!(
   profile_img_url: "http://lorempixel.com/460/285",
   country: "United States"
 )
+users.push(guest)
 
 
+Perk.destroy_all
+camps = []
 Campaign.destroy_all
 5.times do
   camp = Campaign.create!(
@@ -86,4 +90,25 @@ Campaign.destroy_all
       eta: "January 1234"
     )
   end
+  camps.push(camp)
+end
+
+Contribution.destroy_all
+
+10.times do
+  user = users.sample
+  camp = camps.sample
+  perk = camp.perks.sample
+  visibility = %w(public anonymous other).sample
+  other = ""
+  if visibility == 'other'
+    other = "Some Other Name"
+  end
+  camp.contributions.create!(
+    user_id: user.id,
+    perk_id: perk.id,
+    amount: perk.price + rand(1..100),
+    visibility: visibility,
+    other_name: other
+  )
 end
