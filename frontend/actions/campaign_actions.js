@@ -32,3 +32,5 @@ export const updateCampaign = camp => dispatch=>(
 // export const fetchCampaignMeta = (type,id)=> dispatch=> (
 //   CampaignAPIUtil.fetchCampaignMeta(type,id)=>then(data=>dispatch(receiveCampaignMeta(data)))
 // );
+
+window.CampaignAPIUtil = CampaignAPIUtil;

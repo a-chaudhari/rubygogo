@@ -4,6 +4,15 @@
     <meta charset="utf-8">
     <title>Rubygogo!</title>
     <link href="https://fonts.googleapis.com/css?family=Kanit:700|Libre+Franklin:400,700" rel="stylesheet">
+    <script type="text/javascript" src="http://widget.cloudinary.com/global/all.js"></script>
+    <script type="text/javascript">
+      window.cloudinary_options={
+        cloud_name: '<%=ENV['cloud_name'] %>',
+        upload_preset: '<%= ENV['upload_preset']  %>',
+        theme: 'minimal',
+        inline_container: '#widget'
+      }
+    </script>
   </head>
   <body>
     <script type="text/javascript">

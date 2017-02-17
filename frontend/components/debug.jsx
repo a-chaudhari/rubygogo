@@ -5,6 +5,9 @@ import {Link } from 'react-router';
 class Debug extends React.Component{
   constructor(props){
     super(props);
+    this.state={
+      url:"nope"
+    };
   }
 
   componentDidMount(){
@@ -23,6 +26,18 @@ class Debug extends React.Component{
       </li>
     )})
   }
+  updateUrl(errs,out){
+    debugger
+    this.setState({url:(out[0].url)});
+  }
+  open(){
+    // cloudinary.openUploadWidget(window.cloudinary_options,(errs,out)=>{
+    //   this.updateUrl(errs,out)
+    // })
+    cloudinary.applyUploadWidget(document.getElementById('opener'),window.cloudinary_options,(errs,out)=>{
+      this.updateUrl(errs,out)
+    })
+  }
 
 
   render(){
@@ -32,9 +47,14 @@ class Debug extends React.Component{
         <div>
           <h2>All campaigns:</h2>
           <ul>
-
             {this.campaignList()}
           </ul>
+          {this.state.url}
+          <button onClick={this.open.bind(this)}>open</button>
+          <button id="opener"></button>
+          <div id="widget" width="500px" height="500px"></div>
+          // <img src={this.state.url}/>
+
         </div>
       </div>
     );
