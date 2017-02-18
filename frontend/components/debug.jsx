@@ -6,7 +6,7 @@ class Debug extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      url:"nope"
+      url:""
     };
   }
 

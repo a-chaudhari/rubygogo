@@ -18,6 +18,11 @@ class User < ActiveRecord::Base
     nil
   end
 
+  def full_name
+    self.firstName + " " + self.lastName
+
+  end
+
   def reset_session_token!
     self.session_token= SecureRandom.urlsafe_base64
     self.save!
