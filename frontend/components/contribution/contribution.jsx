@@ -90,8 +90,8 @@ class Contribution extends React.Component{
           <div className="perk-hint">Your Contribution <a>Add Perk</a></div>
           <div className="input-container">
 
-            <input className="perk-amount-input" value={this.state.amount} onChange={this.update('amount')}/>
             <div className="input-overlay"><span>$</span><span>{this.props.campaign.currency}</span></div>
+            <input className="perk-amount-input" value={this.state.amount} onChange={this.update('amount')}/>
           </div>
 
           <span>{this.props.contribution.errors.amount}</span>
@@ -115,27 +115,25 @@ class Contribution extends React.Component{
   }
 
   reviewSection(){
+    let item="Your Contribution";
     if(this.withPerk){
-      return(
+      const perk = this.getPerk(this.props.location.state.perk_id);
+      item = perk.title;
+    }
+    // const item = (this.withPerk ? perkName : "Your Contribution");
+    return(
+      <div className="total-section">
+        <h2>Review & Pay</h2>
+        <div className="total-line">
+          <h3>{item}</h3>
+          <h3>${this.state.amount} {this.props.campaign.currency}</h3>
+        </div>
         <div>
-          todo
+          <h2>Total</h2> <h2>${this.state.amount} {this.props.campaign.currency}</h2>
         </div>
-      );
-    }
-    else{
-      return(
-        <div className="total-section">
-          <h2>Review & Pay</h2>
-          <div className="total-line">
-            <h3>Your Contribution</h3>
-            <h3>${this.state.amount} {this.props.campaign.currency}</h3>
-          </div>
-          <div>
-            <h2>Total</h2> <h2>${this.state.amount} {this.props.campaign.currency}</h2>
-          </div>
-        </div>
-      );
-    }
+      </div>
+    );
+
   }
 
   render(){
