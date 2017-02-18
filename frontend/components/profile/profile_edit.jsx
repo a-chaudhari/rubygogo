@@ -30,7 +30,12 @@ class ProfileEdit extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     this.props.updateUser(this.state).then(res=>(
-      this.props.updateName(res.user.firstName,res.user.lastName)
+      this.props.receiveLogin({
+        firstName: res.user.firstName,
+        lastName: res.user.lastName,
+        email: res.user.email,
+        avatar_img_url: res.user.avatar_img_url,
+        id: res.user.id})
     ))
 
   }

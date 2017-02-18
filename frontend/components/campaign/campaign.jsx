@@ -30,7 +30,7 @@ class Campaign extends React.Component{
           <h3>OVERVIEW</h3>
         </div>
         <img src={camp.overview_img_url}/>
-        <div>
+        <div className="overview-text">
           {camp.overview_text}
         </div>
       </div>

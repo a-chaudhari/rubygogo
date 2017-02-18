@@ -37,7 +37,7 @@ class Perk extends React.Component{
 
 
     return(
-      <div onMouseOver={this.onOver.bind(this)} onMouseOut={this.onOut.bind(this)} className='perkbox'>
+      <div onClick={this.donate(p.id)} onMouseOver={this.onOver.bind(this)} onMouseOut={this.onOut.bind(this)} className='perkbox'>
         <ul>
           <li className="perk-price">${p.price}</li>
           <li className="perk-title">{p.title}</li>
@@ -46,7 +46,7 @@ class Perk extends React.Component{
         </ul>
         <div className="perk-eta">
           {eta}
-          <div onClick={this.donate(p.id)} className={etaClass}>
+          <div  className={etaClass}>
             GET THIS PERK
           </div>
         </div>

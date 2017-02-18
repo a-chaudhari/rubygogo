@@ -39,6 +39,10 @@ import SignUpForm from './sign_up_form';
       });
     }
 
+    stopProp(e){
+      e.stopPropagation();
+    }
+
  	  render(){
 
       let form = (<SignInForm  errors={this.props.errors} logIn={this.props.logIn} />)
@@ -61,8 +65,8 @@ import SignUpForm from './sign_up_form';
             <li onClick={this.signUpButton.bind(this)}>Sign Up</li>
             <li onClick={this.logInButton.bind(this)}>Log In</li>
           </ul>
-          <div className={cname}>
-            <div className="header-login-form">
+          <div onClick={this.closeWindow.bind(this)} className={cname}>
+            <div onClick={this.stopProp.bind(this)} className="header-login-form">
               <div onClick={this.closeWindow.bind(this)} className="header-login-x">
                 ✕
               </div>

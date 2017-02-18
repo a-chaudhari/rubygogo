@@ -32,7 +32,7 @@ class Header extends React.Component{
         <div className="header-right-signedin">
           <div className="header-create-button">START A CAMPAIGN</div>
           <div onClick={this.toggleUserMenu.bind(this)}>{this.props.session.firstName + " "+this.props.session.lastName}</div>
-          <UserMenu userId={this.props.session.id} logOut={this.signOut.bind(this)} show={this.state.showUserMenu}/>
+          <UserMenu toggle={this.toggleUserMenu.bind(this)} userId={this.props.session.id} logOut={this.signOut.bind(this)} show={this.state.showUserMenu}/>
         </div>
       );
     }

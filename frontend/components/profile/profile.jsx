@@ -101,7 +101,7 @@ class Profile extends React.Component{
           <h1>{fullName}</h1>
           <h3>{location}</h3>
           <div className="profile-editbox">
-            <ProfileEdit updateName={this.props.updateName} updateUser={this.props.updateUser} user={this.props.user}/>
+            <ProfileEdit receiveLogin={this.props.receiveLogin} updateUser={this.props.updateUser} user={this.props.user}/>
           </div>
         </div>
       </div>

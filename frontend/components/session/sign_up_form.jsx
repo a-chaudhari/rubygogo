@@ -47,9 +47,9 @@ import React from 'react'
           <span>{this.getError("Last Name", 'lastName')}</span>
           <input placeholder="Email Address" value={this.state.email} onChange={this.update('email').bind(this)}   /><br/>
           <span>{this.getError("Email Address",'email')}</span>
-          <input placeholder="Password" value={this.state.password} onChange={this.update('password').bind(this)}   /><br/>
+          <input placeholder="Password" type="password" value={this.state.password} onChange={this.update('password').bind(this)}   /><br/>
           <span>{this.getError("Password",'password')}</span>
-          <div onClick={this.handleSubmit.bind(this)}>CREATE AN ACCOUNT</div>
+          <button onClick={this.handleSubmit.bind(this)}>CREATE AN ACCOUNT</button>
       </form>
  	    );
  	  }

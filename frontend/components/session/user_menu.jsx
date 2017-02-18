@@ -1,23 +1,27 @@
 import React from 'react';
-import {Link} from 'react-router';
+import {withRouter, Link} from 'react-router';
 
  class UserMenu extends React.Component{
  	  constructor(props){
  	    super(props);
+      this.link = this.link.bind(this);
  	  }
-    testClick(e){
-      console.log(e.target);
+
+    link(path){
+      return (e) =>
+    {  this.props.toggle()
+      this.props.router.push(path)}
     }
 
  	  render(){
       let cname = "header-loggedin-popout" + (this.props.show ? "" : " header-hide")
  	    return(
-        <div onClick={this.testClick.bind(this)} className={cname}>
+        <div className={cname}>
           <ul>
             <li>My Campaigns</li>
             <li>My Contributions</li>
-            <li><Link to={`/profile/${this.props.userId}`}>My Profile</Link></li>
-            <li><Link to={`/profile/${this.props.userId}/?edit`}>My Settings</Link></li>
+            <li onClick={this.link(`/profile/${this.props.userId}`)}>My Profile</li>
+            <li onClick={this.link(`/profile/${this.props.userId}/?edit`)}>My Settings</li>
             <li onClick={this.props.logOut}>Log Out</li>
           </ul>
         </div>
@@ -25,4 +29,4 @@ import {Link} from 'react-router';
  	  }
  }
 
- export default UserMenu;
+ export default withRouter(UserMenu);

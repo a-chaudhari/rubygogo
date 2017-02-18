@@ -1,4 +1,4 @@
-import { RECEIVE_LOGIN, SIGN_OUT, RECEIVE_ERRORS, UPDATE_NAME } from '../actions/session_actions';
+import { RECEIVE_LOGIN, SIGN_OUT, RECEIVE_ERRORS, UPDATE_SESSION } from '../actions/session_actions';
 import merge from 'lodash/merge';
 
 const SessionReducer = (state={errors:[]},action)=>{
@@ -12,9 +12,9 @@ const SessionReducer = (state={errors:[]},action)=>{
     case RECEIVE_ERRORS:
       // debugger
       return merge({},state,action.errors.responseJSON)
-
-    case UPDATE_NAME:
-      return merge({},state,{firstName: action.firstName, lastName: action.lastName});
+    // 
+    // case UPDATE_SESSION:
+    //   return merge({},state,action.session);
 
     default:
       return state;
