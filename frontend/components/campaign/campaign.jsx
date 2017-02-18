@@ -1,6 +1,6 @@
 import React from 'react'
 import TopChunk from './top_chunk';
-import DynamicBox from './dynamic_box';
+import DynamicBoxContainer from './dynamic_box_container';
 import PerksBox from './perks_box';
 
 class Campaign extends React.Component{
@@ -48,7 +48,7 @@ class Campaign extends React.Component{
         <TopChunk campaign={this.props.campaign}/>
         {this.overview()}
         <PerksBox perks={this.props.campaign.perks}/>
-        <DynamicBox children={this.props.children} campaign={this.props.campaign}/>
+        <DynamicBoxContainer children={this.props.children} campaign={this.props.campaign}/>
       </div>
     );
   }

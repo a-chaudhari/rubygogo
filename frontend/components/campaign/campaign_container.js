@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) =>{
 const mapDispatchToProps = (dispatch) =>{
   return(
     {
-      fetchCampaign: id=>dispatch(fetchCampaign(id))
+      fetchCampaign: id=>dispatch(fetchCampaign(id)),
     }
   );
 };

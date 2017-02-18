@@ -16,9 +16,16 @@ class Api::CampaignsController < ApplicationController
 
   def backers
     start_point = params[:start]
+    # debugger
     campaign = Campaign.find_by(id: params[:campaign_id])
     if campaign
-      render partial: 'api/campaigns/backers', locals: { contribs: campaign.contributions.includes(:user)}
+      # debugger
+      contribs = campaign.contributions.order('id DESC')
+      if start_point != nil || start_point != ""
+        contribs = contribs.where('created_at < ?', start_point)
+      end
+
+      render partial: 'api/campaigns/backers', locals: { contribs: contribs.limit(1).includes(:user)}
 
     else
       render json: "cannot find that campaign id"

@@ -28,6 +28,16 @@ export const updateCampaign=camp=>(
   })
 );
 
+export const getCampaignBackers = (id, start=null)=>(
+  $.ajax({
+    method: 'GET',
+    url: `/api/campaigns/${id}/backers`,
+    data: {start}
+  })
+);
+
+window.getCampaignBackers = getCampaignBackers
+
 // export const fetchCampaignMeta=(type,id)=>(
 //   $.ajax({
 //     method: 'GET',

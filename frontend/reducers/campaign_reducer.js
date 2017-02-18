@@ -1,4 +1,5 @@
-import { RECEIVE_CAMPAIGN, RECEIVE_CAMPAIGNS } from '../actions/campaign_actions';
+import { RECEIVE_CAMPAIGN, RECEIVE_CAMPAIGNS, RECEIVE_CAMPAIGN_BACKERS } from '../actions/campaign_actions';
+import merge from 'lodash/merge';
 
 const CampaignReducer = (state={}, action) =>{
   switch(action.type){
@@ -11,6 +12,9 @@ const CampaignReducer = (state={}, action) =>{
     case RECEIVE_CAMPAIGNS:
       // debugger
       return action.campaigns;
+
+    case RECEIVE_CAMPAIGN_BACKERS:
+      return merge({}, state, {backers: action.backers})
 
     default:
       return state;
