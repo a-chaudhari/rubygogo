@@ -4,7 +4,7 @@ json.array! contribs do |contrib|
   json.anonymous true
   json.avatar_img_url "http://placehold.it/90x90"
   json.pretty_date time_ago_in_words(contrib.created_at) + " ago"
-
+  json.currency currency
   if contrib.visibility == 'anonymous'
     json.name 'Anonymous'
   elsif contrib.visibility == 'public'

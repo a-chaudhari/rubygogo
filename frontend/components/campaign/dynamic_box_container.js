@@ -1,13 +1,13 @@
 import { connect  } from 'react-redux';
 import DynamicBox from './dynamic_box';
-import { fetchCampaign, fetchCampaignBackers } from '../../actions/campaign_actions';
+import { fetchCampaign, fetchCampaignBackers, fetchCampaignUpdates, createCampaignUpdate } from '../../actions/campaign_actions';
 
 const mapStateToProps = (state, ownProps) =>{
   // debugger
   return(
     {
-      campaign: ownProps.campaign,
-      children: ownProps.children
+      campaign: state.campaign,
+      session: state.session
     }
   );
 };
@@ -16,7 +16,9 @@ const mapDispatchToProps = (dispatch) =>{
   return(
     {
       fetchCampaign: id=>dispatch(fetchCampaign(id)),
-      fetchCampaignBackers: (id,start)=>dispatch(fetchCampaignBackers(id,start))
+      fetchCampaignBackers: (id,start)=>dispatch(fetchCampaignBackers(id,start)),
+      fetchCampaignUpdates: id=>dispatch(fetchCampaignUpdates(id)),
+      createCampaignUpdate: (id,body)=>dispatch(createCampaignUpdate(id,body))
     }
   );
 };

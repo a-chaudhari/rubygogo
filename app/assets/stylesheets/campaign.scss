@@ -157,33 +157,7 @@
     }
   }
 
-  .campaign-dynamicbox{
-    width: 55%;
-    font-family: $indie-font-family;
-    min-height: 1000px;
-    margin-top: 20px;
-    .dynamicbox-navbar{
-      border-bottom: 1px solid $indie-lightgray;
-      padding-bottom: 5px;
-      ul{
-        display: flex;
-        list-style: none;
-        li{
-          margin-right: 10px;
-          cursor: pointer;
-          color: $indie-xgray;
-        }
-        li:hover{
-          color: $indie-pink-hover;
-        }
 
-        .dynamic-selected{
-          color: $indie-pink;
-          font-weight: bold;
-        }
-      }
-    }
-  }
 
   .campaign-perks-box{
     // border: 1px solid black;

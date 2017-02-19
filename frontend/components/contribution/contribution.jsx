@@ -1,5 +1,5 @@
 import React from 'react'
-// import {withRouter} from 'react-router';
+import {withRouter} from 'react-router';
 
 class Contribution extends React.Component{
   constructor(props){
@@ -46,7 +46,9 @@ class Contribution extends React.Component{
       contribution['perk_id']= perk.id;
       contribution['amount'] = perk.price;
     }
-    this.props.createContribution(contribution).then(console.log,console.log);
+    this.props.createContribution(contribution).then(
+      res=> (this.props.router.push(`campaign/${contribution.campaign_id}`))
+      ,console.log);
 
   }
 
@@ -221,4 +223,4 @@ class Contribution extends React.Component{
   }
 }
 
-export default Contribution;
+export default withRouter(Contribution);

@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :campaigns, only: [:create, :show, :index, :update] do
       get 'backers', to: 'campaigns#backers'
+      get 'updates', to: 'campaigns#updates'
+      post 'updates', to: 'campaigns#create_update'
+      get 'comments', to: 'campaigns#comments'
+      post 'comments', to: 'campaigns#create_comment'
     end
     resources :contributions, only: [:create]
   end

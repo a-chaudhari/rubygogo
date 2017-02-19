@@ -14,6 +14,7 @@ import Activity from './profile/activity';
 import Campaigns from './profile/campaigns';
 import Debug from './debug';
 import ContributionContainer from './contribution/contribution_container';
+import DynamicBoxContainer from './campaign/dynamic_box_container';
 
 const Root = (props) =>{
   return(
@@ -21,11 +22,6 @@ const Root = (props) =>{
       <Router history={hashHistory}>
         <Route path='/' component={App}>
           <Route path='campaign/:id' component={CampaignContainer}>
-            <IndexRoute component={Story}/>
-            <Route path='story' component={Story}/>
-            <Route path='updates' component={Updates}/>
-            <Route path='comments' component={Comments}/>
-            <Route path='backers' component={Backers}/>
           </Route>
           <Route path='profile/:profile_id' component={ProfileContainer}>
             <IndexRoute component={ProfileDetails}/>
@@ -41,5 +37,10 @@ const Root = (props) =>{
     </Provider>
   );
 }
+// <IndexRoute component={Story}/>
+// <Route path='story' component={Story}/>
+// <Route path='updates' component={Updates}/>
+// <Route path='comments' component={Comments}/>
+// <Route path='backers' component={Backers}/>
 
 export default Root;

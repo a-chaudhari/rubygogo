@@ -60,7 +60,7 @@ guest = User.create!(
 )
 users.push(guest)
 
-
+Update.destroy_all
 Perk.destroy_all
 camps = []
 Campaign.destroy_all
@@ -88,6 +88,13 @@ Campaign.destroy_all
       total_number: rand(5..10),
       number_claimed: rand(0..5),
       eta: "January 1234"
+    )
+  end
+
+  rand(0..3).times do
+    camp.updates.create!(
+      user_id: camp.user_id,
+      body: Faker::Hipster.paragraph(15)
     )
   end
   camps.push(camp)
