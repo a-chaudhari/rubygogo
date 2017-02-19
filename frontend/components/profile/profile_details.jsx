@@ -23,9 +23,12 @@ class ProfileDetails extends React.Component{
         </div>
         <div className="profile-profiledetails-right">
           <div className="profile-aboutme">
-            <div className="img-box">
-              <img src={u.avatar_img_url}/>
+            <div className="avatar-box">
+              <div className="img-box">
+                <img src={u.avatar_img_url}/>
+              </div>
               <h2>About Me</h2>
+
             </div>
             <ul>
               <li><span><strong>{u.stats.campaigns} </strong></span><span>Campaigns</span></li>

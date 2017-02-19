@@ -44,6 +44,11 @@ class Backers extends React.Component{
     this.props.fetchCampaignBackers(this.props.campaign.id, this.state.backers.slice(-1)[0].created_at)
   }
 
+  // getBackersButton(){
+  //   if(this.state.backers.length === this.campaign)
+  //
+  // }
+
   render(){
     if(this.props.campaign.backers === undefined){
       return null;

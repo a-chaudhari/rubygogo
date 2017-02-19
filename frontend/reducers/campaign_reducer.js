@@ -32,10 +32,11 @@ const CampaignReducer = (state={updates:[], comments:[]}, action) =>{
       return merge({},state,{comments:null},{comments: action.comments})
 
     case RECEIVE_COMMENT:
-      let stateCopyTwo = merge({},state);
+      // debugger
+      let stateCopyTwo = merge({},state,{comments:null},{comments:[]});
       // if(state)
       //does not take into account new child comments!
-      stateCopyTwo.comments.unshift(action.comment);
+      // stateCopyTwo.comments.unshift(action.comment);
       return stateCopyTwo;
 
     default:

@@ -47,13 +47,18 @@ class Updates extends React.Component{
     if(this.props.campaign.user_id !== this.props.session.id){
       return null
     }
+    let enabled= false;
+    if(this.state.body.length > 0 && this.state.body.length <= 10000){
+      enabled = true;
+    }
 
+    // <div className="add-update-title">Post A New Update</div>
     return(
       <div className="add-update-container">
-        <div className="add-update-title">Post A New Update</div>
-        <form onSubmit={this.createUpdate.bind(this)}>
+        <form className="clearfix" onSubmit={this.createUpdate.bind(this)}>
           <textarea value={this.state.body} onChange={this.handleChange.bind(this)}/>
-          <button className="update-submit-button">Submit</button>
+          <span className="chars-left">{this.state.body.length} of 10000</span>
+          <button disabled={!enabled} className={"update-submit-button" + (enabled?" button-enabled" : "")}>Post Update</button>
         </form>
       </div>
     )

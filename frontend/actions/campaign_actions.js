@@ -43,6 +43,10 @@ export const receiveCampaigns = campaigns =>({
   campaigns
 });
 
+export const createComment = (id,body) => dispatch=>(
+  CampaignAPIUtil.createComment(id,body).then(comment => dispatch(receiveComment(comment)))
+);
+
 export const fetchComments = (id, start) => dispatch => (
   CampaignAPIUtil.fetchComments(id,start).then(comments => dispatch(receiveComments(comments)))
 );

@@ -82,7 +82,7 @@ class Api::CampaignsController < ApplicationController
   def create_comment
     campaign = Campaign.find_by(id: params[:campaign_id])
     if campaign
-      if logged_in? && campaign.contributors.includes?(current_user)
+      if logged_in? && (campaign.contributors.include?(current_user) || campaign.user == current_user)
         comment = campaign.comments.new(comment_params)
         comment.user = current_user
         if comment.save
