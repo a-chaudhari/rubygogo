@@ -36,7 +36,7 @@ class Api::CampaignsController < ApplicationController
         contribs = contribs.where('created_at < ?', start_point)
       end
 
-      render partial: 'api/campaigns/backers', locals: { contribs: contribs.limit(1).includes(:user), currency: campaign.currency}
+      render partial: 'api/campaigns/backers', locals: { contribs: contribs.limit(10).includes(:user), currency: campaign.currency}
 
     else
       render json: "cannot find that campaign id", status: 404
@@ -65,9 +65,37 @@ class Api::CampaignsController < ApplicationController
   end
 
   def comments
+    start_point = params[:start]
+    campaign = Campaign.find_by(id: params[:campaign_id])
+    if campaign
+      comments = campaign.comments.where('parent_id IS NULL').order('id DESC').includes(children: [:user] )
+      if start_point != nil && start_point != ""
+        comments = comments.where('created_at < ?', start_point)
+      end
+
+      render partial: 'api/campaigns/comments', locals: { comments: comments.limit(10).includes(:user)}
+    else
+      render json: "cannot find that campaign id", status: 404
+    end
   end
 
   def create_comment
+    campaign = Campaign.find_by(id: params[:campaign_id])
+    if campaign
+      if logged_in? && campaign.contributors.includes?(current_user)
+        comment = campaign.comments.new(comment_params)
+        comment.user = current_user
+        if comment.save
+          render partial: 'api/campaigns/comment', locals: { comment: comment}
+        else
+          render json: comment.errors, status: 422
+        end
+      else
+        render json: "need to be logged in and a contributor to comment", status: 401
+      end
+    else
+      render json: "cannot find that campaign id", status: 404
+    end
   end
 
   def index
@@ -77,6 +105,10 @@ class Api::CampaignsController < ApplicationController
   private
   def update_params
     params.require(:update).permit(:body)
+  end
+
+  def comment_params
+    params.require(:comment).permit(:body, :parent_id)
   end
 
 

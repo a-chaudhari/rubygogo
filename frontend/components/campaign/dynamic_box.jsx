@@ -25,7 +25,7 @@ class DynamicBox extends React.Component{
         return(<Backers campaign={this.props.campaign} fetchCampaignBackers={this.props.fetchCampaignBackers}/>);
 
       case 'comments':
-        return(<Comments/>);
+        return(<Comments session={this.props.session} campaign={this.props.campaign} fetchComments={this.props.fetchComments}/>);
 
       default:
         return null;
@@ -48,7 +48,7 @@ class DynamicBox extends React.Component{
           <ul>
             <li onClick={this.chMode('story')} className={this.state.mode=="story" ? cname : ""}>STORY</li>
             <li onClick={this.chMode('updates')} className={this.state.mode=="updates" ? cname : ""}>UPDATES{camp.stats.updates > 0 ? (` (${camp.stats.updates})`): ""}</li>
-            <li onClick={this.chMode('comments')} className={this.state.mode=="comments" ? cname : ""}>COMMENTS</li>
+            <li onClick={this.chMode('comments')} className={this.state.mode=="comments" ? cname : ""}>COMMENTS{camp.stats.comments > 0 ? (` (${camp.stats.comments})`): ""}</li>
             <li onClick={this.chMode('backers')} className={this.state.mode=="backers" ? cname : ""}>BACKERS{camp.contributors > 0 ? (` (${camp.contributors})`): ""}</li>
           </ul>
         </nav>

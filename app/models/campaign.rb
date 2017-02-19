@@ -5,5 +5,10 @@ class Campaign < ActiveRecord::Base
   has_many :perks
   has_many :contributions
   has_many :updates
+  has_many :comments
+
+  has_many :contributors,
+    through: :contributions,
+    source: :user
 
 end

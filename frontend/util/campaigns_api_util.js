@@ -51,6 +51,16 @@ export const createCampaignUpdate = (id,body)=>(
   })
 );
 
+export const fetchComments = (id, start=null)=>(
+  $.ajax({
+    method: 'GET',
+    url: `/api/campaigns/${id}/comments`,
+    data: {start}
+  })
+);
+// 
+// export const cr
+
 // window.getCampaignBackers = getCampaignBackers
 
 // export const fetchCampaignMeta=(type,id)=>(

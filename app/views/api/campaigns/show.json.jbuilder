@@ -5,7 +5,7 @@ json.daysLeft -1
 
 json.stats do
   json.updates @campaign.updates.count
-  json.comments -11
+  json.comments @campaign.comments.count
   # json.backers @campaign.contributions.count
 end
 

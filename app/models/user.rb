@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :campaigns
   has_many :contributions
+  has_many :comments
 
   attr_reader :password
 

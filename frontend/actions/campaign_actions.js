@@ -5,6 +5,18 @@ export const RECEIVE_CAMPAIGNS = 'RECEIVE_CAMPAIGNS';
 export const RECEIVE_CAMPAIGN_BACKERS = 'RECEIVE_CAMPAIGN_BACKERS';
 export const RECEIVE_UPDATES = 'RECEIVE_UPDATES';
 export const RECEIVE_UPDATE = 'RECEIVE_UPDATE';
+export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
+export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
+
+export const receiveComments = comments =>({
+  type: RECEIVE_COMMENTS,
+  comments
+});
+
+export const receiveComment = comment =>({
+  type: RECEIVE_COMMENT,
+  comment
+})
 
 export const receiveUpdate = update =>({
   type: RECEIVE_UPDATE,
@@ -30,6 +42,10 @@ export const receiveCampaigns = campaigns =>({
   type: RECEIVE_CAMPAIGNS,
   campaigns
 });
+
+export const fetchComments = (id, start) => dispatch => (
+  CampaignAPIUtil.fetchComments(id,start).then(comments => dispatch(receiveComments(comments)))
+);
 
 export const fetchCampaign = id=> dispatch=> (
   CampaignAPIUtil.fetchCampaign(id).then(camp=>dispatch(receiveCampaign(camp)))
