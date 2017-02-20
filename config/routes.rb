@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get 'backers', to: 'campaigns#backers'
     end
     resources :contributions, only: [:create]
+    resources :categories, only: [:show]
   end
 
 
