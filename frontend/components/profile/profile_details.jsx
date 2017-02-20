@@ -47,7 +47,7 @@ class ProfileDetails extends React.Component{
 // <li><strong>{u.stats.contributions}</strong> Contributions</li>
 
 import { connect  } from 'react-redux';
-
+import { fetchUser } from '../../actions/user_actions';
 
 const mapStateToProps = (state, ownProps) =>{
   return(

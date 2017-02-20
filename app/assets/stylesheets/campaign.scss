@@ -55,15 +55,27 @@
         // border: 1px solid black;
         font-size: 12px;
         img{
-          width: 50px;
-          height: 50px;
-          margin-right: 10px;
+          // width: 90px;
+          // height: 90px;
+          // margin-right: 10px;
+          clip-path: circle(35% at 50% 50%);
+        }
+        ul{
+          align-self: center;
+
+        }
+        a{
+          color: $indie-pink
+        }
+        a:hover{
+          text-decoration: underline;
         }
         color: $indie-xgray;
       }
 
       .statusArea{
         // border: 1px solid black;
+        // align-self: center;
 
         font-size: 14px;
         li:first-of-type{
@@ -176,7 +188,7 @@
       font-family: $indie-font-family;
       margin: 0;
       padding: 0;
-      margin-top: 20px;
+      // margin-top: 20px;
       border-bottom: 1px solid $indie-lightgray;
       margin-bottom: 20px;
     }

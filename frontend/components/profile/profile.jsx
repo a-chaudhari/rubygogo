@@ -35,7 +35,8 @@ class Profile extends React.Component{
     let TOPICS = ['profile','campaigns'];
     if(!this.props.user.public){
       // debugger
-      TOPICS = ['profile','campaigns','contributions','activity'];
+      //no longer doing 'activity'
+      TOPICS = ['profile','campaigns','contributions'];
     }
 
     const lis = TOPICS.map((topic,idx)=>{
@@ -53,7 +54,7 @@ class Profile extends React.Component{
   }
 
   showMode(){
-    this.setState({edit: false}); 
+    this.setState({edit: false});
   }
 
   componentWillReceiveProps(newProps){

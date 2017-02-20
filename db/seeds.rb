@@ -77,7 +77,6 @@ Comment.destroy_all
     funding_type: ['flexible','fixed'].sample,
     main_img_url: "http://lorempixel.com/620/415",
     overview_img_url: "http://lorempixel.com/320/240",
-    current_cash: rand(500..1000000),
     category_id: 0,
     overview_text: Faker::Hipster.paragraph,
     pitch_text: Faker::Hipster.paragraph(30)

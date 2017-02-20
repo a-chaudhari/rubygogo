@@ -18,6 +18,31 @@ class Api::UsersController < ApplicationController
   #   end
   # end
 
+  def contributions
+    user=User.find_by(id: params[:user_id])
+    if(user)
+      if logged_in? && user == current_user
+        render partial: 'api/users/contributions', locals: {contributions: user.contributions.includes(:campaign)}
+      else
+        render json: "unauthorized", status: 401
+      end
+    else
+      render json: "cannot find user id", status: 404
+    end
+  end
+
+  def update_contribution
+  end
+
+  def campaigns
+    user=User.find_by(id: params[:user_id])
+    if(user)
+      render partial: 'api/users/campaigns', locals: {user: user}
+    else
+      render json: "cannot find user id", status: 404
+    end
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
@@ -43,6 +68,11 @@ class Api::UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:email,:password,:firstName,:lastName, :avatar_img_url, :city, :short_desc, :about_me, :profile_img_url, :country, :address, :postal_code)
+  end
+
+  private
+  def contribution_params
+    params.require(:contribution).permit(:visibility)
   end
 
 end

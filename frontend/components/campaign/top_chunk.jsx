@@ -29,8 +29,6 @@ class TopChunk extends React.Component{
       percentDone=camp.percentDone+"%";
     }
 
-    console.log(percentDone);
-
 
     return(
       <div className="campaign-TopChunk">
@@ -47,7 +45,7 @@ class TopChunk extends React.Component{
               </div>
             </li>
             <li>{camp.percentDone}% of ${this.numberWithCommas(camp.goal_amount)} {camp.funding_type} goal</li>
-            <li>{camp.daysLeft} days left</li>
+            <li>{camp.daysLeft} left</li>
           </ul>
           <a><div onClick={this.donate.bind(this)} className="campaign-backit-button">BACK IT</div></a>
         </div>

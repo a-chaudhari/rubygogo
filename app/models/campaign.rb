@@ -11,4 +11,9 @@ class Campaign < ActiveRecord::Base
     through: :contributions,
     source: :user
 
+  def add_contribution(amt)
+    self.current_cash += amt
+    self.save!
+  end
+
 end
