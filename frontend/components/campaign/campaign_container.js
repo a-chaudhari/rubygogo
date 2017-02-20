@@ -6,7 +6,8 @@ const mapStateToProps = (state, ownProps) =>{
   // debugger
   return(
     {
-      campaign: state.campaign
+      campaign: state.campaign,
+      alt_cid: ownProps.alt_cid
     }
   );
 };

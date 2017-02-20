@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {withRouter} from 'react-router';
 
 class Campaigns extends React.Component{
   constructor(props){
@@ -10,6 +11,7 @@ class Campaigns extends React.Component{
   }
 
   printCreated(){
+    // debugger
     return this.props.campaigns.created.map(
       (camp,idx)=>(
         this.printEntry(camp,true,idx)
@@ -25,11 +27,15 @@ class Campaigns extends React.Component{
     )
   }
 
+  fetchEditor(id){
+    return (e) => (this.props.fetchEditor(id).then(res => this.props.router.push(`/editor/`)))
+  }
+
   printEntry(camp, created=false, idx){
     let actions = "";
     let action_menu = "";
     if(created){
-      actions = (<div className="actions-menu-button">Actions</div>);
+      actions = (<div className="actions-menu-button"><a href={`/#/editor/${camp.id}`}>Actions</a></div>);
     }
     return(
       <div key={idx} className="campaign-entry">
@@ -77,7 +83,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) =>{
   return(
     {
-      fetchCampaigns: id=>dispatch(fetchCampaigns(id))
+      fetchCampaigns: id=>dispatch(fetchCampaigns(id)),
+      fetchEditor: id=>dispatch(fetchEditor(id))
     }
   );
 };
@@ -86,4 +93,4 @@ const mapDispatchToProps = (dispatch, ownProps) =>{
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Campaigns);
+)(withRouter(Campaigns));

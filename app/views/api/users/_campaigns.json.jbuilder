@@ -1,5 +1,5 @@
 json.created do
-  json.array! user.campaigns.includes(:user) do |camp|
+  json.array! user.campaigns.order('created_at DESC').includes(:user) do |camp|
     json.extract! camp, :id, :title, :campaign_card_img_url, :tagline, :user_id
 
     json.name camp.user.full_name

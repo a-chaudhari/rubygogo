@@ -12,19 +12,19 @@ export const fetchAllCampaigns=()=>(
   })
 );
 
-export const createCampaign=camp=>(
+export const createCampaign=campaign=>(
   $.ajax({
     method: 'POST',
     url: '/api/campaigns',
-    data: {camp}
+    data: {campaign}
   })
 );
 
-export const updateCampaign=camp=>(
+export const updateCampaign=campaign=>(
   $.ajax({
     method: 'PATCH',
-    url: `/api/campaigns/${camp.id}`,
-    data: {camp}
+    url: `/api/campaigns/${campaign.id}`,
+    data: {campaign}
   })
 );
 
@@ -64,6 +64,13 @@ export const createComment = (id, body)=>(
     method: 'POST',
     url: `/api/campaigns/${id}/comments`,
     data: {comment:{body}}
+  })
+);
+
+export const fetchEditor = (id)=>(
+  $.ajax({
+    method: 'GET',
+    url: `/api/campaigns/${id}/editor`
   })
 );
 //

@@ -103,7 +103,7 @@ Comment.destroy_all
     user = users.sample
     comment = camp.comments.create!(
       user_id: user.id,
-      body: Faker::Hipster.paragraph(rand(1..8))
+      body: Faker::Hipster.paragraph(rand(1..3))
     )
     comments.push(comment)
   end
@@ -138,4 +138,33 @@ Contribution.destroy_all
     visibility: visibility,
     other_name: other
   )
+end
+
+# Category.destroy_all
+if Category.all.count != 10
+
+  {
+    tech:"Tech",
+    film:"Film",
+    small_business:"Small Business",
+    community:"Community",
+    music:"Music",
+    education:"Education",
+    design:"Design",
+    environment:"Environment",
+    gaming:"Gaming",
+    web:"Video/Web"
+  }.each do |key,value|
+
+    cat = Category.create!(
+    category: key,
+    alt_name: value,
+    cat_image_url: "http://lorempixel.com/210/220",
+    tagline: Faker::Hipster.paragraph(1),
+    cat_icon: "http://lorempixel.com/34/34"
+    )
+
+  end
+
+
 end

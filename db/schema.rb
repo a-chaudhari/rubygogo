@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20170220132059) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,6 +43,12 @@ ActiveRecord::Schema.define(version: 20170220132059) do
     t.string   "alt_name",      null: false
     t.string   "cat_image_url", null: false
     t.string   "cat_icon",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories", ["category"], name: "index_categories_on_category", unique: true, using: :btree
+
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id",     null: false
     t.integer  "campaign_id", null: false
@@ -52,8 +57,6 @@ ActiveRecord::Schema.define(version: 20170220132059) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "categories", ["category"], name: "index_categories_on_category", unique: true, using: :btree
 
   create_table "contributions", force: :cascade do |t|
     t.integer  "user_id",     null: false

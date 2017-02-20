@@ -15,7 +15,10 @@ Rails.application.routes.draw do
       post 'updates', to: 'campaigns#create_update'
       get 'comments', to: 'campaigns#comments'
       post 'comments', to: 'campaigns#create_comment'
+      get 'editor', to: 'campaigns#editor'
+      resources :perks, only: [:index, :create]
     end
+    resources :perks, only: [:update, :destroy]
     resources :contributions, only: [:create]
     resources :categories, only: [:show]
   end

@@ -30,7 +30,7 @@ class Header extends React.Component{
 
       rightHeader=(
         <div className="header-right-signedin">
-          <div className="header-create-button">START A CAMPAIGN</div>
+          <div className="header-create-button"><a href="/#/start-a-campaign">START A CAMPAIGN</a></div>
           <div onClick={this.toggleUserMenu.bind(this)}>{this.props.session.firstName + " "+this.props.session.lastName}</div>
           <UserMenu toggle={this.toggleUserMenu.bind(this)} userId={this.props.session.id} logOut={this.signOut.bind(this)} show={this.state.showUserMenu}/>
         </div>

@@ -15,13 +15,16 @@ import Campaigns from './profile/campaigns';
 import Debug from './debug';
 import ContributionContainer from './contribution/contribution_container';
 import DynamicBoxContainer from './campaign/dynamic_box_container';
+import Create from './create';
+import EditorContainer from './create/editor_container';
+// import EditorPreview from './create/editor_preview';
 
 const Root = (props) =>{
   return(
     <Provider store={props.store}>
       <Router history={hashHistory}>
         <Route path='/' component={App}>
-          <Route path='campaign/:id' component={CampaignContainer}>
+          <Route path='campaign/:campaign_id' component={CampaignContainer}>
           </Route>
           <Route path='profile/:profile_id' component={ProfileContainer}>
             <IndexRoute component={ProfileDetails}/>
@@ -32,11 +35,14 @@ const Root = (props) =>{
           </Route>
           <Route path='contribute' component={ContributionContainer}/>
           <Route path='debug' component={Debug}/>
+          <Route path='start-a-campaign' component={Create}/>
         </Route>
+        <Route path='/editor/:campaign_id' component={EditorContainer}/>
       </Router>
     </Provider>
   );
 }
+// <Route path='/campaign/:id/preview' component={EditorPreview}/>
 // <IndexRoute component={Story}/>
 // <Route path='story' component={Story}/>
 // <Route path='updates' component={Updates}/>

@@ -7,17 +7,31 @@ class Campaign extends React.Component{
   constructor(props){
     super(props);
     // debugger
+    this.cid=0;
+    this.preview=false;
+    if(this.props.params === undefined){
+        this.cid = this.props.alt_cid;
+        this.preview=true;
+    }else{
+      this.cid =this.props.params.campaign_id;
+    }
+
   }
 
   componentDidMount(){
     // console.log("did mount");
-    this.props.fetchCampaign(this.props.routeParams.id);
+    // debugger
+    this.props.fetchCampaign(this.cid);
   }
 
   componentWillReceiveProps(newProps){
     // console.log("new props -> new camp")
-    if(newProps.params.id !== this.props.params.id){
-      this.props.fetchCampaign(this.props.params.id);
+    // debugger
+    if(this.preview) return;
+
+    if(newProps.params.campaign_id !== this.cid){
+      this.cid=newProps.params.campaign_id;
+      this.props.fetchCampaign(newProps.params.campaign_id);
     }
   }
 

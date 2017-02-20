@@ -7,6 +7,12 @@ export const RECEIVE_UPDATES = 'RECEIVE_UPDATES';
 export const RECEIVE_UPDATE = 'RECEIVE_UPDATE';
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
+export const RECEIVE_EDITOR = 'RECEIVE_EDITOR';
+
+export const receiveEditor = editor => ({
+  type: RECEIVE_EDITOR,
+  editor
+});
 
 export const receiveComments = comments =>({
   type: RECEIVE_COMMENTS,
@@ -43,6 +49,10 @@ export const receiveCampaigns = campaigns =>({
   campaigns
 });
 
+export const fetchEditor = (id) => dispatch=> (
+  CampaignAPIUtil.fetchEditor(id).then(res => dispatch(receiveEditor(res)))
+);
+
 export const createComment = (id,body) => dispatch=>(
   CampaignAPIUtil.createComment(id,body).then(comment => dispatch(receiveComment(comment)))
 );
@@ -60,12 +70,14 @@ export const fetchAllCampaigns = () => dispatch=> (
 );
 
 export const createCampaign = camp => dispatch=>(
-  CampaignAPIUtil.createCampaign(camp).then(camp=>dispatch(receiveCampaign(camp)))
+  CampaignAPIUtil.createCampaign(camp).then(camp=>dispatch(receiveEditor(camp)))
 );
 
-export const updateCampaign = camp => dispatch=>(
-  CampaignAPIUtil.updateCampaign(camp).then(camp=>dispatch(receiveCampaign(camp)))
-);
+export const updateCampaign = camp => dispatch=>{
+  debugger
+  return(
+  CampaignAPIUtil.updateCampaign(camp).then(camp=>dispatch(receiveEditor(camp)))
+)};
 
 export const fetchCampaignBackers = (id, start)=> dispatch=> (
   CampaignAPIUtil.getCampaignBackers(id,start).then(backers => dispatch(receiveCampaignBackers(backers)))
@@ -78,6 +90,8 @@ export const fetchCampaignUpdates = (id) => dispatch=> (
 export const createCampaignUpdate = (id,body)=> dispatch=> (
   CampaignAPIUtil.createCampaignUpdate(id,body).then(update=>dispatch(receiveUpdate(update)))
 );
+
+window.fetchEditor = fetchEditor;
 
 // export const fetchCampaignMeta = (type,id)=> dispatch=> (
 //   CampaignAPIUtil.fetchCampaignMeta(type,id)=>then(data=>dispatch(receiveCampaignMeta(data)))

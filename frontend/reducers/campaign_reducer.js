@@ -1,7 +1,7 @@
-import { RECEIVE_CAMPAIGN, RECEIVE_CAMPAIGNS, RECEIVE_CAMPAIGN_BACKERS, RECEIVE_UPDATES, RECEIVE_UPDATE, RECEIVE_COMMENTS, RECEIVE_COMMENT } from '../actions/campaign_actions';
+import { RECEIVE_CAMPAIGN, RECEIVE_CAMPAIGNS, RECEIVE_CAMPAIGN_BACKERS, RECEIVE_UPDATES, RECEIVE_UPDATE, RECEIVE_COMMENTS, RECEIVE_COMMENT, RECEIVE_EDITOR } from '../actions/campaign_actions';
 import merge from 'lodash/merge';
 
-const CampaignReducer = (state={updates:[], comments:[]}, action) =>{
+const CampaignReducer = (state={editor: {}, updates:[], comments:[]}, action) =>{
   switch(action.type){
 
     case RECEIVE_CAMPAIGN:
@@ -29,7 +29,11 @@ const CampaignReducer = (state={updates:[], comments:[]}, action) =>{
 
     case RECEIVE_COMMENTS:
       // debugger
-      return merge({},state,{comments:null},{comments: action.comments})
+      return merge({},state,{comments:null},{comments: action.comments});
+
+    case RECEIVE_EDITOR:
+      // debugger
+      return merge({},state,{editor: null},{editor: action.editor});
 
     case RECEIVE_COMMENT:
       // debugger

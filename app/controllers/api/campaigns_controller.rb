@@ -9,9 +9,87 @@ class Api::CampaignsController < ApplicationController
   end
 
   def create
+    #creates an empty template with just the total amount and title
+    unless logged_in?
+      render json: "you need to log in first", status: 401
+      return
+    end
+
+    camp = Campaign.new(new_params)
+    camp.user = current_user
+    camp.duration = 60
+    camp.funding_type="fixed"
+    if camp.save
+      render json: camp
+    else
+      render json: camp.errors, status: 422
+    end
+  end
+
+  def editor
+    camp = Campaign.find_by(id: params[:campaign_id])
+    unless logged_in?
+      render json: "you need to log in first", status: 401
+      return
+    end
+
+    unless logged_in? && camp.user == current_user
+      render json: "unauthorized", status: 401
+      return
+    end
+
+    # debugger
+    # output = camp.attributes
+    # output[:]
+    render partial: 'api/campaigns/editor', locals:{camp: camp}
+
   end
 
   def update
+    # debugger
+    camp = Campaign.find_by(id: params[:campaign][:id])
+    unless camp
+      render json: "cannot find that campaign id", status: 404
+      return
+    end
+
+    unless logged_in? && camp.user == current_user
+      render json: "unauthorized", status: 401
+      return
+    end
+
+    if perks_params.length > 0
+      # debugger
+      #stuff
+    end
+
+
+
+    pparams = perks_params['perks']
+    pparams.each do |_,perk|
+      debugger
+      if perk[:id].nil?
+        camp.perks.new(perk)
+      else
+        pk = Perk.find_by(id: perk[:id])
+        pk.update(perk)
+        #update and existing perk
+      end
+    end
+
+    camp.update(edit_params)
+
+
+
+    # if camp.update(edit_params)
+    if camp.persisted?
+
+      render partial: 'api/campaigns/editor', locals:{camp: camp}
+    else
+      render json: camp.errors, status: 422
+    end
+
+
   end
 
   def updates
@@ -109,6 +187,18 @@ class Api::CampaignsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:body, :parent_id)
+  end
+
+  def new_params
+    params.require(:campaign).permit(:title, :goal_amount, :currency)
+  end
+
+  def edit_params
+    params.require(:campaign).permit(:title, :goal_amount, :currency, :tagline, :campaign_card_img_url, :duration, :funding_type, :video_url, :main_img_url, :overview_img_url, :status, :category_id, :overview_text, :pitch_text)
+  end
+
+  def perks_params
+    params.require(:campaign).permit({perks:[:id, :title, :description, :campaign_id, :price, :number_claimed, :total_number, :eta]})
   end
 
 
