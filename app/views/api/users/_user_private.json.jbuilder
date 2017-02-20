@@ -3,6 +3,6 @@ json.public false
 
 json.stats do
   json.campaigns user.campaigns.count
-  json.comments -11
+  json.comments user.comments.count
   json.contributions user.contributions.count
 end

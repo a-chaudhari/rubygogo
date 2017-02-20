@@ -18,10 +18,16 @@ class ApplicationController < ActionController::Base
     @current_user = user
   end
 
+  def errorUnlessSignedIn
+    unless logged_in?
+      # render json:
+    end
+  end
+
 
   def sign_out
     @current_user = nil
     session[:session_token] = nil
   end
-  
+
 end

@@ -2,10 +2,19 @@ Rails.application.routes.draw do
 
   root to: 'static_pages#root'
   namespace :api , defaults: { format: :json } do
-    resources :users, only: [:create, :show, :update]
+    resources :users, only: [:create, :show, :update] do
+      get 'contributions', to: 'users#contributions'
+      patch 'contributions', to: 'users#update_contribution'
+      get 'campaigns', to: 'users#campaigns'
+      get 'activity', to: 'users#activity'
+    end
     resource :session, only: [:create, :destroy]
     resources :campaigns, only: [:create, :show, :index, :update] do
       get 'backers', to: 'campaigns#backers'
+      get 'updates', to: 'campaigns#updates'
+      post 'updates', to: 'campaigns#create_update'
+      get 'comments', to: 'campaigns#comments'
+      post 'comments', to: 'campaigns#create_comment'
     end
     resources :contributions, only: [:create]
     resources :categories, only: [:show]

@@ -27,7 +27,7 @@ class Debug extends React.Component{
     )})
   }
   updateUrl(errs,out){
-    debugger
+    // debugger
     this.setState({url:(out[0].url)});
   }
   open(){

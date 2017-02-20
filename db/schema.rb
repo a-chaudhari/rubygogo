@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20170220132059) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,6 +44,11 @@ ActiveRecord::Schema.define(version: 20170220132059) do
     t.string   "alt_name",      null: false
     t.string   "cat_image_url", null: false
     t.string   "cat_icon",      null: false
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "campaign_id", null: false
+    t.integer  "parent_id"
+    t.text     "body",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -76,6 +82,16 @@ ActiveRecord::Schema.define(version: 20170220132059) do
   end
 
   add_index "perks", ["campaign_id"], name: "index_perks_on_campaign_id", using: :btree
+
+  create_table "updates", force: :cascade do |t|
+    t.integer  "user_id",     null: false
+    t.integer  "campaign_id", null: false
+    t.text     "body",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "updates", ["campaign_id"], name: "index_updates_on_campaign_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false

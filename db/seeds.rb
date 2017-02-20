@@ -29,7 +29,7 @@ end
 
 
 amit = User.create!(
-  email: 'test',
+  email: 'amitchaudhari@mac.com',
   password: 'password',
   firstName: 'Amit',
   lastName: 'Chaudhari',
@@ -45,7 +45,7 @@ amit = User.create!(
 users.push(amit)
 
 guest = User.create!(
-  email: 'guest',
+  email: 'guest@example.com',
   password: 'password',
   firstName: 'Guest',
   lastName: 'User',
@@ -60,10 +60,12 @@ guest = User.create!(
 )
 users.push(guest)
 
-
+Update.destroy_all
 Perk.destroy_all
 camps = []
 Campaign.destroy_all
+Comment.destroy_all
+
 5.times do
   camp = Campaign.create!(
     title: Faker::Commerce.unique.product_name,
@@ -75,7 +77,6 @@ Campaign.destroy_all
     funding_type: ['flexible','fixed'].sample,
     main_img_url: "http://lorempixel.com/620/415",
     overview_img_url: "http://lorempixel.com/320/240",
-    current_cash: rand(500..1000000),
     category_id: 0,
     overview_text: Faker::Hipster.paragraph,
     pitch_text: Faker::Hipster.paragraph(30)
@@ -90,6 +91,32 @@ Campaign.destroy_all
       eta: "January 1234"
     )
   end
+
+  rand(0..3).times do
+    camp.updates.create!(
+      user_id: camp.user_id,
+      body: Faker::Hipster.paragraph(15)
+    )
+  end
+  comments = [];
+  rand(8..18).times do
+    user = users.sample
+    comment = camp.comments.create!(
+      user_id: user.id,
+      body: Faker::Hipster.paragraph(rand(1..8))
+    )
+    comments.push(comment)
+  end
+
+  rand(1..3).times do
+    comment = comments.sample
+    comment.children.create!(
+      body: Faker::Hipster.paragraph(rand(1..6)),
+      user_id: comment.campaign.user_id,
+      campaign_id: comment.campaign_id
+    )
+  end
+
   camps.push(camp)
 end
 

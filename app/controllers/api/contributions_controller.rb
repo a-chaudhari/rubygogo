@@ -11,18 +11,20 @@ class Api::ContributionsController < ApplicationController
       return
     end
 
+    if !contribution.perk.nil?
+      if !contribution.perk.enough_inventory?
+        render json: "selected perk sold out", status: 422
+        return
+      end
+    end
+
     if(contribution.save)
       # debugger
+      contribution.campaign.add_contribution(contribution.amount)
       if !contribution.perk.nil?
-        if contribution.perk.enough_inventory?
-          contribution.perk.receive_perk
-          render json: contribution
-        else
-          render json: "selected perk sold out", status: 422
-        end
-      else
-        render json: contribution
+        contribution.perk.receive_perk
       end
+      render json: contribution
     else
       render json: contribution.errors, status: 422
     end

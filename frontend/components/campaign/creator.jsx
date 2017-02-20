@@ -11,14 +11,18 @@ class Creator extends React.Component{
       return(null)
     }
     // debugger
+    let location = ""
+    let parts = []
+    location += (c.city !== undefined? c.city : "")
+    location += (c.country!== undefined ? (" "+ c.country) : "")
     return(
       <div className="campaign-author-info">
 
         <img src={c.avatar_img_url}/>
         <ul>
           <li>{c.firstName} {c.lastName}</li>
-          <li>location?</li>
-          <li>profile link</li>
+          <li>{location}</li>
+          <li><a href={`/#/profile/${c.id}`}>About</a></li>
         </ul>
       </div>
     );

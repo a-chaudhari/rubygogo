@@ -20,3 +20,17 @@ export const updateUser=user=>(
     data: {user}
   })
 );
+
+export const fetchContributions = id => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/users/${id}/contributions`
+  })
+);
+
+export const fetchCampaigns = id => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/users/${id}/campaigns`
+  })
+);

@@ -10,3 +10,13 @@ $indie-perk-text-gray: #a8a8a8;
 $indie-contrib-babyblue: #DBF4F4;
 
 $indie-font-family: 'Libre Franklin', sans-serif;
+
+
+
+.clearfix:after {
+   content: ".";
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}

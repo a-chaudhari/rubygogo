@@ -33,7 +33,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 
  gem 'faker', branch: 'master' , git: 'https://github.com/stympy/faker.git'
-
+ gem 'font-awesome-sass'
 group :production do
   gem 'newrelic_rpm'
   gem 'rails_12factor'

@@ -18,8 +18,8 @@ import {withRouter, Link} from 'react-router';
  	    return(
         <div className={cname}>
           <ul>
-            <li>My Campaigns</li>
-            <li>My Contributions</li>
+            <li onClick={this.link(`/profile/${this.props.userId}/campaigns`)}>My Campaigns</li>
+            <li onClick={this.link(`/profile/${this.props.userId}/contributions`)}>My Contributions</li>
             <li onClick={this.link(`/profile/${this.props.userId}`)}>My Profile</li>
             <li onClick={this.link(`/profile/${this.props.userId}/?edit`)}>My Settings</li>
             <li onClick={this.props.logOut}>Log Out</li>

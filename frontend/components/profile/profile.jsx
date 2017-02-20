@@ -32,7 +32,12 @@ class Profile extends React.Component{
   }
 
   menuGenerator(mode){
-    const TOPICS = ['profile','campaigns','contributions','activity'];
+    let TOPICS = ['profile','campaigns'];
+    if(!this.props.user.public){
+      // debugger
+      //no longer doing 'activity'
+      TOPICS = ['profile','campaigns','contributions'];
+    }
 
     const lis = TOPICS.map((topic,idx)=>{
       let cname="";
@@ -85,8 +90,15 @@ class Profile extends React.Component{
         //TODO
       }
       header = (<div className="blackHeader"><header className="profile-editHeader">
-        <button onClick={this.showMode.bind(this)}>View Profile</button>
-        <button onClick={this.editMode.bind(this)}>Edit Profile & Settings</button>
+
+        <div className={this.state.edit ? "": "button-selected"} onClick={this.showMode.bind(this)}>
+          <i className="fa fa-eye fa-2x" aria-hidden="true"></i>
+          <span> View Profile</span>
+          </div>
+        <div className={this.state.edit? "button-selected": ""} onClick={this.editMode.bind(this)}>
+          <i className="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
+          <span> Edit Profile & Settings</span>
+          </div>
       </header></div>)
     }
 

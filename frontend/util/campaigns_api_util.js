@@ -28,6 +28,49 @@ export const updateCampaign=camp=>(
   })
 );
 
+export const getCampaignBackers = (id, start=null)=>(
+  $.ajax({
+    method: 'GET',
+    url: `/api/campaigns/${id}/backers`,
+    data: {start}
+  })
+);
+
+export const getCampaignUpdates = (id)=>(
+  $.ajax({
+    method: 'GET',
+    url: `/api/campaigns/${id}/updates`
+  })
+);
+
+export const createCampaignUpdate = (id,body)=>(
+  $.ajax({
+    method: 'POST',
+    url: `/api/campaigns/${id}/updates`,
+    data: {update:{body}}
+  })
+);
+
+export const fetchComments = (id, start=null)=>(
+  $.ajax({
+    method: 'GET',
+    url: `/api/campaigns/${id}/comments`,
+    data: {start}
+  })
+);
+
+export const createComment = (id, body)=>(
+  $.ajax({
+    method: 'POST',
+    url: `/api/campaigns/${id}/comments`,
+    data: {comment:{body}}
+  })
+);
+//
+// export const cr
+
+// window.getCampaignBackers = getCampaignBackers
+
 // export const fetchCampaignMeta=(type,id)=>(
 //   $.ajax({
 //     method: 'GET',
