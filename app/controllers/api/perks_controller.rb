@@ -18,7 +18,7 @@ class Api::PerksController < ApplicationController
     end
     perk = camp.perks.new(perks_params)
     if perk.save
-      render json: perk
+      render json: camp.perks
     else
       render json: perk.errors, status: 422
     end
@@ -32,7 +32,7 @@ class Api::PerksController < ApplicationController
       return
     end
     if  perk.update(perks_params)
-      render json: perk
+      render json: camp.perks
     else
       render json: perk.errors, status: 422
     end
@@ -47,7 +47,7 @@ class Api::PerksController < ApplicationController
     end
     perk.destroy
 
-    render json: {}
+    render json: perk.campaign.perks
   end
 
   private

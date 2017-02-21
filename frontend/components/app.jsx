@@ -10,6 +10,7 @@ class App extends React.Component{
 
   render(){
     // <Debug/>
+    // debugger
     return(
       <div>
         <HeaderContainer/>

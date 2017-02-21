@@ -6,6 +6,95 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+cats = []
+
+cats_to_add = [
+  {
+    category: 'all',
+    alt_name: 'All Campaigns',
+    cat_image_url: "http://lorempixel.com/210/220",
+    tagline: "Fund campaigns you love.",
+    cat_icon: "fa fa-film"
+  },
+  {
+    category: 'tech',
+    alt_name: "Tech",
+    cat_image_url: "/assets/tech.jpg",
+    tagline: "Go, gadget, go!",
+    cat_icon: "fa fa-television"
+  },
+  {
+    category: 'film',
+    alt_name: "Film",
+    cat_image_url: "http://lorempixel.com/210/220",
+    tagline: "Great stories start here",
+    cat_icon: "fa fa-film"
+  },
+  {
+    category: 'small_business',
+    alt_name: "Small Business",
+    cat_image_url: "http://lorempixel.com/210/220",
+    tagline: "Main street, inc.",
+    cat_icon: "fa fa-lightbulb-o"
+  },
+  {
+    category: 'community',
+    alt_name: "Community",
+    cat_image_url: "http://lorempixel.com/210/220",
+    tagline: "For good neighbors everywhere.",
+    cat_icon: "fa fa-comments-o"
+  },
+  {
+    category: 'music',
+    alt_name: "Music",
+    cat_image_url: "http://lorempixel.com/210/220",
+    tagline: "Tune up, tune in, listen loud",
+    cat_icon: "fa fa-headphones"
+  },
+  {
+    category: 'education',
+    alt_name: "Education",
+    cat_image_url: "http://lorempixel.com/210/220",
+    tagline: "Education & learning for every path in life",
+    cat_icon: "fa fa-book"
+  },
+  {
+    category: 'design',
+    alt_name: "Design",
+    cat_image_url: "/assets/design.png",
+    tagline: "From die-cut to digital. Products for home & work.",
+    cat_icon: "fa fa-pencil"
+  },
+  {
+    category: 'environment',
+    alt_name: "Environment",
+    cat_image_url: "/assets/environ.png",
+    tagline: "Where earth comes first",
+    cat_icon: "fa fa-envira"
+  },
+  {
+    category: 'gaming',
+    alt_name: "Gaming",
+    cat_image_url: "http://lorempixel.com/210/220",
+    tagline: "From dice to d-pads. Game on!",
+    cat_icon: "fa fa-gamepad"
+  },
+  {
+    category: 'web',
+    alt_name: "Video / Web",
+    cat_image_url: "http://lorempixel.com/210/220",
+    tagline: "Phablet-sized cinema.",
+    cat_icon: "fa fa-globe"
+  }
+]
+
+
+Category.destroy_all
+cats_to_add.each do |cat|
+  adding_cat = Category.create!(cat)
+  cats.push(adding_cat)
+end
+
 User.destroy_all
 users = [];
 
@@ -66,18 +155,20 @@ camps = []
 Campaign.destroy_all
 Comment.destroy_all
 
-5.times do
+25.times do
+  user = users.sample
   camp = Campaign.create!(
     title: Faker::Commerce.unique.product_name,
-    user_id: amit.id,
-    goal_amount: rand(500..1000000),
+    user_id: user.id,
+    goal_amount: rand(500..2000),
     tagline: Faker::Hacker.say_something_smart,
     campaign_card_img_url: "http://lorempixel.com/640/640",
     duration: rand(7..60),
+    status: 'open',
     funding_type: ['flexible','fixed'].sample,
     main_img_url: "http://lorempixel.com/620/415",
     overview_img_url: "http://lorempixel.com/320/240",
-    category_id: 0,
+    category_id: cats[1].id,
     overview_text: Faker::Hipster.paragraph,
     pitch_text: Faker::Hipster.paragraph(30)
   )
@@ -116,13 +207,13 @@ Comment.destroy_all
       campaign_id: comment.campaign_id
     )
   end
-
+  camp.postCampaign
   camps.push(camp)
 end
 
 Contribution.destroy_all
 
-10.times do
+100.times do
   user = users.sample
   camp = camps.sample
   perk = camp.perks.sample
@@ -131,40 +222,15 @@ Contribution.destroy_all
   if visibility == 'other'
     other = "Some Other Name"
   end
+  amount = perk.price + rand(1..100)
   camp.contributions.create!(
     user_id: user.id,
     perk_id: perk.id,
-    amount: perk.price + rand(1..100),
+    amount: amount,
     visibility: visibility,
     other_name: other
   )
+  camp.add_contribution(amount)
 end
 
 # Category.destroy_all
-if Category.all.count != 10
-
-  {
-    tech:"Tech",
-    film:"Film",
-    small_business:"Small Business",
-    community:"Community",
-    music:"Music",
-    education:"Education",
-    design:"Design",
-    environment:"Environment",
-    gaming:"Gaming",
-    web:"Video/Web"
-  }.each do |key,value|
-
-    cat = Category.create!(
-    category: key,
-    alt_name: value,
-    cat_image_url: "http://lorempixel.com/210/220",
-    tagline: Faker::Hipster.paragraph(1),
-    cat_icon: "http://lorempixel.com/34/34"
-    )
-
-  end
-
-
-end

@@ -17,6 +17,8 @@ import ContributionContainer from './contribution/contribution_container';
 import DynamicBoxContainer from './campaign/dynamic_box_container';
 import Create from './create';
 import EditorContainer from './create/editor_container';
+import CategoryContainer from './explore/category_container';
+import HomeContainer from './home_container';
 // import EditorPreview from './create/editor_preview';
 
 const Root = (props) =>{
@@ -24,6 +26,8 @@ const Root = (props) =>{
     <Provider store={props.store}>
       <Router history={hashHistory}>
         <Route path='/' component={App}>
+          <IndexRoute component={HomeContainer}/>
+          <Root path='home' component={HomeContainer}/>
           <Route path='campaign/:campaign_id' component={CampaignContainer}>
           </Route>
           <Route path='profile/:profile_id' component={ProfileContainer}>
@@ -36,6 +40,7 @@ const Root = (props) =>{
           <Route path='contribute' component={ContributionContainer}/>
           <Route path='debug' component={Debug}/>
           <Route path='start-a-campaign' component={Create}/>
+          <Route path='category/:category_id' component={CategoryContainer}/>
         </Route>
         <Route path='/editor/:campaign_id' component={EditorContainer}/>
       </Router>

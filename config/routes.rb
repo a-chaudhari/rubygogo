@@ -20,7 +20,11 @@ Rails.application.routes.draw do
     end
     resources :perks, only: [:update, :destroy]
     resources :contributions, only: [:create]
-    resources :categories, only: [:show]
+    resources :categories, only: [:index, :show] do
+    end
+    # get 'allcats', to: 'categories#all_cats'
+    get 'topfive', to: 'features#topfive'
+
   end
 
 

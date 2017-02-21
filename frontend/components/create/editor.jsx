@@ -2,6 +2,7 @@ import React from 'react';
 import HeaderContainer from '../header_container';
 import merge from 'lodash/merge';
 import CampaignContainer from '../campaign/campaign_container';
+import Perks from './perks';
 
 
 class Editor extends React.Component{
@@ -113,28 +114,40 @@ class Editor extends React.Component{
 
   }
 
+  perksModified(){
+
+  }
+
+  // renderPerkList(){
+  //   return(
+  //
+  //   )
+  // }
+
   renderPerks(){
     // debugger
-    const perkList = this.state.editor.perks.map((perk,idx)=>(
-      <div key={idx} className="perk-entry">
-        {perk.title} --- {perk.description}
-        {perk.price} <button >edit perk</button>
-      </div>
-    ));
-    // {this.inputGen('id','id','perk')}
-    return(
-      <div className="perks-container">
-        {perkList}
-        <form onSubmit={this.addPerk.bind(this)}>
-          {this.inputGen('Perk Title','title','perk')}
-          {this.inputGen('Description','description','perk')}
-          {this.inputGen('price','price','perk')}
-          {this.inputGen('total number','total_number','perk')}
-          {this.inputGen('eta','eta','perk')}
-          <button>Submit</button>
-        </form>
-      </div>
-    );
+    // const perkList = this.state.editor.perks.map((perk,idx)=>(
+    //   <div key={idx} className="perk-entry">
+    //     {perk.title} --- {perk.description}
+    //     {perk.price} <button >edit perk</button>
+    //   </div>
+    // ));
+    // // {this.inputGen('id','id','perk')}
+    // return(
+    //   <div className="perks-container">
+    //     {perkList}
+    //     <form onSubmit={this.addPerk.bind(this)}>
+    //       {this.inputGen('Perk Title','title','perk')}
+    //       {this.inputGen('Description','description','perk')}
+    //       {this.inputGen('price','price','perk')}
+    //       {this.inputGen('total number','total_number','perk')}
+    //       {this.inputGen('eta','eta','perk')}
+    //       <button>Submit</button>
+    //     </form>
+    //   </div>
+    // );
+
+    return(<Perks id={this.props.params.campaign_id}/>);
   }
 
   // setEditor(editor){
