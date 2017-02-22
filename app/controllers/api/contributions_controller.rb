@@ -1,19 +1,19 @@
 class Api::ContributionsController < ApplicationController
   def create
     unless logged_in?
-      render json: "not logged in", status: 401
+      render json: {login:"You must be logged in to make a contribution"}, status: 401
       return
     end
 
     contribution = current_user.contributions.new(contribution_params)
     if contribution.visibility == 'other' && contribution.other_name == ''
-      render json: {errors:{other_name:"Other Name cannot be empty"}}, status: 422
+      render json: {other_name:"Other Name cannot be empty"}, status: 422
       return
     end
 
     if !contribution.perk.nil?
       if !contribution.perk.enough_inventory?
-        render json: "selected perk sold out", status: 422
+        render json: {perkquant:"selected perk sold out"}, status: 422
         return
       end
     end

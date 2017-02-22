@@ -5,8 +5,10 @@ import UserReducer from './user_reducer';
 import ContributionReducer from './contribution_reducer';
 import CategoryReducer from './category_reducer';
 import PerkReducer from './perk_reducer';
+import ErrorReducer from './error_reducer';
 
 const rootReducer = combineReducers({
+  errors: ErrorReducer,
   session: SessionReducer,
   campaign: CampaignReducer,
   users: UserReducer,

@@ -148,6 +148,7 @@ class Contribution extends React.Component{
     if(this.state.visibility !== 'other' && this.state.other_name === ''){
       othercname += " otherhidden";
     }
+
     return(
       <div className='contribution'>
         <div className='contribution-left'>
@@ -199,6 +200,7 @@ class Contribution extends React.Component{
                     <input className={othercname} onChange={this.update('other_name')} value={this.state.other_name} placeholder="Other"/>
                   </div>
                 </div>
+                <span>{this.props.contribution.errors.other_name}</span>
               </div>
             </div>
           </form>
@@ -215,6 +217,8 @@ class Contribution extends React.Component{
               <div onClick={this.submit.bind(this)} className="contribution-submit">
                 Submit Payment
               </div>
+              <span>{this.props.contribution.errors.login}</span>
+              <span>{this.props.contribution.errors.perkquant}</span>
             </div>
           </div>
         </div>

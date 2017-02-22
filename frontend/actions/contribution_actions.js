@@ -1,4 +1,5 @@
 import * as ContributionAPIUtils from '../util/contribution_api_util';
+import { receiveErrors } from './error_actions';
 
 export const RECEIVE_CONTRIBUTION =  'RECEIVE_CONTRIBUTION';
 export const RECEIVE_CONTRIBUTION_ERRORS = 'RECEIVE_CONTRIBUTION_ERRORS'

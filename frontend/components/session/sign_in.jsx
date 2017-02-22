@@ -61,7 +61,7 @@ import SignUpForm from './sign_up_form';
  	    return(
         <div className="header-right-signedout">
           <ul className="header-right-ul">
-            <li className="header-create-button">START A CAMPAIGN</li>
+            <li className="header-create-button"><a href="/#/start-a-campaign">START A CAMPAIGN</a></li>
             <li onClick={this.signUpButton.bind(this)}>Sign Up</li>
             <li onClick={this.logInButton.bind(this)}>Log In</li>
           </ul>

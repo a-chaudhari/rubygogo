@@ -26,6 +26,16 @@ class Campaign < ActiveRecord::Base
     self.save!
   end
 
+  def curr_sym
+    {
+      'USD' => '$',
+      'CAD' => '$',
+      'GBP' => '£',
+      'EUR' => '€',
+      'AUD' => '$'
+    }[self.currency]
+  end
+
   def campaign_card_img_url
     campaign_card_img.url
   end

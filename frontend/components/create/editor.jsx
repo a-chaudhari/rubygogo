@@ -4,6 +4,7 @@ import merge from 'lodash/merge';
 import CampaignContainer from '../campaign/campaign_container';
 import Perks from './perks';
 import {withRouter} from 'react-router'
+import Footer from '../footer';
 
 
 class Editor extends React.Component{
@@ -200,6 +201,7 @@ class Editor extends React.Component{
     //   <button onClick={this.toggleVideo(true).bind(this)}>Video</button>
     //   <button onClick={this.toggleVideo(false).bind(this)}>Image</button>
     // </div>
+    debugger
     return(
       <div className="story-form">
         <form>
@@ -214,7 +216,7 @@ class Editor extends React.Component{
             <input className="big-filepicker" type="file" onChange={this.updateFile('overview').bind(this)}/>
           </div>
           <label>Campaign Pitch</label>
-            <textarea value={this.state.editor.campaign_pitch} onChange={this.update('campaign_pitch')}/>
+            <textarea value={this.state.editor.pitch_text} onChange={this.update('pitch_text')}/>
 
         </form>
       </div>
@@ -296,6 +298,7 @@ class Editor extends React.Component{
           </div>
           {content}
         </div>
+        <Footer/>
       </div>
     )
   }

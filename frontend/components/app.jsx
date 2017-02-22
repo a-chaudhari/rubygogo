@@ -12,9 +12,10 @@ class App extends React.Component{
     // <Debug/>
     // debugger
     return(
-      <div>
+      <div className="wholeApp">
         <HeaderContainer/>
         {this.props.children}
+        <Footer/>
       </div>
     );
   }
