@@ -47,7 +47,7 @@ class Header extends React.Component{
         <div className="header-left">
           <ul>
             <li><a href="/#/">RUBYGOGO</a></li>
-            <li>Explore</li>
+            <li><a href="/#/category/all">Explore</a></li>
             <li>How It Works</li>
           </ul>
         </div>

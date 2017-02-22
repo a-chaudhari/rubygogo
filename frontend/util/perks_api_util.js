@@ -8,7 +8,7 @@ export const fetchPerks = (id)=> (
 export const createPerk = perk =>(
   $.ajax({
     method: 'POST',
-    url: `/api/campaigns/${id}/perks`,
+    url: `/api/campaigns/${perk.campaign_id}/perks`,
     data: {perk}
   })
 );
@@ -23,6 +23,7 @@ export const deletePerk = id => (
 export const updatePerk = perk =>(
   $.ajax({
     method: 'PATCH',
-    url: `/api/perks/${perk.id}`
+    url: `/api/perks/${perk.id}`,
+    data: {perk}
   })
 );

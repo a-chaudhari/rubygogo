@@ -31,6 +31,13 @@ html, body, ul{
         font-weight: 600;
         align-self: center;
         font-size: 14px;
+        a{
+          color: inherit;
+          text-decoration: none;
+        }
+        a:hover{
+          color: $indie-pink;
+        }
 
       // height: auto;
       }

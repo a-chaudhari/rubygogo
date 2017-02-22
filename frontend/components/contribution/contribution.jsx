@@ -4,7 +4,7 @@ import {withRouter} from 'react-router';
 class Contribution extends React.Component{
   constructor(props){
     super(props);
-    this.withPerk= this.props.location.state.perk_id !== undefined;
+    this.withPerk= (this.props.location.state.perk_id !== undefined);
     this.state={
       visibility: "public",
       other_name: '',

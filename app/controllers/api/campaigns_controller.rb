@@ -67,7 +67,7 @@ class Api::CampaignsController < ApplicationController
 
     pparams = perks_params['perks']
     pparams.each do |_,perk|
-      debugger
+      # debugger
       if perk[:id].nil?
         camp.perks.new(perk)
       else

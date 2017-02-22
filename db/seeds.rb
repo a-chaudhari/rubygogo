@@ -26,35 +26,35 @@ cats_to_add = [
   {
     category: 'film',
     alt_name: "Film",
-    cat_image_url: "http://lorempixel.com/210/220",
+    cat_image_url: "/assets/film.png",
     tagline: "Great stories start here",
     cat_icon: "fa fa-film"
   },
   {
     category: 'small_business',
     alt_name: "Small Business",
-    cat_image_url: "http://lorempixel.com/210/220",
+    cat_image_url: "/assets/smallbiz.png",
     tagline: "Main street, inc.",
     cat_icon: "fa fa-lightbulb-o"
   },
   {
     category: 'community',
     alt_name: "Community",
-    cat_image_url: "http://lorempixel.com/210/220",
+    cat_image_url: "/assets/comm.png",
     tagline: "For good neighbors everywhere.",
     cat_icon: "fa fa-comments-o"
   },
   {
     category: 'music',
     alt_name: "Music",
-    cat_image_url: "http://lorempixel.com/210/220",
+    cat_image_url: "/assets/music.png",
     tagline: "Tune up, tune in, listen loud",
     cat_icon: "fa fa-headphones"
   },
   {
     category: 'education',
     alt_name: "Education",
-    cat_image_url: "http://lorempixel.com/210/220",
+    cat_image_url: "/assets/education.png",
     tagline: "Education & learning for every path in life",
     cat_icon: "fa fa-book"
   },
@@ -75,14 +75,14 @@ cats_to_add = [
   {
     category: 'gaming',
     alt_name: "Gaming",
-    cat_image_url: "http://lorempixel.com/210/220",
+    cat_image_url: "/assets/gaming.png",
     tagline: "From dice to d-pads. Game on!",
     cat_icon: "fa fa-gamepad"
   },
   {
     category: 'web',
     alt_name: "Video / Web",
-    cat_image_url: "http://lorempixel.com/210/220",
+    cat_image_url: "/assets/web.png",
     tagline: "Phablet-sized cinema.",
     cat_icon: "fa fa-globe"
   }

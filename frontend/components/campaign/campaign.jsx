@@ -60,8 +60,8 @@ class Campaign extends React.Component{
     return(
       <div className='campaign'>
         <TopChunk campaign={this.props.campaign}/>
-        {this.overview()}
         <PerksBox perks={this.props.campaign.perks}/>
+        {this.overview()}
         <DynamicBoxContainer children={this.props.children} campaign={this.props.campaign}/>
       </div>
     );

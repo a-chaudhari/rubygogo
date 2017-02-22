@@ -142,6 +142,7 @@
 
       form{
         padding: 20px;
+        overflow: hidden;
         background-color: $indie-form-gray;
         width: 100;
         textarea{
@@ -191,6 +192,7 @@
 
     .update-entry{
       border-bottom: 1px solid $indie-lightgray;
+      // overflow: hidden;
       .update-entry-dateline{
         h1{
 
@@ -241,9 +243,11 @@
   .comments-container{
     padding-top: 20px;
     .comment-create-container{
+      // padding-bottom: 30px;
       form{
         padding: 20px;
         background-color: $indie-form-gray;
+        overflow: hidden;
         // width: 100%;
         textarea{
           // width: 95%;

@@ -20,19 +20,6 @@ class Category extends React.Component{
     }
   }
 
-  // {
-  //   category: category_name,
-  //   offset: 0,
-  //   quickfilter: 'soonest',
-  //   filter:{
-  //     funded: 0,
-  //     goal_type: 'all',
-  //     status: 'all'
-  //   }
-  // }
-
-  // paramsPackage()
-
   componentDidMount(){
     // this.props.fetchCategoryInfo(this.props.params.category_id);
     this.props.fetchCategory({category: this.state.category, quickfilter: this.state.quickfilter, filter: this.state.filter}).then(this.appendToState.bind(this));
@@ -77,7 +64,7 @@ class Category extends React.Component{
   }
 
   categoryChange(e){
-    debugger;
+    // debugger;
     // this.setState({category:e.target.value})
     this.setState({camps:[]})
     this.props.router.push(`/category/${e.target.value}`)
@@ -185,7 +172,6 @@ class Category extends React.Component{
               <h3 onClick={this.toggleDropdown.bind(this)} >{(this.state.dropdown ? "Hide Filters" : "Show Filters")}</h3>
             </div>
             <div className={"dropdown-filter-mainbox" + (this.state.dropdown ? " dropdown-opened": "")}>
-
               {this.filterBox('Percent funded', 'funded',{n:'All',v:'0'},{n:'0-25%',v:'1'},{n:'25-75%',v:'2'},{n:'75-100+%',v:'3'})}
               {this.filterBox('Goal type', 'goal_type',{n:'All',v:'all'},{n:'Fixed',v:'fixed'},{n:'Flexible',v:'flexible'})}
               {this.filterBox('Project status','status',{n:'All',v:'all'},{n:'Open',v:'open'},{n:'Ended',v:'ended'})}
@@ -194,7 +180,9 @@ class Category extends React.Component{
         <div className="category-tiles-container">
           {this.renderTiles()}
         </div>
-        <button onClick={this.fetchMore.bind(this)}>Fetch More</button>
+        <div className="category-button-div">
+          <button className="category-show-more-button" onClick={this.fetchMore.bind(this)}>Show More</button>
+        </div>
       </div>
     )
   }

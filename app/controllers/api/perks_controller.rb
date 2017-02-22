@@ -26,13 +26,13 @@ class Api::PerksController < ApplicationController
 
   def update
     # camp = Campaign.find_by(id: params[:campaign_id])
-    perk = Perk.find_by(id: params[:perk_id])
+    perk = Perk.find_by(id: params[:id])
     unless perk
       render json: "cannot find perk id", status: 404
       return
     end
     if  perk.update(perks_params)
-      render json: camp.perks
+      render json: perk.campaign.perks
     else
       render json: perk.errors, status: 422
     end
@@ -52,7 +52,7 @@ class Api::PerksController < ApplicationController
 
   private
   def perks_params
-    params.require(:perks).permit(:id, :title, :campaign_id, :price, :number_claimed, :total_number, :eta)
+    params.require(:perk).permit(:title, :campaign_id, :price, :total_number, :eta, :description)
   end
 
 

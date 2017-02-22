@@ -174,9 +174,11 @@
   .campaign-perks-box{
     // border: 1px solid black;
     width: 40%;
-    position: absolute;
-    right: 50px;
-    top: 547px;
+    // position: absolute;
+    // right: 50px;
+    // top: 547px;
+    vertical-align: top;
+    float: right;
     min-height: 800px;
     display: flex;
     flex-direction: column;
@@ -188,7 +190,7 @@
       font-family: $indie-font-family;
       margin: 0;
       padding: 0;
-      // margin-top: 20px;
+      margin-top: 25px;
       border-bottom: 1px solid $indie-lightgray;
       margin-bottom: 20px;
     }
