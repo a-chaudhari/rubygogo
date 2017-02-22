@@ -104,13 +104,11 @@ users = [];
     password: 'password',
     firstName: Faker::Name.unique.first_name,
     lastName: Faker::Name.unique.last_name,
-    avatar_img_url: "http://lorempixel.com/90/90",
     address: Faker::Address.street_address,
     city: Faker::Address.city,
     postal_code: Faker::Address.postcode,
     short_desc: Faker::ChuckNorris.fact,
     about_me: Faker::Hipster.paragraph(20),
-    profile_img_url: "http://lorempixel.com/460/285",
     country: Faker::Address.country
   )
   users.push(user)
@@ -122,13 +120,11 @@ amit = User.create!(
   password: 'password',
   firstName: 'Amit',
   lastName: 'Chaudhari',
-  avatar_img_url: "http://lorempixel.com/90/90",
   address: '4 Sapphire Dr',
   city: 'Marlboro',
   postal_code: '07746',
   short_desc: 'A really cool guy',
   about_me: Faker::Hipster.paragraph(20),
-  profile_img_url: "http://lorempixel.com/460/285",
   country: "United States"
 )
 users.push(amit)
@@ -138,13 +134,11 @@ guest = User.create!(
   password: 'password',
   firstName: 'Guest',
   lastName: 'User',
-  avatar_img_url: "http://lorempixel.com/90/90",
   address: Faker::Address.street_address,
   city: Faker::Address.city,
   postal_code: Faker::Address.postcode,
   short_desc: Faker::ChuckNorris.fact,
   about_me: Faker::Hipster.paragraph(20),
-  profile_img_url: "http://lorempixel.com/460/285",
   country: "United States"
 )
 users.push(guest)
@@ -162,12 +156,9 @@ Comment.destroy_all
     user_id: user.id,
     goal_amount: rand(500..2000),
     tagline: Faker::Hacker.say_something_smart,
-    campaign_card_img_url: "http://lorempixel.com/640/640",
     duration: rand(7..60),
     status: 'open',
     funding_type: ['flexible','fixed'].sample,
-    main_img_url: "http://lorempixel.com/620/415",
-    overview_img_url: "http://lorempixel.com/320/240",
     category_id: cats.drop(1).sample.id,
     overview_text: Faker::Hipster.paragraph,
     pitch_text: Faker::Hipster.paragraph(30)

@@ -26,7 +26,7 @@ export const updateCampaign=campaign=>(
     contentType: false,
     processData: false,
     url: `/api/campaigns/${campaign.id}`,
-    data: {campaign}
+    data: campaign
   })
 );
 

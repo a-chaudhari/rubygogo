@@ -73,6 +73,25 @@
     height: 50px;
     display: block;
   }
+  .editor-image-uploader{
+    .big-filepicker{
+      cursor: pointer;
+      opacity: 0.0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+    }
+    img{
+      width: 100%;
+      height: 100%;
+    }
+    border: 1px solid $indie-xgray;
+    position: relative;
+  }
 
   .side-header{
     // width:
@@ -88,6 +107,7 @@
     text-transform: capitalize;
     height: 100vh;
     float: left;
+    position: fixed;
     ul{
       width: 150px;
       li{
@@ -162,6 +182,10 @@
       input,label{
         display: block;
       }
+      .card-img{
+        width: 400px;
+        height: 400px;
+      }
       // .media-selector{
       //   display: block;
       //   border: 1px solid black;
@@ -176,18 +200,27 @@
       }
 
     .story-form{
-      .media-selector{
-        display: block;
-        border: 1px solid black;
-        button{
-          display: inline-block;
-          border: 0;
-          border: 1px solid $indie-xgray;
-          padding: 10px;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-        }
+      .main-img{
+        width: 620px;
+        height: 415px;
       }
+      .overview-img{
+        width: 320px;
+        height: 240px;
+
+      }
+      // .media-selector{
+      //   display: block;
+      //   border: 1px solid black;
+      //   button{
+      //     display: inline-block;
+      //     border: 0;
+      //     border: 1px solid $indie-xgray;
+      //     padding: 10px;
+      //     text-transform: uppercase;
+      //     letter-spacing: 1px;
+      //   }
+      // }
     }
   }
 }

@@ -9,15 +9,23 @@ import {withRouter} from 'react-router'
 class Editor extends React.Component{
   constructor(props){
     super(props);
-    this.state={
+    this.state=this.defaultState();
+    this.update = this.update.bind(this);
+  }
+
+  defaultState(){
+    return {
       editor: this.props.editor,
       mode: "basics",
       video: false,
       perk: {},
       overviewFile: null,
-      overviewURL: null
+      overviewURL: null,
+      cardFile:null,
+      cardURL:null,
+      mainFile:null,
+      mainURL:null
     };
-    this.update = this.update.bind(this);
   }
 
   componentDidMount(){
@@ -29,8 +37,14 @@ class Editor extends React.Component{
   }
 
   componentWillReceiveProps(newProps){
-    this.setState({editor:newProps.editor})
+    const e = newProps.editor;
+    this.setState({editor:newProps.editor, overviewURL:e.overview_img_url, cardURL:e.campaign_card_img_url, mainURL:e.main_img_url})
   }
+
+  // updateImages(){
+  //   const e = this.props.editor;
+  //   this.setState({overviewURL:e.overview_img_url, cardURL:e.campaign_card_img_url, mainURL:e.main_img_url})
+  // }
 
   createHeader(){
     return(
@@ -44,18 +58,39 @@ class Editor extends React.Component{
   }
 
   launchCampaign(){
-    this.props.updateCampaign(merge({},this.state.editor,{status: 'open'})).then(res=>(this.props.router.push(`/campaign/${res.editor.id}`)))
+    this.saveCampaign({status: 'open'}).then(res=>(this.props.router.push(`/campaign/${res.editor.id}`)))
+    // this.props.updateCampaign(merge({},this.state.editor,{status: 'open'})).then(res=>(this.props.router.push(`/campaign/${res.editor.id}`)))
   }
 
-  saveCampaign(){
+  saveCampaign(addl={}){
     // debugger
     let formData = new FormData();
     // formData.append()
+    const addl_keys = Object.keys(addl);
     Object.keys(this.state.editor).forEach(key=>{
-      formData.append(`campaign[${key}]`, this.state.editor)
+      if(!addl_keys.includes(key)){
+        formData.append(`campaign[${key}]`, this.state.editor[key])
+      }
     })
+
+    if(this.state.overviewFile !== null){
+      formData.append("campaign[overview_img]", this.state.overviewFile)
+    }
+    if(this.state.cardFile !== null){
+      formData.append("campaign[campaign_card_img]", this.state.cardFile)
+    }
+    if(this.state.mainFile !== null){
+      formData.append("campaign[main_img]",this.state.mainFile)
+    }
+
+    addl_keys.forEach((key)=>{
+      formData.append(key,addl[key])
+    })
+
+    // return
+    return this.props.updateCampaign(formData)
     // debugger
-    return this.props.updateCampaign(merge({},this.state.editor,{overview_img: this.state.overviewFile}));
+    // return this.props.updateCampaign(merge({},this.state.editor,{overview_img: this.state.overviewFile}));
   }
 
   update(field,hash='editor'){
@@ -110,13 +145,18 @@ class Editor extends React.Component{
 
   renderBasics(){
     // debugger
+    // style="opacity: 0.0; position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height:100%;
     return(
       <div className="basics-form">
         <form>
           {this.inputGen('Campaign Title','title')}
           {this.inputGen('Goal Amount','goal_amount')}
           {this.inputGen('Tagline','tagline')}
-          {this.inputGen('Campaign Card Image URL','campaign_card_img_url')}
+          <label>Campaign Card Image</label>
+          <div className="editor-image-uploader card-img">
+            <img src={this.state.cardURL}/>
+            <input className="big-filepicker" type="file" onChange={this.updateFile('card').bind(this)}/>
+          </div>
           {this.selectRender()}
           {this.inputGen('Duration','duration')}
           <label>Funding Type</label>
@@ -150,23 +190,29 @@ class Editor extends React.Component{
   }
 
   renderStory(){
-    let content = this.inputGen('Video URL','video_url')
-    if(!this.state.video){
-      content = this.inputGen('Main Campaign Image URL','main_img_url');
-    }
+    // let content = this.inputGen('Video URL','video_url')
+    // if(!this.state.video){
+    //   //TODO content = this.inputGen('Main Campaign Image URL','main_img_url');
+    // }
     // debugger
     // <img src={this.state.editor.campaign_card_img_url}/>
+    // <div className="media_selector">
+    //   <button onClick={this.toggleVideo(true).bind(this)}>Video</button>
+    //   <button onClick={this.toggleVideo(false).bind(this)}>Image</button>
+    // </div>
     return(
       <div className="story-form">
         <form>
-          <div className="media_selector">
-            <button onClick={this.toggleVideo(true).bind(this)}>Video</button>
-            <button onClick={this.toggleVideo(false).bind(this)}>Image</button>
+          <label>Pitch Image</label>
+          <div className="editor-image-uploader main-img">
+            <img src={this.state.mainURL}/>
+            <input className="big-filepicker" type="file" onChange={this.updateFile('main').bind(this)}/>
           </div>
-          <input type="file" onChange={this.updateFile('overview').bind(this)}/>
-          <img src={this.state.overviewURL}/>
-          {content}
-          {this.inputGen('Overview Image URL','overview_img_url')}
+          <label>Overview Image</label>
+          <div className="editor-image-uploader overview-img">
+            <img src={this.state.overviewURL}/>
+            <input className="big-filepicker" type="file" onChange={this.updateFile('overview').bind(this)}/>
+          </div>
           <label>Campaign Pitch</label>
             <textarea value={this.state.editor.campaign_pitch} onChange={this.update('campaign_pitch')}/>
 

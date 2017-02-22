@@ -65,8 +65,6 @@ class ProfileEdit extends React.Component{
           </label>
           </div>
           <div><h2>Your Photos</h2>
-          {this.inputGen('Profile Image','profile_img_url')}
-          {this.inputGen('Avatar','avatar_img_url')}
           </div>
           <input className="edit-submit" type="submit" value="SAVE"/>
         </form>
@@ -74,5 +72,7 @@ class ProfileEdit extends React.Component{
     );
   }
 }
+// {this.inputGen('Profile Image','profile_img_url')}
+// {this.inputGen('Avatar','avatar_img_url')}
 
 export default ProfileEdit;

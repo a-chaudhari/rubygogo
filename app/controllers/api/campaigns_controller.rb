@@ -46,7 +46,7 @@ class Api::CampaignsController < ApplicationController
   end
 
   def update
-    debugger
+    # debugger
     camp = Campaign.find_by(id: params[:campaign][:id])
     unless camp
       render json: "cannot find that campaign id", status: 404
@@ -169,7 +169,7 @@ class Api::CampaignsController < ApplicationController
   end
 
   def edit_params
-    params.require(:campaign).permit(:title, :goal_amount, :currency, :tagline, :campaign_card_img_url, :duration, :funding_type, :video_url, :main_img_url, :overview_img_url, :status, :category, :overview_text,:overview_img, :pitch_text)
+    params.require(:campaign).permit(:title, :goal_amount, :currency, :tagline, :duration, :funding_type, :video_url, :status, :category, :overview_text,:overview_img, :campaign_card_img, :main_img, :pitch_text)
   end
 
 

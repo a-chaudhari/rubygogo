@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222171706) do
+ActiveRecord::Schema.define(version: 20170222191805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,12 +22,9 @@ ActiveRecord::Schema.define(version: 20170222171706) do
     t.integer  "goal_amount",                                      null: false
     t.string   "currency",                       default: "USD",   null: false
     t.string   "tagline"
-    t.string   "campaign_card_img_url"
     t.integer  "duration",                                         null: false
     t.string   "funding_type",                                     null: false
     t.string   "video_url"
-    t.string   "main_img_url"
-    t.string   "overview_img_url"
     t.integer  "current_cash",                   default: 0,       null: false
     t.string   "status",                         default: "draft", null: false
     t.integer  "category_id"
@@ -111,21 +108,27 @@ ActiveRecord::Schema.define(version: 20170222171706) do
   add_index "updates", ["campaign_id"], name: "index_updates_on_campaign_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
-    t.string   "firstName",       null: false
-    t.string   "lastName",        null: false
+    t.string   "email",                    null: false
+    t.string   "password_digest",          null: false
+    t.string   "session_token",            null: false
+    t.string   "firstName",                null: false
+    t.string   "lastName",                 null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "avatar_img_url"
     t.string   "address"
     t.string   "city"
     t.integer  "postal_code"
     t.text     "short_desc"
     t.text     "about_me"
-    t.string   "profile_img_url"
     t.string   "country"
+    t.string   "profile_img_file_name"
+    t.string   "profile_img_content_type"
+    t.integer  "profile_img_file_size"
+    t.datetime "profile_img_updated_at"
+    t.string   "avatar_img_file_name"
+    t.string   "avatar_img_content_type"
+    t.integer  "avatar_img_file_size"
+    t.datetime "avatar_img_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
