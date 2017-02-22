@@ -46,7 +46,7 @@ class Api::CampaignsController < ApplicationController
   end
 
   def update
-    # debugger
+    debugger
     camp = Campaign.find_by(id: params[:campaign][:id])
     unless camp
       render json: "cannot find that campaign id", status: 404
@@ -58,32 +58,7 @@ class Api::CampaignsController < ApplicationController
       return
     end
 
-    if perks_params.length > 0
-      # debugger
-      #stuff
-    end
-
-
-
-    pparams = perks_params['perks']
-    pparams.each do |_,perk|
-      # debugger
-      if perk[:id].nil?
-        camp.perks.new(perk)
-      else
-        pk = Perk.find_by(id: perk[:id])
-        pk.update(perk)
-        #update and existing perk
-      end
-    end
-
-    camp.update(edit_params)
-
-
-
-    # if camp.update(edit_params)
-    if camp.persisted?
-
+    if camp.update(edit_params)
       render partial: 'api/campaigns/editor', locals:{camp: camp}
     else
       render json: camp.errors, status: 422
@@ -194,12 +169,9 @@ class Api::CampaignsController < ApplicationController
   end
 
   def edit_params
-    params.require(:campaign).permit(:title, :goal_amount, :currency, :tagline, :campaign_card_img_url, :duration, :funding_type, :video_url, :main_img_url, :overview_img_url, :status, :category_id, :overview_text, :pitch_text)
+    params.require(:campaign).permit(:title, :goal_amount, :currency, :tagline, :campaign_card_img_url, :duration, :funding_type, :video_url, :main_img_url, :overview_img_url, :status, :category, :overview_text,:overview_img, :pitch_text)
   end
 
-  def perks_params
-    params.require(:campaign).permit({perks:[:id, :title, :description, :campaign_id, :price, :number_claimed, :total_number, :eta]})
-  end
 
 
 end

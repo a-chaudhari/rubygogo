@@ -3,6 +3,7 @@ import HeaderContainer from '../header_container';
 import merge from 'lodash/merge';
 import CampaignContainer from '../campaign/campaign_container';
 import Perks from './perks';
+import {withRouter} from 'react-router'
 
 
 class Editor extends React.Component{
@@ -12,12 +13,18 @@ class Editor extends React.Component{
       editor: this.props.editor,
       mode: "basics",
       video: false,
-      perk: {}
+      perk: {},
+      overviewFile: null,
+      overviewURL: null
     };
     this.update = this.update.bind(this);
   }
 
   componentDidMount(){
+
+    // cloudinary.openUploadWidget(window.cloudinary_options,(errs,out)=>{
+    //   this.updateUrl(errs,out)
+    // })
     this.props.fetchEditor(this.props.params.campaign_id);
   }
 
@@ -31,14 +38,24 @@ class Editor extends React.Component{
         <h1>campaign /</h1> <h1> {this.state.mode}</h1>
         <button onClick={this.renderPreview.bind(this)}>Preview</button>
         <button onClick={this.saveCampaign.bind(this)} >Save Campaign</button>
-        <button>review and launch</button>
+        <button onClick={this.launchCampaign.bind(this)}>launch campaign</button>
       </div>
     );
   }
 
+  launchCampaign(){
+    this.props.updateCampaign(merge({},this.state.editor,{status: 'open'})).then(res=>(this.props.router.push(`/campaign/${res.editor.id}`)))
+  }
+
   saveCampaign(){
     // debugger
-    return this.props.updateCampaign(this.state.editor);
+    let formData = new FormData();
+    // formData.append()
+    Object.keys(this.state.editor).forEach(key=>{
+      formData.append(`campaign[${key}]`, this.state.editor)
+    })
+    // debugger
+    return this.props.updateCampaign(merge({},this.state.editor,{overview_img: this.state.overviewFile}));
   }
 
   update(field,hash='editor'){
@@ -60,6 +77,37 @@ class Editor extends React.Component{
     );
   }
 
+  optionGen(){
+    const CATEGORIES = {
+      'tech':'Tech',
+      'film':'Film',
+      'small_business':"Small Business",
+      'community':'Community',
+      'music':'Music',
+      'education':'Education',
+      'design':'Design',
+      'environment':'Environment',
+      'gaming':'Gaming',
+      'web':'Video / Web'
+    };
+
+    return Object.keys(CATEGORIES).map(value=>{
+      const title = CATEGORIES[value];
+      return(
+        <option key={"catsel"+value} value={value}>{title}</option>
+      );
+    });
+  }
+
+
+  selectRender(){
+    return(
+      <select value={this.state.editor.category} onChange={this.update('category')}>
+        {this.optionGen()}
+      </select>
+    )
+  }
+
   renderBasics(){
     // debugger
     return(
@@ -69,9 +117,13 @@ class Editor extends React.Component{
           {this.inputGen('Goal Amount','goal_amount')}
           {this.inputGen('Tagline','tagline')}
           {this.inputGen('Campaign Card Image URL','campaign_card_img_url')}
-          {this.inputGen('Category ID','category_id')}
+          {this.selectRender()}
           {this.inputGen('Duration','duration')}
-          {this.inputGen('Funding Type','funding_type')}
+          <label>Funding Type</label>
+          <select value={this.state.editor.funding_type} onChange={this.update('funding_type')}>
+            <option value="fixed">Fixed</option>
+            <option value="flexible">Flexible</option>
+          </select>
         </form>
       </div>
     );
@@ -81,11 +133,29 @@ class Editor extends React.Component{
     return (e)=>(this.setState({video:mode}))
   }
 
+  updateFile(value){
+    return (e)=>{
+      const file = e.target.files[0]
+      const fileReader = new FileReader();
+      fileReader.onloadend = ()=>{
+
+        this.setState({[`${value}File`]:file, [`${value}URL`]: fileReader.result })
+      }
+
+      if(file){
+        fileReader.readAsDataURL(file);
+      }
+    }
+
+  }
+
   renderStory(){
     let content = this.inputGen('Video URL','video_url')
     if(!this.state.video){
       content = this.inputGen('Main Campaign Image URL','main_img_url');
     }
+    // debugger
+    // <img src={this.state.editor.campaign_card_img_url}/>
     return(
       <div className="story-form">
         <form>
@@ -93,6 +163,8 @@ class Editor extends React.Component{
             <button onClick={this.toggleVideo(true).bind(this)}>Video</button>
             <button onClick={this.toggleVideo(false).bind(this)}>Image</button>
           </div>
+          <input type="file" onChange={this.updateFile('overview').bind(this)}/>
+          <img src={this.state.overviewURL}/>
           {content}
           {this.inputGen('Overview Image URL','overview_img_url')}
           <label>Campaign Pitch</label>
@@ -103,59 +175,10 @@ class Editor extends React.Component{
     );
   }
 
-  addPerk(e){
-    e.preventDefault();
-    this.setState({editor:
-      merge({},this.state.editor,{perks:this.state.editor.perks.concat([this.state.perk])})
-    })
-  }
-
-  editPerk(){
-
-  }
-
-  perksModified(){
-
-  }
-
-  // renderPerkList(){
-  //   return(
-  //
-  //   )
-  // }
 
   renderPerks(){
-    // debugger
-    // const perkList = this.state.editor.perks.map((perk,idx)=>(
-    //   <div key={idx} className="perk-entry">
-    //     {perk.title} --- {perk.description}
-    //     {perk.price} <button >edit perk</button>
-    //   </div>
-    // ));
-    // // {this.inputGen('id','id','perk')}
-    // return(
-    //   <div className="perks-container">
-    //     {perkList}
-    //     <form onSubmit={this.addPerk.bind(this)}>
-    //       {this.inputGen('Perk Title','title','perk')}
-    //       {this.inputGen('Description','description','perk')}
-    //       {this.inputGen('price','price','perk')}
-    //       {this.inputGen('total number','total_number','perk')}
-    //       {this.inputGen('eta','eta','perk')}
-    //       <button>Submit</button>
-    //     </form>
-    //   </div>
-    // );
-
     return(<Perks id={this.props.params.campaign_id}/>);
   }
-
-  // setEditor(editor){
-  //   let output = {};
-  //   Object.keys.editor.forEach(key=>(
-  //     if()
-  //   ))
-  // }
 
   createSideHeader(){
     const e = this.state.editor;
@@ -232,4 +255,4 @@ class Editor extends React.Component{
   }
 }
 
-export default Editor;
+export default withRouter(Editor);

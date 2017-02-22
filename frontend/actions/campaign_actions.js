@@ -74,7 +74,7 @@ export const createCampaign = camp => dispatch=>(
 );
 
 export const updateCampaign = camp => dispatch=>{
-  debugger
+  // debugger
   return(
   CampaignAPIUtil.updateCampaign(camp).then(camp=>dispatch(receiveEditor(camp)))
 )};

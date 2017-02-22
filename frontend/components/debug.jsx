@@ -31,9 +31,9 @@ class Debug extends React.Component{
     this.setState({url:(out[0].url)});
   }
   open(){
-    // cloudinary.openUploadWidget(window.cloudinary_options,(errs,out)=>{
-    //   this.updateUrl(errs,out)
-    // })
+    cloudinary.openUploadWidget(window.cloudinary_options,(errs,out)=>{
+      this.updateUrl(errs,out)
+    })
     cloudinary.applyUploadWidget(document.getElementById('opener'),window.cloudinary_options,(errs,out)=>{
       this.updateUrl(errs,out)
     })

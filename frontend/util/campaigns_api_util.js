@@ -23,6 +23,8 @@ export const createCampaign=campaign=>(
 export const updateCampaign=campaign=>(
   $.ajax({
     method: 'PATCH',
+    contentType: false,
+    processData: false,
     url: `/api/campaigns/${campaign.id}`,
     data: {campaign}
   })

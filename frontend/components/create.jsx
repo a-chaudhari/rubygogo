@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import {withRouter} from 'react-router';
 
 class Create extends React.Component{
   constructor(props){
@@ -17,7 +18,7 @@ class Create extends React.Component{
 
   submitForm(e){
     e.preventDefault();
-    this.props.createCampaign(this.state).then(console.log,console.log)
+    this.props.createCampaign(this.state).then(res=>(this.props.router.push(`/editor/${res.editor.id}`)))
   }
 
   render(){
@@ -63,4 +64,4 @@ const mapDispatchToProps = (dispatch, ownProps) =>{
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Create);
+)(withRouter(Create));

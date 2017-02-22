@@ -11,25 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170221170328) do
+ActiveRecord::Schema.define(version: 20170222171706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "campaigns", force: :cascade do |t|
-    t.string   "title",                                   null: false
-    t.integer  "user_id",                                 null: false
-    t.integer  "goal_amount",                             null: false
-    t.string   "currency",              default: "USD",   null: false
+    t.string   "title",                                            null: false
+    t.integer  "user_id",                                          null: false
+    t.integer  "goal_amount",                                      null: false
+    t.string   "currency",                       default: "USD",   null: false
     t.string   "tagline"
     t.string   "campaign_card_img_url"
-    t.integer  "duration",                                null: false
-    t.string   "funding_type",                            null: false
+    t.integer  "duration",                                         null: false
+    t.string   "funding_type",                                     null: false
     t.string   "video_url"
     t.string   "main_img_url"
     t.string   "overview_img_url"
-    t.integer  "current_cash",          default: 0,       null: false
-    t.string   "status",                default: "draft", null: false
+    t.integer  "current_cash",                   default: 0,       null: false
+    t.string   "status",                         default: "draft", null: false
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -37,6 +37,18 @@ ActiveRecord::Schema.define(version: 20170221170328) do
     t.text     "pitch_text"
     t.datetime "start_date"
     t.datetime "end_date"
+    t.string   "overview_img_file_name"
+    t.string   "overview_img_content_type"
+    t.integer  "overview_img_file_size"
+    t.datetime "overview_img_updated_at"
+    t.string   "campaign_card_img_file_name"
+    t.string   "campaign_card_img_content_type"
+    t.integer  "campaign_card_img_file_size"
+    t.datetime "campaign_card_img_updated_at"
+    t.string   "main_img_file_name"
+    t.string   "main_img_content_type"
+    t.integer  "main_img_file_size"
+    t.datetime "main_img_updated_at"
   end
 
   create_table "categories", force: :cascade do |t|

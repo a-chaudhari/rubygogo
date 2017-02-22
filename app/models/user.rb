@@ -9,6 +9,11 @@ class User < ActiveRecord::Base
   has_many :contributions
   has_many :comments
 
+  has_attached_file :avatar_img, default_url: "/assets/generic-badge.png"
+  validates_attachment_content_type :avatar_img, content_type: /\Aimage\/.*\Z/
+  has_attached_file :profile_img, default_url: "/assets/profile_generic.png"
+  validates_attachment_content_type :profile_img, content_type: /\Aimage\/.*\Z/
+
   attr_reader :password
 
   def self.find_by_credentials(email,password)
@@ -17,6 +22,14 @@ class User < ActiveRecord::Base
       return user if user.is_password?(password)
     end
     nil
+  end
+
+  def avatar_img_url
+    self.avatar_img.url
+  end
+
+  def profile_img_url
+    self.profile_img.url
   end
 
   def full_name
