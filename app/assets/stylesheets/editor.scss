@@ -1,3 +1,54 @@
+.start-campaign-lobby{
+  font-family: $indie-font-family;
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  .start-campaign-title{
+    font-size: 48px;
+    margin: 0;
+    margin-top: 30px;
+  }
+  .start-campaign-subtitle{
+    margin: 0;
+    margin-top: 10px;
+    font-weight: normal;
+    letter-spacing: 1px;
+  }
+  form{
+    margin-top: 60px;
+
+    label{
+      display: block;
+      color: $indie-xgray;
+      // margin-bottom: 5px;
+    }
+    input{
+      margin-top: 10px;
+      height: 40px;
+      width: 500px;
+      display: block;
+      font-size: 16px;
+      border: 1px solid $indie-lightgray;
+      padding-left: 20px;
+      margin-bottom: 50px;
+      color: $indie-xgray;
+    }
+    label:first-of-type > input{
+      width: 150px;
+    }
+    .newcampaign-create-button{
+      border: 0;
+      background-color: $indie-pink;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 15px 20px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+}
+
 .editor-page{
   // border: 1px solid black;
   font-family: $indie-font-family;
