@@ -34,7 +34,7 @@ import SignUpForm from './sign_up_form';
 
     guestSignIn(){
       this.props.logIn({
-        email:'guest',
+        email:'guest@example.com',
         password:'password'
       });
     }

@@ -123,9 +123,9 @@ amit = User.create!(
   firstName: 'Amit',
   lastName: 'Chaudhari',
   avatar_img_url: "http://lorempixel.com/90/90",
-  address: '123 Main St',
-  city: 'Anywheresville',
-  postal_code: '12345',
+  address: '4 Sapphire Dr',
+  city: 'Marlboro',
+  postal_code: '07746',
   short_desc: 'A really cool guy',
   about_me: Faker::Hipster.paragraph(20),
   profile_img_url: "http://lorempixel.com/460/285",
@@ -155,7 +155,7 @@ camps = []
 Campaign.destroy_all
 Comment.destroy_all
 
-25.times do
+100.times do
   user = users.sample
   camp = Campaign.create!(
     title: Faker::Commerce.unique.product_name,
@@ -168,11 +168,11 @@ Comment.destroy_all
     funding_type: ['flexible','fixed'].sample,
     main_img_url: "http://lorempixel.com/620/415",
     overview_img_url: "http://lorempixel.com/320/240",
-    category_id: cats[1].id,
+    category_id: cats.drop(1).sample.id,
     overview_text: Faker::Hipster.paragraph,
     pitch_text: Faker::Hipster.paragraph(30)
   )
-  rand(1..10).times do
+  rand(1..6).times do
     camp.perks.create!(
       title: Faker::Commerce.unique.product_name,
       description: Faker::Hipster.paragraph,
@@ -190,7 +190,7 @@ Comment.destroy_all
     )
   end
   comments = [];
-  rand(8..18).times do
+  rand(18..28).times do
     user = users.sample
     comment = camp.comments.create!(
       user_id: user.id,
@@ -213,14 +213,14 @@ end
 
 Contribution.destroy_all
 
-100.times do
+500.times do
   user = users.sample
   camp = camps.sample
   perk = camp.perks.sample
   visibility = %w(public anonymous other).sample
   other = ""
   if visibility == 'other'
-    other = "Some Other Name"
+    other = Faker::Internet.user_name
   end
   amount = perk.price + rand(1..100)
   camp.contributions.create!(
