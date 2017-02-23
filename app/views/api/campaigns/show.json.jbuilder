@@ -1,7 +1,7 @@
 json.merge! @campaign.attributes
-json.main_img_url  @campaign.main_img_url
-json.overview_img_url  @campaign.overview_img_url
-json.campaign_card_img_url @campaign.campaign_card_img_url
+json.main_img_url  image_url(@campaign.main_img_url)
+json.overview_img_url  image_url(@campaign.overview_img_url)
+json.campaign_card_img_url image_url(@campaign.campaign_card_img_url)
 json.curr_sym = @campaign.curr_sym
 
 json.percentDone (@campaign.current_cash/(@campaign.goal_amount*1.0)*100).round()
