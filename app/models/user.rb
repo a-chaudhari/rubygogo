@@ -9,9 +9,9 @@ class User < ActiveRecord::Base
   has_many :contributions
   has_many :comments
 
-  has_attached_file :avatar_img, default_url: "https://s3.amazonaws.com/rubygogo-pro/static_assets/profile_generic.png"
+  has_attached_file :avatar_img, default_url: "https://s3.amazonaws.com/rubygogo-pro/static_assets/generic-badge.png"
   validates_attachment_content_type :avatar_img, content_type: /\Aimage\/.*\Z/
-  has_attached_file :profile_img, default_url: "https://s3.amazonaws.com/rubygogo-pro/static_assets/generic-badge.png"
+  has_attached_file :profile_img, default_url: "https://s3.amazonaws.com/rubygogo-pro/static_assets/profile_generic.png"
   validates_attachment_content_type :profile_img, content_type: /\Aimage\/.*\Z/
 
   attr_reader :password

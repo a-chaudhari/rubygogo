@@ -12,8 +12,9 @@ class Updates extends React.Component{
     this.props.fetchCampaignUpdates(this.props.campaign.id);
   }
 
-  createUpdate(){
-    this.props.create(this.props.campaign.id, this.state.body)
+  createUpdate(e){
+    e.preventDefault();
+    this.props.create(this.props.campaign.id, this.state.body).then(res=> (this.setState({body:""})))
   }
 
   printUpdates(){
@@ -71,6 +72,7 @@ class Updates extends React.Component{
     }
     // debugger
 
+    // debugger
     return(
       <div className="update-container">
         {this.addUpdateBox()}

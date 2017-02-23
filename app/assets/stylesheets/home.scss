@@ -1,0 +1,125 @@
+.home-page{
+  .home-topfive-placeholder{
+    height: 350px;
+    display: block;
+  }
+  .feature-topfive{
+    position: absolute;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    height: 350px;
+    left: 0;
+    // margin-left: -100px;
+    overflow: hidden;
+    justify-content: center;
+    .feature-topfive-imagediv{
+      display: inline-block;
+      position: relative;
+      img{
+        vertical-align: center;
+      }
+      .feature-topfive-floatingimgdiv{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        .feature-topfive-floatingdetails{
+          display: none;
+          background-color: green;
+        }
+        .feature-floatingdetails-shown{
+          display: inline-block;
+        }
+
+      }
+      .floatingimg-2{
+        // background-color: purple;
+      }
+    }
+    // .feature-topfive-floatingdiv{
+    //   position: absolute;
+    //   width: 100%;
+    //   height: 100%;
+    //   top: 0;
+    //   left: 0;
+    //   // background-color: pink;
+    //   display: flex;
+    //   .feature-topfive-leftpane{
+    //
+    //   }
+    //   .feature-topfive-centerpane{
+    //
+    //   }
+    //   .feature-topfive-rightpane{
+    //
+    //   }
+    // }
+  }
+
+
+
+  .feature-slider{
+    // display: flex;
+    // margin: 0 auto;
+    font-family: $indie-font-family;
+    width: 100%;
+    max-width: none;
+    position: relative;
+    margin-bottom: 60px;
+    margin-top: 40px;
+
+    .slider-button{
+      position: absolute;
+      display: inline-block;
+      cursor: pointer;
+      color: $indie-arrowgray;
+    }
+    .slider-button:hover{
+      color: $indie-xgray;
+    }
+
+    .slider-left-button{
+      // float: left;
+      left: -70px;
+      top: 50%;
+    }
+
+    .slider-right-button{
+      right: -70px;
+      top: 50%;
+      // float: right;
+    }
+
+    .feature-slider-content{
+      display: inline-block;
+      width: 100%;
+      .feature-slider-menu{
+        ul{
+          list-style: none;
+          li{
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px;
+            margin: 10px;
+            color: $indie-gray;
+
+            display: inline-block;
+          }
+          .selected-li{
+            color: $indie-pink;
+            border-bottom: 3px solid $indie-pink;
+          }
+        }
+      }
+
+      .feature-slider-tilescontainer{
+        justify-content: space-between;
+        display: flex;
+        width: 100%;
+      }
+    }
+
+  }
+}

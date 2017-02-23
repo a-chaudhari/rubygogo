@@ -95,7 +95,8 @@ class Perks extends React.Component{
   }
 
 
-  savePerk(){
+  savePerk(e){
+    e.preventDefault();
     console.log("in save perk")
     if(!this.validate()){
       console.log("failed validation")

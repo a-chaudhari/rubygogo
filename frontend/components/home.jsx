@@ -1,5 +1,7 @@
 import React from 'react'
 import CategoryTile from './explore/category_tile';
+import TopFive from './explore/topfive';
+import Slider from './explore/slider';
 
 class Home extends React.Component{
   constructor(props){
@@ -19,6 +21,9 @@ class Home extends React.Component{
     // debugger
     return(
       <div className="home-page">
+        <TopFive/>
+        <div className="home-topfive-placeholder"></div>
+        <Slider/>
         <div className="category-tiles-array">
           {cats}
         </div>

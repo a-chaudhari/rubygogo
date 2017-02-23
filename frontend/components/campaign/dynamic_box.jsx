@@ -19,13 +19,20 @@ class DynamicBox extends React.Component{
         return(<Story campaign={this.props.campaign}/>);
 
       case 'updates':
-        return(<Updates create={this.props.createCampaignUpdate} session={this.props.session} campaign={this.props.campaign} updates={this.props.campaign.updates} fetchCampaignUpdates={this.props.fetchCampaignUpdates}/>);
+        return(<Updates create={this.props.createCampaignUpdate}
+                        session={this.props.session}
+                        campaign={this.props.campaign}
+                        updates={this.props.campaign.updates}
+                        fetchCampaignUpdates={this.props.fetchCampaignUpdates}/>);
 
       case 'backers':
         return(<Backers campaign={this.props.campaign} fetchCampaignBackers={this.props.fetchCampaignBackers}/>);
 
       case 'comments':
-        return(<Comments createComment={this.props.createComment} session={this.props.session} campaign={this.props.campaign} fetchComments={this.props.fetchComments}/>);
+        return(<Comments createComment={this.props.createComment}
+                          session={this.props.session}
+                          campaign={this.props.campaign}
+                          fetchComments={this.props.fetchComments}/>);
 
       default:
         return null;
@@ -42,6 +49,7 @@ class DynamicBox extends React.Component{
     }
     const camp = this.props.campaign;
     const cname = "dynamic-selected";
+    // debugger
     return(
       <div className="campaign-dynamicbox clearfix">
         <nav className="dynamicbox-navbar">

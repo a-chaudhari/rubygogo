@@ -340,13 +340,16 @@
     .perks-creator{
       margin-top: 20px;
       .perks-table-container{
+        width: 95%;
         .perks-table{
-          min-width: 700px;
+          // min-width: 800px;
+          // display: block;
           text-align: left;
           // margin-top: 20px;
-          margin-right: 20px;
-          margin-left: 20px;
+          // margin-right: 20px;
+          // margin-left: 20px;
           border-collapse: collapse;
+          width: 100%;
           tr{
             border: 1px solid $indie-basics-gray;
             // padding-left: 20px;
@@ -390,9 +393,11 @@
           }
           .table-eta{
             width: 150px;
+            // min-width: 400px
           }
           .table-desc{
-
+            // width: 400px;
+            // width: 100%;
           }
         }
         .perks-creator-addbutton{

@@ -23,7 +23,7 @@ class Comments extends React.Component{
     this.props.createComment(this.props.campaign.id, this.state.body)
       .then(
         res=>(
-          this.setState({comments: [res.comment].concat(this.state.comments)})
+          this.setState({body:"",comments: [res.comment].concat(this.state.comments)})
         )
       )
         // this.setState({comments: this.state.comments.unshift(res.comment)})
