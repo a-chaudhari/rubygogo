@@ -36,9 +36,15 @@ class TopFive extends React.Component{
       }
       else if(idx ===2){
         console.log("center click. trying something new...");
-        
+
       }
     }
+  }
+
+  detailsGen(){
+    return(
+
+    )
   }
 
   renderScroller(){
