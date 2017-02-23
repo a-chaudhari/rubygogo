@@ -8,11 +8,11 @@ class Campaign < ActiveRecord::Base
   has_many :updates
   has_many :comments
 
-  has_attached_file :campaign_card_img, default_url: "/assets/generic-card.png"
+  has_attached_file :campaign_card_img, default_url: "https://s3.amazonaws.com/rubygogo-pro/static_assets/generic-card.png"
   validates_attachment_content_type :campaign_card_img, content_type: /\Aimage\/.*\Z/
-  has_attached_file :overview_img, default_url: "/assets/generic-overview.png"
+  has_attached_file :overview_img, default_url: "https://s3.amazonaws.com/rubygogo-pro/static_assets/generic-overview.png"
   validates_attachment_content_type :overview_img, content_type: /\Aimage\/.*\Z/
-  has_attached_file :main_img, default_url: "/assets/generic-main.png"
+  has_attached_file :main_img, default_url: "https://s3.amazonaws.com/rubygogo-pro/static_assets/generic-main.png"
   validates_attachment_content_type :main_img, content_type: /\Aimage\/.*\Z/
 
   before_save :check_end_date
@@ -53,19 +53,6 @@ class Campaign < ActiveRecord::Base
       self.postCampaign(false)
     end
   end
-
-  # def status=(stat)
-  #   debugger
-  #   if self.status == 'draft' && stat == 'open'
-  #     self.postCampaign(false)
-  #   end
-  #   self.status = stat
-  # end
-
-  # def category_id=(cate)
-  #   # debugger
-  #   self.category = Category.find_by(category: cate)
-  # end
 
   def category=(cate)
 

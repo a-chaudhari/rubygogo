@@ -19,70 +19,70 @@ cats_to_add = [
   {
     category: 'tech',
     alt_name: "Tech",
-    cat_image_url: "http://res.cloudinary.com/dhoa3rvz8/image/upload/v1487743942/tech_rg7lyg.jpg",
+    cat_image_url: "https://s3.amazonaws.com/rubygogo-pro/static_assets/tech.jpg",
     tagline: "Go, gadget, go!",
     cat_icon: "fa fa-television"
   },
   {
     category: 'film',
     alt_name: "Film",
-    cat_image_url: "http://res.cloudinary.com/dhoa3rvz8/image/upload/v1487743941/film_vzo1mr.png",
+    cat_image_url: "https://s3.amazonaws.com/rubygogo-pro/static_assets/film.png",
     tagline: "Great stories start here",
     cat_icon: "fa fa-film"
   },
   {
     category: 'small_business',
     alt_name: "Small Business",
-    cat_image_url: "http://res.cloudinary.com/dhoa3rvz8/image/upload/v1487743942/smallbiz_gqkelw.png",
+    cat_image_url: "https://s3.amazonaws.com/rubygogo-pro/static_assets/smallbiz.png",
     tagline: "Main street, inc.",
     cat_icon: "fa fa-lightbulb-o"
   },
   {
     category: 'community',
     alt_name: "Community",
-    cat_image_url: "http://res.cloudinary.com/dhoa3rvz8/image/upload/v1487743941/comm_mna9c3.png",
+    cat_image_url: "https://s3.amazonaws.com/rubygogo-pro/static_assets/comm.png",
     tagline: "For good neighbors everywhere.",
     cat_icon: "fa fa-comments-o"
   },
   {
     category: 'music',
     alt_name: "Music",
-    cat_image_url: "http://res.cloudinary.com/dhoa3rvz8/image/upload/v1487743942/music_mepwlb.jpg",
+    cat_image_url: "https://s3.amazonaws.com/rubygogo-pro/static_assets/music.jpg",
     tagline: "Tune up, tune in, listen loud",
     cat_icon: "fa fa-headphones"
   },
   {
     category: 'education',
     alt_name: "Education",
-    cat_image_url: "http://res.cloudinary.com/dhoa3rvz8/image/upload/v1487743941/education_pi1dmz.png",
+    cat_image_url: "https://s3.amazonaws.com/rubygogo-pro/static_assets/education.png",
     tagline: "Education & learning for every path in life",
     cat_icon: "fa fa-book"
   },
   {
     category: 'design',
     alt_name: "Design",
-    cat_image_url: "http://res.cloudinary.com/dhoa3rvz8/image/upload/v1487743941/design_s1ro2g.png",
+    cat_image_url: "https://s3.amazonaws.com/rubygogo-pro/static_assets/design.png",
     tagline: "From die-cut to digital. Products for home & work.",
     cat_icon: "fa fa-pencil"
   },
   {
     category: 'environment',
     alt_name: "Environment",
-    cat_image_url: "http://res.cloudinary.com/dhoa3rvz8/image/upload/v1487743942/environ_j0sbhz.png",
+    cat_image_url: "https://s3.amazonaws.com/rubygogo-pro/static_assets/environ.png",
     tagline: "Where earth comes first",
     cat_icon: "fa fa-envira"
   },
   {
     category: 'gaming',
     alt_name: "Gaming",
-    cat_image_url: "http://res.cloudinary.com/dhoa3rvz8/image/upload/v1487743942/gaming_je7zcd.png",
+    cat_image_url: "https://s3.amazonaws.com/rubygogo-pro/static_assets/gaming.png",
     tagline: "From dice to d-pads. Game on!",
     cat_icon: "fa fa-gamepad"
   },
   {
     category: 'web',
     alt_name: "Video / Web",
-    cat_image_url: "http://res.cloudinary.com/dhoa3rvz8/image/upload/v1487743942/web_zupl4h.png",
+    cat_image_url: "https://s3.amazonaws.com/rubygogo-pro/static_assets/web.png",
     tagline: "Phablet-sized cinema.",
     cat_icon: "fa fa-globe"
   }
