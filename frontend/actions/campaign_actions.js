@@ -8,6 +8,17 @@ export const RECEIVE_UPDATE = 'RECEIVE_UPDATE';
 export const RECEIVE_COMMENTS = 'RECEIVE_COMMENTS';
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
 export const RECEIVE_EDITOR = 'RECEIVE_EDITOR';
+export const RECEIVE_CAMPAIGN_ERRORS = 'RECEIVE_CAMPAIGN_ERRORS';
+export const CLEAR_CAMPAIGN_ERRORS = 'CLEAR_CAMPAIGN_ERRORS';
+
+export const clearCampaignErrors = ()=> ({
+  type: CLEAR_CAMPAIGN_ERRORS
+});
+
+export const receiveCampaignErrors = errors => ({
+  type: RECEIVE_CAMPAIGN_ERRORS,
+  errors
+});
 
 export const receiveEditor = editor => ({
   type: RECEIVE_EDITOR,
@@ -76,7 +87,8 @@ export const createCampaign = camp => dispatch=>(
 export const updateCampaign = camp => dispatch=>{
   // debugger
   return(
-  CampaignAPIUtil.updateCampaign(camp).then(camp=>dispatch(receiveEditor(camp)))
+  CampaignAPIUtil.updateCampaign(camp).then(camp=>dispatch(receiveEditor(camp),
+  err=>dispatch(receiveCampaignErrors(err))))
 )};
 
 export const fetchCampaignBackers = (id, start)=> dispatch=> (

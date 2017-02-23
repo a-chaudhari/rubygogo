@@ -54,21 +54,40 @@
 
 .editor-page{
   // border: 1px solid black;
+  background-color: $indie-perk-gray;
   font-family: $indie-font-family;
+  // span{
+  //   color: $indie-pink;
+  //   display: block;
+  // }
   label{
+    margin-top: 20px;
     margin-bottom: 20px;
+  }
+  select{
+    width: 70%;
+    max-width: 700px;
+    border: 0;
+    height: 50px;
+    border: 1px solid $indie-basics-gray;
+    background-color: white;
+    border-radius: 0;
+    font-size: 14px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   input{
     height: 50px;
     border: 1px solid $indie-basics-gray;
-    width: 70%;
-    max-width: 700px;
+    // width: 70%;
+    // max-width: 700px;
+    width: 100%;
     box-sizing: border-box;
     font-size: 14px;
     display: block;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    // margin-bottom: 20px;
   }
   textarea{
     max-width: 700px;
@@ -98,10 +117,11 @@
 
   .side-header{
     // width:
+    // text-transform: uppercase;
     padding-top: 100px;
     color: white;
-    width: 200px;
-    padding-left: 20px;
+    width: 225px;
+    // padding-left: 20px;
     background-color: $indie-working-gray;
     // overflow: scroll;
     letter-spacing: 1px;
@@ -111,75 +131,180 @@
     height: 100vh;
     float: left;
     position: fixed;
+    div{
+      padding-left: 20px;
+      padding-right: 20px;
+      // margin: 5px;
+    }
+
+    .side-header-statusline{
+      margin-bottom: 10px;
+      span{
+        text-transform: uppercase;
+        font-size: 12px;
+        width: auto;
+        border-radius: 2px;
+        display: inline;
+        padding: 4px 5px;
+        background-color: $indie-working-yellow;
+        letter-spacing: 1px;
+        color: $indie-working-gray;
+      }
+      .status-draft{
+        background-color: $indie-working-yellow;
+      }
+      .status-open{
+        background-color: #b3efaa;
+      }
+      .status-closed{
+        background-color: $indie-lightgray;
+      }
+    }
+    .side-header-title{
+      min-height: 75px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      color: $indie-basics-gray;
+      font-size: 12px;
+      letter-spacing: 1px;
+
+      // border: 1px solid white;
+    }
+    .side-header-preview{
+      padding: 20px 30px;
+    }
     ul{
-      width: 150px;
+      width: 100%;
       li{
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 20px;
+        // padding-top: 10px;
+        // padding-bottom: 10px;
+        // padding-left: 20px;
+        box-sizing: content-box;
+        padding: 20px 30px;
         display: block;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-left: 7px solid black;
+        font-weight: normal;
+        font-size: 12px;
+        background-color: black;
         // display: inline;
         // width: auto;
         cursor: pointer;
       }
-      li:first-of-type{
-        background-color: $indie-working-yellow;
-        color: $indie-working-gray;
-        border-radius: 2px;
-        padding: 3px;
-      }
+      // li:first-of-type{
+      //   background-color: $indie-working-yellow;
+      //   color: $indie-working-gray;
+      //   border-radius: 2px;
+      //   padding: 3px;
+      // }
       li:hover{
         background-color: $indie-purple;
         color: white;
+        border-color: $indie-purple;
+      }
+      li:first-of-type{
+        padding: 20px 10px;
+        border-color: $indie-working-gray;
+        background-color: $indie-working-gray;
+        margin-bottom: 40px;
+      }
+      li:first-of-type:hover{
+        background-color: $indie-purple;
+        border-color: $indie-purple;
       }
       .sideheader-selected{
-        border-left: 5px solid $indie-purple;
-        padding-left: 15px;
+        border-color: $indie-purple !important;
+        // padding-left: 15px;
       }
     }
   }
   .editorContent{
     // height: 100vh;
     // overflow: scroll;
+    background-color: $indie-perk-gray;
     margin-left: 225px;
     .top-headers{
+      background-color: $indie-form-gray;
       .editor-topheader{
-        height: 40px;
-        border-top: 1px solid $indie-xgray;
-        border-bottom: 1px solid $indie-xgray;
+        // height: 40px;
+        border-top: 1px solid $indie-basics-gray;
+        border-bottom: 1px solid $indie-basics-gray;
         margin-bottom: 20px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding: 25px 40px;
         h1{
           margin: 0;
           border: 0;
           display: inline-block;
           text-transform: capitalize;
-          font-size: 24px;
+          margin-top: 5px;
+          // margin-top: 20px;
+          // margin-bottom: 20px;
+          font-size: 20px;
+          letter-spacing: 1px;
           font-weight: normal;
           color: $indie-working-gray;
         }
         h1:last-of-type{
           color: $indie-purple;
         }
-        button{
-          margin-top: 5px;
+        .editor-header-button-group{
           float: right;
-          border: none;
-          padding: 10px 20px;
-          background-color: $indie-purple;
-          color: white;
-          border-radius: 2px;
-          text-transform: uppercase;
-          font-weight: normal;
-          margin-left: 20px;
-          letter-spacing: 2px;
+          // vertical-align: top;
+          button{
+            // vertical-align: top;
+            // margin-top: 5px;
+            padding: 10px 20px;
+            // float: right;
+            background-color: inherit;
+            font-size: 12px;
+            color: $indie-purple;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-left: 10px;
+            letter-spacing: 1px;
+          }
+          button:hover{
+            background-color: $indie-lightpink;
+          }
+          button:last-of-type{
+            color: white;
+            background-color: $indie-purple;
+          }
+          button:last-of-type:hover{
+            background-color: $indie-darkpurple;
+          }
         }
       }
     }
+    .editor-form{
+      padding-left: 40px;
+    }
+    .editor-generated-input{
+      // display: inline-block;
+      // width: 600px;
+      div{
+        width: 70%;
+        max-width: 700px;
+        display: inline-block;
+        // width: 100%;
+        // input{
+        //   100
+        // }
+        span{
+          display: inline-block;
+          font-size: 14px;
+          color: $indie-perk-text-gray;
+        }
+        span:last-of-type{
 
+          float:right;
+        }
+      }
+    }
 
     .basics-form{
       input,label{
@@ -189,20 +314,13 @@
         width: 400px;
         height: 400px;
       }
-      // .media-selector{
-      //   display: block;
-      //   border: 1px solid black;
-      //   button{
-      //     display: inline-block;
-      //     border: 0;
-      //     border: 1px solid $indie-xgray;
-      //     padding: 10px;
-      //     text-transform: uppercase;
-      //     letter-spacing: 1px;
-      //   }
-      }
+
+    }
 
     .story-form{
+      input,label{
+        display: block;
+      }
       .main-img{
         width: 620px;
         height: 415px;
@@ -212,18 +330,108 @@
         height: 240px;
 
       }
-      // .media-selector{
-      //   display: block;
-      //   border: 1px solid black;
-      //   button{
-      //     display: inline-block;
-      //     border: 0;
-      //     border: 1px solid $indie-xgray;
-      //     padding: 10px;
-      //     text-transform: uppercase;
-      //     letter-spacing: 1px;
-      //   }
-      // }
+      textarea{
+        height: 400px;
+        font-size: 16px;
+        font-family: serif;
+      }
+    }
+
+    .perks-creator{
+      margin-top: 20px;
+      .perks-table-container{
+        .perks-table{
+          text-align: left;
+          // margin-top: 20px;
+          margin-right: 20px;
+          margin-left: 20px;
+          border-collapse: collapse;
+          tr{
+            border: 1px solid $indie-basics-gray;
+            // padding-left: 20px;
+            // padding-right: 20px;
+            cursor: pointer;
+            background-color: white;
+          }
+          tr:hover{
+            background-color: $indie-lightpink;
+          }
+          // td{
+          //   padding-top:20px;
+          //   padding-right: 20px;
+          //   padding-left: 20px;
+          // }
+          tr,th,td{
+            height: 50px;
+          }
+          td:first-of-type{
+            padding-left: 20px;
+            // margin-left: 20px;
+            // text-align: center;
+          }
+          td:last-of-type{
+            padding-right: 20px;
+          }
+          th{
+            background-color: $indie-form-gray;
+          }
+          th:first-of-type{
+            padding-left: 20px;
+          }
+          .table-price{
+            width: 80px;
+          }
+          .table-title{
+            width: 200px;
+          }
+          .table-no{
+            width: 50px;
+          }
+          .table-eta{
+            width: 150px;
+          }
+          .table-desc{
+
+          }
+        }
+        .perks-creator-addbutton{
+          font-size: 16px;
+          padding: 15px 20px;
+          background-color: $indie-purple;
+          color: white;
+          border: 0;
+          border-radius: 2px;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          margin-top: 20px;
+          margin-left: 20px;
+        }
+        .perks-creator-addbutton:hover{
+          background-color: $indie-darkpurple;
+        }
+
+      }
+
+      .perks-creator-form{
+        input{
+          width: 70%;
+          max-width: 700px;
+          display: block;
+          margin-top: 5px;
+        }
+        label{
+          margin-bottom: 10px;
+          display: block;
+        }
+        button{
+          display: inline-block;
+          font-size: 16px;
+          padding: 10px 20px;
+          color: white;
+          background-color: $indie-purple;
+          border: none;
+        }
+      }
     }
   }
 }

@@ -1,7 +1,9 @@
-import { RECEIVE_CAMPAIGN, RECEIVE_CAMPAIGNS, RECEIVE_CAMPAIGN_BACKERS, RECEIVE_UPDATES, RECEIVE_UPDATE, RECEIVE_COMMENTS, RECEIVE_COMMENT, RECEIVE_EDITOR } from '../actions/campaign_actions';
+import { RECEIVE_CAMPAIGN, RECEIVE_CAMPAIGNS, RECEIVE_CAMPAIGN_BACKERS,
+  RECEIVE_UPDATES, RECEIVE_UPDATE, RECEIVE_COMMENTS, RECEIVE_COMMENT,
+  RECEIVE_EDITOR, RECEIVE_CAMPAIGN_ERRORS, CLEAR_CAMPAIGN_ERRORS } from '../actions/campaign_actions';
 import merge from 'lodash/merge';
 
-const CampaignReducer = (state={editor: {}, updates:[], comments:[]}, action) =>{
+const CampaignReducer = (state={editor: {}, updates:[], comments:[], errors:{}}, action) =>{
   switch(action.type){
 
     case RECEIVE_CAMPAIGN:
@@ -42,6 +44,13 @@ const CampaignReducer = (state={editor: {}, updates:[], comments:[]}, action) =>
       //does not take into account new child comments!
       // stateCopyTwo.comments.unshift(action.comment);
       return stateCopyTwo;
+
+    case RECEIVE_CAMPAIGN_ERRORS:
+      return merge({},state,{errors:null},{errors:action.errors})
+      // return
+
+    case CLEAR_CAMPAIGN_ERRORS:
+      return merge({},state,{errors:null},{errors:{}})
 
     default:
       return state;

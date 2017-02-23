@@ -43,7 +43,7 @@ class DynamicBox extends React.Component{
     const camp = this.props.campaign;
     const cname = "dynamic-selected";
     return(
-      <div className="campaign-dynamicbox">
+      <div className="campaign-dynamicbox clearfix">
         <nav className="dynamicbox-navbar">
           <ul>
             <li onClick={this.chMode('story')} className={this.state.mode=="story" ? cname : ""}>STORY</li>

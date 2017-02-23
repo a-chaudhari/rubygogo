@@ -6,6 +6,7 @@ class Perks extends React.Component{
     super(props);
     this.state={
       editMode:false,
+      errors:{},
       perk:{
         id:-1,
         title:"",
@@ -51,7 +52,7 @@ class Perks extends React.Component{
   createTable(){
     // debugger
     const rows = this.props.perks.map(perk=>(
-      <tr key={"perks"+perk.id} onClick={this.editPerkHandler(perk.id).bind(this)}>
+      <tr key={"perks"+perk.id} className="perk-table-entry" onClick={this.editPerkHandler(perk.id).bind(this)}>
         <td>{perk.price}</td>
         <td>{perk.title}</td>
         <td>{perk.total_number}</td>
@@ -62,20 +63,20 @@ class Perks extends React.Component{
 
 
     return(
-      <div>
-        <table>
+      <div className="perks-table-container">
+        <table className="perks-table">
           <tbody>
             <tr>
-              <th>Price</th>
-              <th>Title</th>
-              <th>No</th>
-              <th>Est. Delivery</th>
-              <th>Description</th>
+              <th className="table-price">Price</th>
+              <th className="table-title">Title</th>
+              <th className="table-no">No</th>
+              <th className="table-eta">Est. Delivery</th>
+              <th className="table-desc">Description</th>
             </tr>
             {rows}
           </tbody>
         </table>
-        <button onClick={this.newPerkHandler.bind(this)}>Add New Perk</button>
+        <button className="perks-creator-addbutton" onClick={this.newPerkHandler.bind(this)}>Create New Perk</button>
       </div>
   );
   }
@@ -84,10 +85,11 @@ class Perks extends React.Component{
     return e=>(this.setState({perk:merge({},this.state.perk,{[value]:e.target.value})}))
   }
 
-  inputGen(name,value){
+  inputGen(name,value,type="text"){
     return(
       <label key={"prkform"+value}>{name}
-        <input value={this.state.perk[value]} onChange={this.update(value).bind(this)}/>
+        <input type={type} value={this.state.perk[value]} onChange={this.update(value).bind(this)}/>
+        <span className="perk-form-errorline">{this.state.errors[value]}</span>
       </label>
     );
   }
@@ -95,6 +97,10 @@ class Perks extends React.Component{
 
   savePerk(){
     console.log("in save perk")
+    if(!this.validate()){
+      console.log("failed validation")
+      return;
+    }
     if(this.state.perk.id === -1){
 
       this.props.createPerk(this.state.perk).then(this.cancelChanges());
@@ -104,9 +110,30 @@ class Perks extends React.Component{
     }
   }
 
+  validate(){
+    let output = {};
+    const p = this.state.perk;
+
+    if(p.title.length === 0){
+      output['title']="A title is required"
+    }
+    if(p.description.length === 0) output['description'] = "A description is required.";
+    if(p.price <= 0) output['price']="A valid price is required";
+    if(p.eta.length === 0)output['eta']="An ETA is required";
+    if(p.total_number <= 0)output['total_number']="A total number is required";
+
+    this.setState({errors:output});
+    if(Object.keys(output).length > 0){
+      return false
+    }else {
+      return true;
+    }
+  }
+
   cancelChanges(){
     this.setState({
       editMode:false,
+      errors:{},
       perk:{
         id:-1,
         title:"",
@@ -131,17 +158,17 @@ class Perks extends React.Component{
       deleteBtn = (<button onClick={this.deletePerk.bind(this)}>Delete!</button>);
     }
     return(
-      <div>
-        <form>
+      <div className="perks-creator-form">
+        <form onSubmit={this.savePerk.bind(this)}>
           {this.inputGen('Title','title')}
           {this.inputGen('Description','description')}
-          {this.inputGen('Price','price')}
-          {this.inputGen('Number Available ','total_number')}
+          {this.inputGen('Price','price','number')}
+          {this.inputGen('Number Available ','total_number','number')}
           {this.inputGen('Estimated Delivery Date','eta')}
-          <button onClick={this.savePerk.bind(this)}>Save</button>
-          <button onClick={this.cancelChanges.bind(this)}>Cancel Changes</button>
-          {deleteBtn}
+          <button>Save</button>
         </form>
+        <button onClick={this.cancelChanges.bind(this)}>Cancel Changes</button>
+        {deleteBtn}
 
       </div>
     )
@@ -150,14 +177,8 @@ class Perks extends React.Component{
 
 
   render(){
-    // debugger
-    // if(this.props.perks === undefined){
-    //   return null;
-    // }
-
-
     return (
-      <div>
+      <div className="editor-form perks-creator">
         {this.state.editMode? this.createForm(): this.createTable()}
       </div>
     );

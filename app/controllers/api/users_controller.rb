@@ -55,7 +55,8 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    user = User.find_by(id: params[:id])
+    # debugger
+    user = User.find_by(id: params[:user][:id])
     if user && user.id == current_user.id
       user.update(user_params)
       session[:session_token]=user.session_token
@@ -67,7 +68,7 @@ class Api::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:email,:password,:firstName,:lastName, :avatar_img_url, :city, :short_desc, :about_me, :profile_img_url, :country, :address, :postal_code)
+    params.require(:user).permit(:email,:password,:firstName,:lastName, :avatar_img, :city, :short_desc, :about_me, :profile_img, :country, :address, :postal_code)
   end
 
   private

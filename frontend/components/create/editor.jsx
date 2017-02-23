@@ -25,7 +25,8 @@ class Editor extends React.Component{
       cardFile:null,
       cardURL:null,
       mainFile:null,
-      mainURL:null
+      mainURL:null,
+      errors:{}
     };
   }
 
@@ -38,6 +39,7 @@ class Editor extends React.Component{
   }
 
   componentWillReceiveProps(newProps){
+    console.log(newProps.errors)
     const e = newProps.editor;
     this.setState({editor:newProps.editor, overviewURL:e.overview_img_url, cardURL:e.campaign_card_img_url, mainURL:e.main_img_url})
   }
@@ -49,11 +51,13 @@ class Editor extends React.Component{
 
   createHeader(){
     return(
-      <div className="editor-topheader">
+      <div className="editor-topheader clearfix">
         <h1>campaign /</h1> <h1> {this.state.mode}</h1>
-        <button onClick={this.renderPreview.bind(this)}>Preview</button>
-        <button onClick={this.saveCampaign.bind(this)} >Save Campaign</button>
-        <button onClick={this.launchCampaign.bind(this)}>launch campaign</button>
+        <div className="editor-header-button-group">
+          <button onClick={this.renderPreview.bind(this)}>Preview</button>
+          <button onClick={this.saveCampaign.bind(this)} >Save Campaign</button>
+          <button onClick={this.launchCampaign.bind(this)}>launch campaign</button>
+        </div>
       </div>
     );
   }
@@ -65,6 +69,11 @@ class Editor extends React.Component{
 
   saveCampaign(addl={}){
     // debugger
+    if(!this.validation()){
+      console.log("validation failed")
+      // console.log(this.state.errors)
+      return;
+    }
     let formData = new FormData();
     // formData.append()
     const addl_keys = Object.keys(addl);
@@ -107,9 +116,18 @@ class Editor extends React.Component{
   }
   // <Campaign/>
   //
-  inputGen(name,field,hash='editor'){
+  inputGen(name,field,hash,type='text'){
+    const counter = (<span>{this.state[hash][field].length}</span>)
     return(
-      [(<label>{name}</label>),(<input value={this.state[hash][field]} onChange={this.update(field,hash)}/>)]
+      <div className="editor-generated-input">
+
+        <div>
+          <label>{name}</label>
+          <input type={type} value={this.state[hash][field]} onChange={this.update(field,hash)}/>
+          <span>{this.state.errors.title}</span>
+          {type === 'number' ? "" : counter }
+        </div>
+      </div>
     );
   }
 
@@ -135,6 +153,36 @@ class Editor extends React.Component{
     });
   }
 
+  validation(){
+    let output = {};
+    let clear = true;
+    const e = this.state.editor;
+
+    if(e.title.length <= 0 || e.title.length > 50){
+      output['title']="Title is required and cannot be over 50 characters long"
+      clear=false;
+    }
+    if(e.goal_amount < 500){
+      output['goal_amount']="Goal amount must be at least 500."
+      clear=false;
+    }
+    if(e.tagline.length <=0){
+      output['tagline']="Tagline is required"
+      clear=false;
+    }
+    if(e.duration < 7  || e.duration > 60){
+      clear=false;
+      output['duration']="Duration must be between 7 and 60 days in length"
+    }
+    if(e.pitch_text.length  ===  0 ){
+      clear=false;
+      otuput['pitch_text']="A Campaign Pitch is required"
+    }
+    this.setState({errors:output});
+    return clear;
+
+  }
+
 
   selectRender(){
     return(
@@ -148,18 +196,23 @@ class Editor extends React.Component{
     // debugger
     // style="opacity: 0.0; position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height:100%;
     return(
-      <div className="basics-form">
+      <div className="basics-form editor-form">
         <form>
-          {this.inputGen('Campaign Title','title')}
-          {this.inputGen('Goal Amount','goal_amount')}
-          {this.inputGen('Tagline','tagline')}
+          {this.inputGen('Campaign Title','title','editor')}
+
+          {this.inputGen('Goal Amount','goal_amount','editor','number')}
+
+          {this.inputGen('Tagline','tagline','editor')}
+
           <label>Campaign Card Image</label>
           <div className="editor-image-uploader card-img">
             <img src={this.state.cardURL}/>
             <input className="big-filepicker" type="file" onChange={this.updateFile('card').bind(this)}/>
           </div>
+          <label>Category</label>
           {this.selectRender()}
-          {this.inputGen('Duration','duration')}
+          {this.inputGen('Duration','duration','editor','number')}
+
           <label>Funding Type</label>
           <select value={this.state.editor.funding_type} onChange={this.update('funding_type')}>
             <option value="fixed">Fixed</option>
@@ -179,15 +232,10 @@ class Editor extends React.Component{
       const file = e.target.files[0]
       const fileReader = new FileReader();
       fileReader.onloadend = ()=>{
-
         this.setState({[`${value}File`]:file, [`${value}URL`]: fileReader.result })
       }
-
-      if(file){
-        fileReader.readAsDataURL(file);
-      }
+      if(file) fileReader.readAsDataURL(file);
     }
-
   }
 
   renderStory(){
@@ -201,9 +249,9 @@ class Editor extends React.Component{
     //   <button onClick={this.toggleVideo(true).bind(this)}>Video</button>
     //   <button onClick={this.toggleVideo(false).bind(this)}>Image</button>
     // </div>
-    debugger
+    // debugger
     return(
-      <div className="story-form">
+      <div className="story-form editor-form">
         <form>
           <label>Pitch Image</label>
           <div className="editor-image-uploader main-img">
@@ -217,6 +265,7 @@ class Editor extends React.Component{
           </div>
           <label>Campaign Pitch</label>
             <textarea value={this.state.editor.pitch_text} onChange={this.update('pitch_text')}/>
+            <span>{this.state.errors.pitch_text}</span>
 
         </form>
       </div>
@@ -233,10 +282,10 @@ class Editor extends React.Component{
     const sel ="sideheader-selected";
     return(
       <div className="side-header">
+        <div className="side-header-statusline"><span className={`status-${e.status}`}>{e.status} campaign</span></div>
+        <div className="side-header-title">{e.title}</div>
         <ul>
-          <li>{e.status} campaign</li>
-          <li>{e.title}</li>
-          <li onClick={this.renderPreview.bind(this)}>preview campaign</li>
+          <li className={this.state.mode==='preview' ? sel : ""} onClick={this.renderPreview.bind(this)}>Preview Campaign</li>
           <li className={this.state.mode==='basics' ? sel : ""} onClick={this.modeChange('basics').bind(this)}>1. basics</li>
           <li className={this.state.mode==='story' ? sel : ""} onClick={this.modeChange('story').bind(this)}>2. story</li>
           <li className={this.state.mode==='perks' ? sel : ""} onClick={this.modeChange('perks').bind(this)}>3. perks</li>
@@ -257,7 +306,7 @@ class Editor extends React.Component{
     if(this.props.editor === undefined || this.props.editor.title === undefined){
       return null;
     }
-
+    console.log(this.state.errors)
     let content = "";
 
     switch(this.state.mode){
