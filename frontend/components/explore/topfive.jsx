@@ -16,7 +16,7 @@ class TopFive extends React.Component{
     this.props.fetchTopFive();
     const elm = this.topfive;
     elm.addEventListener('animationend', this.movementDone.bind(this))
-
+    this.loop = setInterval((e)=>(this.setState({move:true, dir:'left'})),9000)
   }
 
   movementDone(e){
@@ -55,6 +55,7 @@ class TopFive extends React.Component{
 
   scrollerClick(idx){
     return (e)=>{
+      clearInterval(this.loop);
       // // console.log("registeredscroller click!")
       // console.log(idx+" is clicked")
       if(idx === 3){
