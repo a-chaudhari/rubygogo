@@ -5,58 +5,78 @@
   }
   .feature-topfive{
     position: absolute;
-    display: flex;
-    flex-wrap: nowrap;
+    // width: 100%;
     width: 100%;
     height: 350px;
     left: 0;
     // margin-left: -100px;
+    // overflow: hidden;
     overflow: hidden;
-    justify-content: center;
-    .feature-topfive-imagediv{
-      display: inline-block;
-      position: relative;
-      img{
-        vertical-align: center;
-      }
-      .feature-topfive-floatingimgdiv{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        .feature-topfive-floatingdetails{
-          display: none;
-          background-color: green;
+    .feature-topfive-inner{
+      // overflow: visible;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: center;
+      .feature-topfive-imagediv{
+        // overflow-x: hidden;
+        display: inline-block;
+        border: 1px solid black;
+        position: relative;
+        img{
+          vertical-align: center;
         }
-        .feature-floatingdetails-shown{
-          display: inline-block;
-        }
+        .feature-topfive-floatingimgdiv{
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+          .feature-topfive-floatingdetails{
+            display: none;
+            background-color: green;
+          }
+          .feature-floatingdetails-shown{
+            display: inline-block;
+          }
 
-      }
-      .floatingimg-2{
-        // background-color: purple;
+        }
+        > img{
+          // position:absolute;
+          // z-index:-1;
+          // top:50%;
+          // left:50%;
+          // width:100%;
+          // transform:translate(-50%, -50%);
+          // &.max{ width:auto; height:100%; }
+        }
       }
     }
-    // .feature-topfive-floatingdiv{
-    //   position: absolute;
-    //   width: 100%;
-    //   height: 100%;
-    //   top: 0;
-    //   left: 0;
-    //   // background-color: pink;
-    //   display: flex;
-    //   .feature-topfive-leftpane{
-    //
-    //   }
-    //   .feature-topfive-centerpane{
-    //
-    //   }
-    //   .feature-topfive-rightpane{
-    //
-    //   }
-    // }
+    // over`
+
   }
+  .topfive-move-right{
+    animation-name: moveright;
+    // position: relative;
+    // position: absolute;
+    animation-duration: 1s;
+  }
+  @keyframes moveright{
+    0% {}
+    // 100% { transform: translateX(620px,0,0);}
+    100% {transform: translateX(620px)}
+    // 100% {left: 620px;}
+  }
+  .topfive-move-left{
+    animation-name: moveleft;
+    // position: relative;
+    // position: absolute;
+    animation-duration: 1s;
+  }
+  @keyframes moveleft{
+    0% {}
+    100% {transform: translateX(-620px);}
+  }
+  // }
 
 
 

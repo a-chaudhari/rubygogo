@@ -150,7 +150,8 @@ Campaign.destroy_all
 Comment.destroy_all
 
 100.times do
-  user = users.sample
+  # user = users.sample
+  user=amit
   camp = Campaign.create!(
     title: Faker::Commerce.unique.product_name,
     user_id: user.id,

@@ -5,19 +5,49 @@ class TopFive extends React.Component{
     super(props);
     this.state={
       camps:this.props.topfive,
-      index: 2
+      index: 2,
+      move: false,
+      dir: 'right'
     }
     // debugger
   }
 
   componentDidMount(){
     this.props.fetchTopFive();
+    const elm = this.topfive;
+    elm.addEventListener('animationend', this.movementDone.bind(this))
+
+  }
+
+  movementDone(){
+    if(this.state.dir =='right') this.movementDoneRight();
+    else if(this.state.dir =='left') this.movementDoneLeft();
+  }
+
+  movementDoneRight(){
+    console.log("movement done right")
+    // this.setState({move:false});
+    this.state.camps.unshift(this.state.camps.pop())
+    this.setState({move:false, camps:this.state.camps})
+  }
+  movementDoneLeft(){
+    console.log("movement done left")
+    // this.setState({move:false});
+    this.state.camps.push(this.state.camps.shift())
+    this.setState({move:false, camps:this.state.camps})
   }
 
   componentWillReceiveProps(newProps){
     console.log("new props in topfive")
     this.setState({camps:newProps.topfive})
+    // const elm = document.getElementById('featuretopfive')
+    // debugger
+    // elm.addEventListener('animationend', this.movementDone)
 
+  }
+  componentWillUnmount(){
+    const elm = document.getElementById('featuretopfive')
+    elm.removeEventListener('animationend',this.movementDone);
   }
 
   scrollerClick(idx){
@@ -26,26 +56,28 @@ class TopFive extends React.Component{
       if(idx === 3){
         console.log("3 clicked, so shift left")
         // debugger
-        this.state.camps.push(this.state.camps.shift())
-        this.setState({camps:this.state.camps})
+        // this.state.camps.push(this.state.camps.shift())
+        // this.setState({camps:this.state.camps})
+        this.setState({move:true, dir:'left'});
+
       }
       else if(idx==1){
         console.log("1 clicked, so shift right")
-        this.state.camps.unshift(this.state.camps.pop())
-        this.setState({camps:this.state.camps})
+        // this.state.camps.unshift(this.state.camps.pop())
+        // this.setState({camps:this.state.camps})
+        this.setState({move:true, dir:'right'});
       }
       else if(idx ===2){
         console.log("center click. trying something new...");
-
       }
     }
   }
 
-  detailsGen(){
-    return(
-
-    )
-  }
+  // detailsGen(){
+  //   return(
+  //
+  //   )
+  // }
 
   renderScroller(){
     const imageDivs= this.state.camps.map((top,idx)=>(
@@ -56,9 +88,12 @@ class TopFive extends React.Component{
         </div>
       </div>
     ))
+
     return(
-      <div className="feature-topfive">
-        {imageDivs}
+      <div ref={(div)=>{this.topfive = div;}} className={"feature-topfive"}>
+        <div className={"feature-topfive-inner" +(this.state.move ? ` topfive-move-${this.state.dir}` : "")} >
+          {imageDivs}
+        </div>
       </div>
     )
   }
@@ -73,9 +108,9 @@ class TopFive extends React.Component{
 
   render(){
     // debugger
-    if(this.state.camps.length === 0){
-      return null;
-    }
+    // if(this.state.camps.length === 0){
+    //   return null;
+    // }
     return(
       <div>
 
