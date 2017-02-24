@@ -39,6 +39,7 @@ const CampaignReducer = (state={editor: {}, updates:[], comments:[], errors:{}},
 
     case RECEIVE_COMMENT:
       // debugger
+      console.log("RECEIVE COMMENT FIRED")
       let stateCopyTwo = merge({},state,{comments:null},{comments:[]});
       // if(state)
       //does not take into account new child comments!
