@@ -1,6 +1,7 @@
 import React from 'react'
 import SignInForm from './sign_in_form';
 import SignUpForm from './sign_up_form';
+import {withRouter} from 'react-router';
 
  class SignIn extends React.Component{
  	  constructor(props){
@@ -28,7 +29,7 @@ import SignUpForm from './sign_up_form';
     }
 
     closeWindow(){
-      console.log("closing sign in")
+      // console.log("closing sign in")
       this.setState({show:false});
     }
 
@@ -57,11 +58,11 @@ import SignUpForm from './sign_up_form';
       }
 
       const cname = "header-login-container " + ( this.state.show ? "" : " header-hide")
-      console.log(switcher);
+      // console.log(switcher);
  	    return(
         <div className="header-right-signedout">
           <ul className="header-right-ul">
-            <li className="header-create-button"><a href="/#/start-a-campaign">START A CAMPAIGN</a></li>
+            <li onClick={()=>(this.props.router.push("start-a-campaign"))} className="header-create-button">START A CAMPAIGN</li>
             <li onClick={this.signUpButton.bind(this)}>Sign Up</li>
             <li onClick={this.logInButton.bind(this)}>Log In</li>
           </ul>
@@ -83,4 +84,4 @@ import SignUpForm from './sign_up_form';
  	  }
  }
 
- export default SignIn;
+ export default withRouter(SignIn);

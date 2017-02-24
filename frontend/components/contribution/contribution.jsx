@@ -47,8 +47,7 @@ class Contribution extends React.Component{
       contribution['amount'] = perk.price;
     }
     this.props.createContribution(contribution).then(
-      res=> (this.props.router.push(`campaign/${contribution.campaign_id}`))
-      ,console.log);
+      res=> (this.props.router.push(`campaign/${contribution.campaign_id}`)));
 
   }
 
@@ -74,7 +73,7 @@ class Contribution extends React.Component{
   }
 
   componentWillReceiveProps(newProps){
-    // console.log
+    // // console.log
     const perk_id = newProps.location.state.perk_id
     if(perk_id !== undefined){
       // debugger

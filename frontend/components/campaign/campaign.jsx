@@ -19,13 +19,13 @@ class Campaign extends React.Component{
   }
 
   componentDidMount(){
-    // console.log("did mount");
+    // // console.log("did mount");
     // debugger
     this.props.fetchCampaign(this.cid);
   }
 
   componentWillReceiveProps(newProps){
-    // console.log("new props -> new camp")
+    // // console.log("new props -> new camp")
     // debugger
     if(this.preview) return;
 

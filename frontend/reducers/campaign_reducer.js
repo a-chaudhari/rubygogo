@@ -7,7 +7,7 @@ const CampaignReducer = (state={editor: {}, updates:[], comments:[], errors:{}},
   switch(action.type){
 
     case RECEIVE_CAMPAIGN:
-      console.log("received campaign");
+      // console.log("received campaign");
       // debugger
       return merge({},state,action.campaign);
 
@@ -24,7 +24,7 @@ const CampaignReducer = (state={editor: {}, updates:[], comments:[], errors:{}},
       return merge({}, state,{updates: action.updates})
 
     case RECEIVE_UPDATE:
-      console.log("receve update in reducer")
+      // console.log("receve update in reducer")
       let stateCopy = merge({},state);
       stateCopy.updates.unshift(action.update);
       return stateCopy;
@@ -39,7 +39,7 @@ const CampaignReducer = (state={editor: {}, updates:[], comments:[], errors:{}},
 
     case RECEIVE_COMMENT:
       // debugger
-      console.log("RECEIVE COMMENT FIRED")
+      // console.log("RECEIVE COMMENT FIRED")
       let stateCopyTwo = merge({},state,{comments:null},{comments:[]});
       // if(state)
       //does not take into account new child comments!

@@ -19,7 +19,7 @@ class Perk extends React.Component{
   }
 
   donate(pid){
-    // console.log("perk donate button")
+    // // console.log("perk donate button")
     // debugger
     // const cid = this.props.params.
     return ()=>this.props.router.push({pathname:'/contribute', state: {'campaign_id': this.props.params.campaign_id, 'perk_id': pid}});

@@ -55,7 +55,7 @@ class Comments extends React.Component{
   }
 
   componentWillReceiveProps(newProps){
-    console.log("new props in comments")
+    // console.log("new props in comments")
     if(newProps.campaign.comments === undefined){
       return;
     }
@@ -67,7 +67,7 @@ class Comments extends React.Component{
 
   getMoreComments(){
     const last_comment = this.state.comments.slice(-1)[0];
-    console.log(last_comment)
+    // console.log(last_comment)
     this.props.fetchComments(this.props.campaign.id,last_comment.created_at)
   }
 
@@ -83,7 +83,7 @@ class Comments extends React.Component{
       let children_items = null;
       let cname = "comment-entry" + (children ? " comment-entry-child" : "");
       if(comment.children.length > 0){
-        console.log("printing children")
+        // console.log("printing children")
         children_items = this.printComments(comment.children, true);
       }
       // debugger
@@ -116,7 +116,7 @@ class Comments extends React.Component{
   render(){
     // if(this.props.campaign.comments)
     // debugger
-    console.log(this.state.openReplyBoxes)
+    // console.log(this.state.openReplyBoxes)
     return(
       <div className="comments-container">
         {this.newCommentForm()}

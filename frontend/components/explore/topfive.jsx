@@ -28,20 +28,20 @@ class TopFive extends React.Component{
   }
 
   movementDoneRight(){
-    console.log("movement done right")
+    // console.log("movement done right")
     // this.setState({move:false});
     this.state.camps.unshift(this.state.camps.pop())
     this.setState({move:false, camps:this.state.camps})
   }
   movementDoneLeft(){
-    console.log("movement done left")
+    // console.log("movement done left")
     // this.setState({move:false});
     this.state.camps.push(this.state.camps.shift())
     this.setState({move:false, camps:this.state.camps})
   }
 
   componentWillReceiveProps(newProps){
-    console.log("new props in topfive")
+    // console.log("new props in topfive")
     this.setState({camps:newProps.topfive})
     // const elm = document.getElementById('featuretopfive')
     // debugger
@@ -55,10 +55,10 @@ class TopFive extends React.Component{
 
   scrollerClick(idx){
     return (e)=>{
-      // console.log("registeredscroller click!")
-      console.log(idx+" is clicked")
+      // // console.log("registeredscroller click!")
+      // console.log(idx+" is clicked")
       if(idx === 3){
-        // console.log("3 clicked, so shift left")
+        // // console.log("3 clicked, so shift left")
         // debugger
         // this.state.camps.push(this.state.camps.shift())
         // this.setState({camps:this.state.camps})
@@ -66,13 +66,13 @@ class TopFive extends React.Component{
 
       }
       else if(idx==1){
-        // console.log("1 clicked, so shift right")
+        // // console.log("1 clicked, so shift right")
         // this.state.camps.unshift(this.state.camps.pop())
         // this.setState({camps:this.state.camps})
         this.setState({move:true, dir:'right'});
       }
       else if(idx ===2){
-        // console.log("center click. trying something new...");
+        // // console.log("center click. trying something new...");
       }
     }
   }
@@ -139,7 +139,7 @@ class TopFive extends React.Component{
     // if(this.state.camps.length === 0){
     //   return null;
     // }
-    this.state.camps.forEach(camp=>(console.log(camp.id)))
+    // this.state.camps.forEach(camp=>( console.log(camp.id)))
     return(
       <div>
 

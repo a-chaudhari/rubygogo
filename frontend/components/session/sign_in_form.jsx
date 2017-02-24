@@ -8,7 +8,7 @@ import React from 'react'
         password: '',
         errors: ''
       };
-      console.log(this.props.errors);
+      // console.log(this.props.errors);
  	  }
 
     componentWillReceiveProps(newProps){

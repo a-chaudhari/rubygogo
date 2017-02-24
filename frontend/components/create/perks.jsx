@@ -25,7 +25,7 @@ class Perks extends React.Component{
 
 
   componentWillReceiveProps(newProps){
-    console.log("new props in perks ")
+    // console.log("new props in perks ")
   }
 
   editPerkHandler(id){
@@ -97,9 +97,9 @@ class Perks extends React.Component{
 
   savePerk(e){
     e.preventDefault();
-    console.log("in save perk")
+    // console.log("in save perk")
     if(!this.validate()){
-      console.log("failed validation")
+      // console.log("failed validation")
       return;
     }
     if(this.state.perk.id === -1){
@@ -148,8 +148,8 @@ class Perks extends React.Component{
   }
 
   deletePerk(){
-    console.log("in delete perk")
-    console.log(this.state.perk)
+    // console.log("in delete perk")
+    // console.log(this.state.perk)
     this.props.deletePerk(this.state.perk.id).then(this.cancelChanges())
   }
 

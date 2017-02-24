@@ -34,7 +34,7 @@ class Category extends React.Component{
   }
 
   componentWillReceiveProps(newProps){
-    console.log("new props!")
+    // console.log("new props!")
     // debugger
     if(newProps.params.category_id !== this.state.category){
       // debugger
@@ -147,7 +147,7 @@ class Category extends React.Component{
 
   render(){
     // debugger
-    // console.log(this.state.camps)
+    // // console.log(this.state.camps)
     if(this.props.category.categories.length===0){
       return null;
     }

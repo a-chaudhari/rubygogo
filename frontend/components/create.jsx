@@ -17,7 +17,7 @@ class Create extends React.Component{
   }
 
   submitForm(e){
-    console.log("in submit form")
+    // console.log("in submit form")
     e.preventDefault();
     this.props.createCampaign(this.state).then(res=>(this.props.router.push(`/editor/${res.editor.id}`)))
   }

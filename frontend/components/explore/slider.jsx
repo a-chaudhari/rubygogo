@@ -46,13 +46,13 @@ class Slider extends React.Component{
     }
     // debugger
     return(e)=>{
-      console.log(cate + " " + nmode)
+      // console.log(cate + " " + nmode)
       this.fetchCampsUsingFilters(cate,nmode).then(this.setState({mode: mode}))
     }
   }
 
   sliderLeft(){
-    console.log("slidingleft")
+    // console.log("slidingleft")
     let newIdx = this.state.index-4;
     if(newIdx < 0 ){
       newIdx += this.props.category.length;
@@ -62,7 +62,7 @@ class Slider extends React.Component{
   }
 
   sliderRight(){
-    console.log("slidingright")
+    // console.log("slidingright")
     let newIdx = this.state.index+4;
     if(newIdx > this.props.category.length){
       newIdx -= this.props.category.length
@@ -94,7 +94,7 @@ class Slider extends React.Component{
       tilesToAdd.push(this.props.category[newIdx])
       indexToAdd.push(newIdx)
     }
-    console.log(indexToAdd)
+    // console.log(indexToAdd)
     const tiles = tilesToAdd.map((camp,idx)=>(
       <CampaignTile key={"slidetile"+idx} campaign={camp}/>
     ))

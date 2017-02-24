@@ -40,7 +40,7 @@ class Editor extends React.Component{
   }
 
   componentWillReceiveProps(newProps){
-    console.log(newProps.errors)
+    // console.log(newProps.errors)
     const e = newProps.editor;
     this.setState({editor:newProps.editor, overviewURL:e.overview_img_url, cardURL:e.campaign_card_img_url, mainURL:e.main_img_url})
   }
@@ -74,8 +74,8 @@ class Editor extends React.Component{
   saveCampaign(addl={}){
     // debugger
     if(!this.validation()){
-      console.log("validation failed")
-      // console.log(this.state.errors)
+      // console.log("validation failed")
+      // // console.log(this.state.errors)
       return;
     }
     let formData = new FormData();
@@ -311,12 +311,12 @@ class Editor extends React.Component{
 
   render(){
     // debugger
-    console.log("editor render")
+    // console.log("editor render")
     // debugger
     if(this.props.editor === undefined || this.props.editor.title === undefined){
       return null;
     }
-    console.log(this.state.errors)
+    // console.log(this.state.errors)
     let content = "";
 
     switch(this.state.mode){
