@@ -26,7 +26,9 @@ class DynamicBox extends React.Component{
                         fetchCampaignUpdates={this.props.fetchCampaignUpdates}/>);
 
       case 'backers':
-        return(<Backers campaign={this.props.campaign} fetchCampaignBackers={this.props.fetchCampaignBackers}/>);
+        return(<Backers campaign={this.props.campaign}
+                        totalNum={this.props.campaign.contributors}
+                        fetchCampaignBackers={this.props.fetchCampaignBackers}/>);
 
       case 'comments':
         return(<Comments createComment={this.props.createComment}

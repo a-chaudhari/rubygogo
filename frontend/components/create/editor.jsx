@@ -26,7 +26,8 @@ class Editor extends React.Component{
       cardURL:null,
       mainFile:null,
       mainURL:null,
-      errors:{}
+      errors:{},
+      ready: false
     };
   }
 
@@ -50,6 +51,8 @@ class Editor extends React.Component{
   // }
 
   createHeader(){
+    let launchTitle = (this.state.ready ? "launch campaign" : "Not Ready, Missing Info")
+
     return(
       <div className="editor-topheader clearfix">
         <h1>campaign /</h1> <h1> {this.state.mode}</h1>
@@ -60,6 +63,7 @@ class Editor extends React.Component{
         </div>
       </div>
     );
+    // <button className={(!this.state.ready ? "editor-launch-disabled" : "")} disabled={!this.state.ready} onClick={this.launchCampaign.bind(this)}>{launchTitle}</button>
   }
 
   launchCampaign(){
@@ -182,7 +186,7 @@ class Editor extends React.Component{
       clear=false;
       output['pitch_text']="A Campaign Pitch is required"
     }
-    this.setState({errors:output});
+    this.setState({ready:clear, errors:output});
     return clear;
 
   }

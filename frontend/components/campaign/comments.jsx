@@ -5,7 +5,8 @@ class Comments extends React.Component{
     super(props);
     this.state={
       body: "",
-      comments: []
+      comments: [],
+      openReplyBoxes:{}
     };
   }
 
@@ -29,7 +30,7 @@ class Comments extends React.Component{
         // this.setState({comments: this.state.comments.unshift(res.comment)})
   }
 
-  newCommentForm(){
+  newCommentForm(parent_id=null){
     let cname = "submit-comment-button"
     if(this.state.body.length > 0 && this.state.body.length <= 500){
       cname += " button-enabled";
@@ -70,6 +71,12 @@ class Comments extends React.Component{
     this.props.fetchComments(this.props.campaign.id,last_comment.created_at)
   }
 
+  enableReplyButton(id){
+    return (e)=>(this.setState({openReplyBoxes:
+      Object.assign(this.state.openReplyBoxes,{[id]:(!!!this.state.openReplyBoxes[id])})
+    }))
+  }
+
   printComments(comments, children=false){
     // debugger
     return comments.map((comment,idx)=>{
@@ -79,6 +86,8 @@ class Comments extends React.Component{
         console.log("printing children")
         children_items = this.printComments(comment.children, true);
       }
+      // debugger
+      const replyform = ( !!this.state.openReplyBoxes[comment.id] ? this.newCommentForm(comment.id) : "")
 
       return(
           <div key={idx} className={cname}>
@@ -99,10 +108,15 @@ class Comments extends React.Component{
       );
     });
   }
+  // {comment.parent_id === null && (<button onClick={this.enableReplyButton(comment.id).bind(this)}>Reply</button>)}
+  // {comment.parent_id === null && replyform}
+
+
 
   render(){
     // if(this.props.campaign.comments)
     // debugger
+    console.log(this.state.openReplyBoxes)
     return(
       <div className="comments-container">
         {this.newCommentForm()}

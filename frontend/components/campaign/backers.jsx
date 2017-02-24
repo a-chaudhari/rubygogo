@@ -55,11 +55,15 @@ class Backers extends React.Component{
     }
     // debugger
 
+    const morebutton = (<div onClick={this.getMoreBackers.bind(this)} className="see-more-button"> <span>See More Backers</span></div>);
+
+    console.log(this.props.totalNum )
+    console.log( this.state.backers.length)
     return(
       // debugger
       <div className="backers-container">
         {this.getBackers()}
-        <div onClick={this.getMoreBackers.bind(this)} className="see-more-button"> <span>See More Backers</span></div>
+        {(this.props.totalNum > this.state.backers.length) && morebutton}
       </div>
     );
   }
