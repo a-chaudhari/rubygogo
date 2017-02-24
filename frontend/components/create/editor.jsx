@@ -117,7 +117,11 @@ class Editor extends React.Component{
   // <Campaign/>
   //
   inputGen(name,field,hash,type='text'){
-    const counter = (<span>{this.state[hash][field].length}</span>)
+    // debugger
+    let counter = 0;
+    if(this.state[hash][field] !== null){
+      counter = (<span>{this.state[hash][field].length}</span>)
+    }
     return(
       <div className="editor-generated-input">
 
@@ -302,6 +306,8 @@ class Editor extends React.Component{
 
 
   render(){
+    // debugger
+    console.log("editor render")
     // debugger
     if(this.props.editor === undefined || this.props.editor.title === undefined){
       return null;

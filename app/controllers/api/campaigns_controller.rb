@@ -18,6 +18,7 @@ class Api::CampaignsController < ApplicationController
     camp = Campaign.new(new_params)
     camp.user = current_user
     camp.duration = 60
+    camp.category="tech"
     camp.funding_type="fixed"
     if camp.save
       render json: camp
@@ -38,6 +39,7 @@ class Api::CampaignsController < ApplicationController
       return
     end
 
+    # debugger
     # debugger
     # output = camp.attributes
     # output[:]
