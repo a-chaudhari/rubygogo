@@ -19,9 +19,12 @@ class TopFive extends React.Component{
 
   }
 
-  movementDone(){
-    if(this.state.dir =='right') this.movementDoneRight();
-    else if(this.state.dir =='left') this.movementDoneLeft();
+  movementDone(e){
+    // debugger
+    if(e.animationName === 'moveleft' || e.animationName === 'moveright'){
+      if(this.state.dir =='right') this.movementDoneRight();
+      else if(this.state.dir =='left') this.movementDoneLeft();
+    }
   }
 
   movementDoneRight(){
@@ -52,9 +55,10 @@ class TopFive extends React.Component{
 
   scrollerClick(idx){
     return (e)=>{
+      // console.log("registeredscroller click!")
       console.log(idx+" is clicked")
       if(idx === 3){
-        console.log("3 clicked, so shift left")
+        // console.log("3 clicked, so shift left")
         // debugger
         // this.state.camps.push(this.state.camps.shift())
         // this.setState({camps:this.state.camps})
@@ -62,13 +66,13 @@ class TopFive extends React.Component{
 
       }
       else if(idx==1){
-        console.log("1 clicked, so shift right")
+        // console.log("1 clicked, so shift right")
         // this.state.camps.unshift(this.state.camps.pop())
         // this.setState({camps:this.state.camps})
         this.setState({move:true, dir:'right'});
       }
       else if(idx ===2){
-        console.log("center click. trying something new...");
+        // console.log("center click. trying something new...");
       }
     }
   }
@@ -83,17 +87,31 @@ class TopFive extends React.Component{
     return(e)=>(this.props.router.push(`/campaign/${id}`));
   }
 
+  fadeInClassGen(id){
+    if(this.state.move){
+      if(this.state.dir === 'left' && id===3) return " topfive-details-fadein";
+      if(this.state.dir === 'right' && id===1) return " topfive-details-fadein";
+      if(this.state.move && id === 2) return " topfive-details-fadeout"
+    }
+    return "";
+  }
+
+  // fadeOutClassGen(id){
+  //   return "";
+  // }
+
   renderScroller(){
+
     const imageDivs= this.state.camps.map((top,idx)=>(
       <div key={"topfive"+idx} className="feature-topfive-imagediv">
         <img src={top.main_img_url}/>
         <div onClick={this.scrollerClick(idx).bind(this)} className={"feature-topfive-floatingimgdiv" + ` floatingimg-${idx}`}>
-          <div className={"feature-topfive-floatingdetails" + (this.state.index === idx ? " feature-floatingdetails-shown" : "")}>
-            <div className="topfive-desc">
+          <div className="feature-topfive-floatingdetails">
+            <div className={"topfive-desc"  + (idx===2 ? " topfive-desc-visible" : "")+ this.fadeInClassGen(idx)}>
               <strong>{top.title}</strong>
               {top.tagline}
             </div>
-            <div onClick={this.moveToImage(top.id).bind(this)} className="topfive-learnmore">See Campaign</div>
+            <div onClick={this.moveToImage(top.id).bind(this)} className={"topfive-learnmore"  + (idx===2 ? " topfive-desc-visible" : "")+ this.fadeInClassGen(idx)}>See Campaign</div>
           </div>
         </div>
       </div>
@@ -121,6 +139,7 @@ class TopFive extends React.Component{
     // if(this.state.camps.length === 0){
     //   return null;
     // }
+    this.state.camps.forEach(camp=>(console.log(camp.id)))
     return(
       <div>
 

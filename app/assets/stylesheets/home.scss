@@ -68,15 +68,25 @@
 
             font-family: $indie-font-family;
             .topfive-desc{
-              margin-top: 250px;
+              opacity: 0.0;
+              // position: absolute;
+              margin-top: 230px;
+              margin-left: 30px;
+              // bottom: 80px;
+              letter-spacing: 1px;
+              vertical-align: top;
+              // left: 0;
               display: inline-block;
+              font-size: 14px;
               strong{
                 display: block;
+                margin-bottom: 5px;
               }
               width: 60%;
-              border: 1px solid white;
+              // border: 1px solid white;
             }
             .topfive-learnmore{
+              opacity: 0.0;
               display: inline-block;
               position: absolute;
               bottom: 70px;
@@ -96,23 +106,36 @@
               background-color: white;
               color: $indie-gray;
             }
+            .topfive-desc-visible{
+              opacity: 1.0;
+            }
             // background-color: green;
             // flex-direction: row-reverse;
           }
-          .feature-floatingdetails-shown{
-            // display: inline-block;
-            // display: flex;
+          // .feature-floatingdetails-shown{
+          //   // display: inline-block;
+          //   // display: flex;
+          // }
+          .topfive-details-fadein{
+            animation-name: fadein;
+            animation-duration: 0.5s;
+          }
+          @keyframes fadein{
+            0%{opacity: 0.0;}
+            100%{opacity: 1.0;}
+          }
+          .topfive-details-fadeout{
+            animation-name: fadeout;
+            animation-duration: 0.5s;
+          }
+          @keyframes fadeout{
+            0%{opacity: 1.0;}
+            100%{opacity: 0.0;}
           }
 
         }
-        > img{
-          // position:absolute;
-          // z-index:-1;
-          // top:50%;
-          // left:50%;
-          // width:100%;
-          // transform:translate(-50%, -50%);
-          // &.max{ width:auto; height:100%; }
+        .floatingimg-1,.floatingimg-3{
+          cursor: pointer;
         }
       }
     }
@@ -123,7 +146,7 @@
     animation-name: moveright;
     // position: relative;
     // position: absolute;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
   }
   @keyframes moveright{
     0% {}
@@ -135,7 +158,7 @@
     animation-name: moveleft;
     // position: relative;
     // position: absolute;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
   }
   @keyframes moveleft{
     0% {}
