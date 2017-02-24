@@ -98,10 +98,12 @@ class ProfileEdit extends React.Component{
           </label>
           </div>
           <div><h2>Your Photos</h2>
+          <label>Avatar Image</label>
             <div className="profile-image-uploader avatar-img">
               <img src={this.state.avatarURL}/>
               <input className="big-filepicker" type="file" onChange={this.updateFile('avatar').bind(this)}/>
             </div>
+            <label>Profile Image</label>
             <div className="profile-image-uploader profile-img">
               <img src={this.state.profileURL}/>
               <input className="big-filepicker" type="file" onChange={this.updateFile('profile').bind(this)}/>
