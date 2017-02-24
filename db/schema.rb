@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222191805) do
+ActiveRecord::Schema.define(version: 20170224143703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170222191805) do
     t.integer  "user_id",                                          null: false
     t.integer  "goal_amount",                                      null: false
     t.string   "currency",                       default: "USD",   null: false
-    t.string   "tagline"
+    t.string   "tagline",                        default: ""
     t.integer  "duration",                                         null: false
     t.string   "funding_type",                                     null: false
     t.string   "video_url"
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20170222191805) do
     t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "overview_text"
-    t.text     "pitch_text"
+    t.text     "overview_text",                  default: ""
+    t.text     "pitch_text",                     default: ""
     t.datetime "start_date"
     t.datetime "end_date"
     t.string   "overview_img_file_name"
@@ -84,13 +84,13 @@ ActiveRecord::Schema.define(version: 20170222191805) do
   add_index "contributions", ["user_id"], name: "index_contributions_on_user_id", using: :btree
 
   create_table "perks", force: :cascade do |t|
-    t.string   "title",                      null: false
-    t.text     "description",                null: false
-    t.integer  "campaign_id",                null: false
-    t.integer  "price",                      null: false
-    t.integer  "number_claimed", default: 0, null: false
-    t.integer  "total_number",               null: false
-    t.string   "eta"
+    t.string   "title",                       null: false
+    t.text     "description",                 null: false
+    t.integer  "campaign_id",                 null: false
+    t.integer  "price",                       null: false
+    t.integer  "number_claimed", default: 0,  null: false
+    t.integer  "total_number",                null: false
+    t.string   "eta",            default: ""
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -108,19 +108,19 @@ ActiveRecord::Schema.define(version: 20170222191805) do
   add_index "updates", ["campaign_id"], name: "index_updates_on_campaign_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                    null: false
-    t.string   "password_digest",          null: false
-    t.string   "session_token",            null: false
-    t.string   "firstName",                null: false
-    t.string   "lastName",                 null: false
+    t.string   "email",                                 null: false
+    t.string   "password_digest",                       null: false
+    t.string   "session_token",                         null: false
+    t.string   "firstName",                             null: false
+    t.string   "lastName",                              null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "address"
-    t.string   "city"
+    t.string   "address",                  default: ""
+    t.string   "city",                     default: ""
     t.integer  "postal_code"
-    t.text     "short_desc"
-    t.text     "about_me"
-    t.string   "country"
+    t.text     "short_desc",               default: ""
+    t.text     "about_me",                 default: ""
+    t.string   "country",                  default: ""
     t.string   "profile_img_file_name"
     t.string   "profile_img_content_type"
     t.integer  "profile_img_file_size"

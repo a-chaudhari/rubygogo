@@ -24,7 +24,7 @@ import HomeContainer from './home_container';
 const Root = (props) =>{
   return(
     <Provider store={props.store}>
-      <Router history={hashHistory}>
+      <Router onUpdate={() => window.scrollTo(0, 0)} history={hashHistory}>
         <Route path='/' component={App}>
           <IndexRoute component={HomeContainer}/>
           <Root path='home' component={HomeContainer}/>

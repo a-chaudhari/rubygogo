@@ -94,7 +94,7 @@ class Editor extends React.Component{
     }
 
     addl_keys.forEach((key)=>{
-      formData.append(key,addl[key])
+      formData.append(`campaign[${key}]`,addl[key])
     })
 
     // return
@@ -128,7 +128,7 @@ class Editor extends React.Component{
         <div>
           <label>{name}</label>
           <input type={type} value={this.state[hash][field]} onChange={this.update(field,hash)}/>
-          <span>{this.state.errors.title}</span>
+          <span className="editor-error-span">{this.state.errors[field]}</span>
           {type === 'number' ? "" : counter }
         </div>
       </div>
@@ -180,7 +180,7 @@ class Editor extends React.Component{
     }
     if(e.pitch_text.length  ===  0 ){
       clear=false;
-      otuput['pitch_text']="A Campaign Pitch is required"
+      output['pitch_text']="A Campaign Pitch is required"
     }
     this.setState({errors:output});
     return clear;
