@@ -32,7 +32,7 @@ class TopChunk extends React.Component{
 
     return(
       <div className="campaign-TopChunk">
-        <img src={camp.main_img_url}/>
+        <img className="campaign-TopChunk-mainimg" src={camp.main_img_url}/>
         <div className="campaign-TopChunk-right">
           <h1>{camp.title}</h1>
           <h2>{camp.tagline}</h2>

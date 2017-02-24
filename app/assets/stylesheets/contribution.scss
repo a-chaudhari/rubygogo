@@ -39,16 +39,19 @@
       display: flex;
       // flex-direction: row;
       img{
-        height: 50px;
-        width: 50px;
+        height: 90px;
+        width: 90px;
+        clip-path: circle(35% at 50% 50%);
       }
       ul{
+        margin-top: 10px;
         margin-left: 20px;
         list-style: none;
         display: flex;
         flex-direction: column;
-        height: 100%;
-        justify-content: space-between;
+        // align-content: center;
+        height: 70%;
+        justify-content: center;
       }
     }
 

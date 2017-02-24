@@ -46,7 +46,7 @@ class TopFive extends React.Component{
 
   }
   componentWillUnmount(){
-    const elm = document.getElementById('featuretopfive')
+    const elm = this.topfive;
     elm.removeEventListener('animationend',this.movementDone);
   }
 
@@ -79,12 +79,22 @@ class TopFive extends React.Component{
   //   )
   // }
 
+  moveToImage(id){
+    return(e)=>(this.props.router.push(`/campaign/${id}`));
+  }
+
   renderScroller(){
     const imageDivs= this.state.camps.map((top,idx)=>(
       <div key={"topfive"+idx} className="feature-topfive-imagediv">
         <img src={top.main_img_url}/>
         <div onClick={this.scrollerClick(idx).bind(this)} className={"feature-topfive-floatingimgdiv" + ` floatingimg-${idx}`}>
-          <div className={"feature-topfive-floatingdetails" + (this.state.index === idx ? " feature-floatingdetails-shown" : "")}>{top.title}</div>
+          <div className={"feature-topfive-floatingdetails" + (this.state.index === idx ? " feature-floatingdetails-shown" : "")}>
+            <div className="topfive-desc">
+              <strong>{top.title}</strong>
+              {top.tagline}
+            </div>
+            <div onClick={this.moveToImage(top.id).bind(this)} className="topfive-learnmore">See Campaign</div>
+          </div>
         </div>
       </div>
     ))
@@ -124,6 +134,7 @@ class TopFive extends React.Component{
 
 import { connect  } from 'react-redux';
 import {fetchTopFive} from '../../actions/feature_actions';
+import {withRouter} from 'react-router';
 
 const mapStateToProps = (state, ownProps) =>{
   // debugger
@@ -146,4 +157,4 @@ const mapDispatchToProps = (dispatch, ownProps) =>{
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(TopFive);
+)(withRouter(TopFive));

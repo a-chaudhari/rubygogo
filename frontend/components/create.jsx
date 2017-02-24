@@ -42,12 +42,12 @@ class Create extends React.Component{
         <form onSubmit={this.submitForm.bind(this)}>
           <label>How much money would you like to raise?
             <input type="number" value={this.state.goal_amount} onChange={this.update('goal_amount')}/>
+            <span>Minimum 500 Dollars</span>
           </label>
-          <span>Minimum 500 Dollars</span>
           <label>What is the title of your Campaign?
             <input maxLength="50" placeholder="My campaign title..." value={this.state.title} onChange={this.update('title')}/>
+            <span>50 Characters Maximum</span>
           </label>
-          <span>50 Characters Maximum</span>
           <button disabled={!active} className={"newcampaign-create-button" + (active? "" : " disabled-button")}>Create My Campaign</button>
         </form>
       </div>

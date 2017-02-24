@@ -10,10 +10,15 @@
 
   .tile-image{
     width: 100%;
-    height: auto;
+    height: 283px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
     img{
-      width: 100%;
-      height: auto;
+      // width: 100%;
+      height: 100%;
+      // width: 100%;
+      // height: auto;
     }
   }
 

@@ -32,6 +32,11 @@
       // height: 460px;
       // box-sizing: border-box;
     }
+    .campaign-TopChunk-mainimg{
+      height: 420px;
+      width: 615px;
+      // height: 20px;
+    }
 
     .campaign-TopChunk-right{
       // border: 1px solid black;
@@ -55,8 +60,8 @@
         // border: 1px solid black;
         font-size: 12px;
         img{
-          // width: 90px;
-          // height: 90px;
+          width: 90px;
+          height: 90px;
           // margin-right: 10px;
           clip-path: circle(35% at 50% 50%);
         }

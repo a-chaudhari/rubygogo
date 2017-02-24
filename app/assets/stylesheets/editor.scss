@@ -30,8 +30,13 @@
       font-size: 16px;
       border: 1px solid $indie-lightgray;
       padding-left: 20px;
-      margin-bottom: 50px;
+      // margin-bottom: 50px;
       color: $indie-xgray;
+    }
+    span{
+      display: inline-block;
+      margin-top: 10px;
+      margin-bottom: 50px;
     }
     label:first-of-type > input{
       width: 150px;
@@ -313,6 +318,23 @@
       .card-img{
         width: 400px;
         height: 400px;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        img{
+          // width: 100%;
+          // height: auto;
+          // height: 100%;
+          width: auto;
+          // height: 100%;
+          position: absolute;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+          // top: -50%;
+
+        }
       }
 
     }

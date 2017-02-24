@@ -5,6 +5,27 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+sf=["https://s3.amazonaws.com/rubygogo-pro/seed_files/ama-dablam-2064522_1280.jpg",
+"https://s3.amazonaws.com/rubygogo-pro/seed_files/baskets-2028298_1280.jpg",
+"https://s3.amazonaws.com/rubygogo-pro/seed_files/grass-2031664_640.jpg",
+"https://s3.amazonaws.com/rubygogo-pro/seed_files/hot-air-balloons-1984308_1280.jpg",
+"https://s3.amazonaws.com/rubygogo-pro/seed_files/ice-2062433_1280.jpg",
+"https://s3.amazonaws.com/rubygogo-pro/seed_files/incense-1961430_1280.jpg",
+"https://s3.amazonaws.com/rubygogo-pro/seed_files/loco-1897635_1280.jpg",
+"https://s3.amazonaws.com/rubygogo-pro/seed_files/lone-tree-1934897_1280.jpg",
+"https://s3.amazonaws.com/rubygogo-pro/seed_files/milk-splash-2064088_1280.jpg",
+"https://s3.amazonaws.com/rubygogo-pro/seed_files/monument-2011140_1280.jpg",
+"https://s3.amazonaws.com/rubygogo-pro/seed_files/peacock-1973546_1280.jpg",
+"https://s3.amazonaws.com/rubygogo-pro/seed_files/plouzane-1758197_1280.jpg",
+"https://s3.amazonaws.com/rubygogo-pro/seed_files/raspberry-2023404_1280.jpg",
+"https://s3.amazonaws.com/rubygogo-pro/seed_files/salad-2068220_1280.jpg",
+"https://s3.amazonaws.com/rubygogo-pro/seed_files/sculpture-2013048_1280.jpg",
+"https://s3.amazonaws.com/rubygogo-pro/seed_files/shish-kebab-417994_640.jpg",
+"https://s3.amazonaws.com/rubygogo-pro/seed_files/strawberries-1339969_640.jpg",
+"https://s3.amazonaws.com/rubygogo-pro/seed_files/swan-2077219_1280.jpg",
+"https://s3.amazonaws.com/rubygogo-pro/seed_files/szechenyi-chain-bridge-1758196_1280.jpg",
+"https://s3.amazonaws.com/rubygogo-pro/seed_files/tulips-2048324_1280.jpg",
+"https://s3.amazonaws.com/rubygogo-pro/seed_files/water-lily-1893220_1280.jpg"]
 
 cats = []
 
@@ -108,6 +129,8 @@ users = [];
     city: Faker::Address.city,
     postal_code: Faker::Address.postcode,
     short_desc: Faker::ChuckNorris.fact,
+    avatar_img: sf.sample,
+    profile_img: sf.sample,
     about_me: Faker::Hipster.paragraph(20),
     country: Faker::Address.country
   )
@@ -121,6 +144,8 @@ amit = User.create!(
   firstName: 'Amit',
   lastName: 'Chaudhari',
   address: '4 Sapphire Dr',
+  avatar_img: sf.sample,
+  profile_img: sf.sample,
   city: 'Marlboro',
   postal_code: '07746',
   short_desc: 'A really cool guy',
@@ -133,6 +158,8 @@ guest = User.create!(
   email: 'guest@example.com',
   password: 'password',
   firstName: 'Guest',
+  avatar_img: sf.sample,
+  profile_img: sf.sample,
   lastName: 'User',
   address: Faker::Address.street_address,
   city: Faker::Address.city,
@@ -151,7 +178,7 @@ Comment.destroy_all
 
 100.times do
   # user = users.sample
-  user=amit
+  user=users.sample
   camp = Campaign.create!(
     title: Faker::Commerce.unique.product_name,
     user_id: user.id,
@@ -161,6 +188,9 @@ Comment.destroy_all
     status: 'open',
     funding_type: ['flexible','fixed'].sample,
     category_id: cats.drop(1).sample.id,
+    overview_img: sf.sample,
+    campaign_card_img: sf.sample,
+    main_img: sf.sample,
     overview_text: Faker::Hipster.paragraph,
     pitch_text: Faker::Hipster.paragraph(30)
   )
