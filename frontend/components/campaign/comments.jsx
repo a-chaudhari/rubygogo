@@ -43,6 +43,9 @@ class Comments extends React.Component{
     if(this.props.session.id === undefined){
       textarea=(<span style={{display: 'block'}}>You need to login first.</span>)
     }
+    else if(this.props.campaign.is_backer !== true){
+      textarea=(<span style={{display: 'block'}}>You need to back this project first.</span>)
+    }
     return(
       <div className="comment-create-container">
         <form className="clearfix" onSubmit={this.submitForm.bind(this)}>

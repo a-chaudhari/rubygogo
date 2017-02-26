@@ -15,6 +15,8 @@ json.stats do
   # json.backers @campaign.contributions.count
 end
 
+json.is_backer @campaign.contributors.include?(current_user)
+
 
 json.creator do
   json.partial! '/api/users/user', user: @campaign.user
