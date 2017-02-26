@@ -27,7 +27,6 @@ class Comments extends React.Component{
           this.setState({body:"",comments: [res.comment].concat(this.state.comments)})
         )
       )
-        // this.setState({comments: this.state.comments.unshift(res.comment)})
   }
 
   newCommentForm(parent_id=null){
@@ -58,7 +57,6 @@ class Comments extends React.Component{
   }
 
   componentWillReceiveProps(newProps){
-    // console.log("new props in comments")
     if(newProps.campaign.comments === undefined){
       return;
     }
@@ -70,7 +68,6 @@ class Comments extends React.Component{
 
   getMoreComments(){
     const last_comment = this.state.comments.slice(-1)[0];
-    // console.log(last_comment)
     this.props.fetchComments(this.props.campaign.id,last_comment.created_at)
   }
 
@@ -81,15 +78,12 @@ class Comments extends React.Component{
   }
 
   printComments(comments, children=false){
-    // debugger
     return comments.map((comment,idx)=>{
       let children_items = null;
       let cname = "comment-entry" + (children ? " comment-entry-child" : "");
       if(comment.children.length > 0){
-        // console.log("printing children")
         children_items = this.printComments(comment.children, true);
       }
-      // debugger
       const replyform = ( !!this.state.openReplyBoxes[comment.id] ? this.newCommentForm(comment.id) : "")
 
       return(
@@ -111,15 +105,9 @@ class Comments extends React.Component{
       );
     });
   }
-  // {comment.parent_id === null && (<button onClick={this.enableReplyButton(comment.id).bind(this)}>Reply</button>)}
-  // {comment.parent_id === null && replyform}
-
 
 
   render(){
-    // if(this.props.campaign.comments)
-    // debugger
-    // console.log(this.state.openReplyBoxes)
     return(
       <div className="comments-container">
         {this.newCommentForm()}

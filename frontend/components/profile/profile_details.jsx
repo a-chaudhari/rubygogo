@@ -42,10 +42,6 @@ class ProfileDetails extends React.Component{
   }
 }
 
-// <li><strong>{u.stats.campaigns}</strong> Campaigns</li>
-// <li><strong>{u.stats.comments}</strong>Comments</li>
-// <li><strong>{u.stats.contributions}</strong> Contributions</li>
-
 import { connect  } from 'react-redux';
 import { fetchUser } from '../../actions/user_actions';
 

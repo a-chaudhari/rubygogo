@@ -19,21 +19,16 @@ class Perk extends React.Component{
   }
 
   donate(pid){
-    // // console.log("perk donate button")
-    // debugger
-    // const cid = this.props.params.
     return ()=>this.props.router.push({pathname:'/contribute', state: {'campaign_id': this.props.params.campaign_id, 'perk_id': pid}});
   }
 
   render(){
-    // debugger
     const p = this.props.perk
     const remaining = p.number_claimed + " out of " + p.total_number + " claimed"
 
     const eta = "estimated "+p.eta;
     let etaClass="perk-eta-selected";
     if(!this.state.hover){
-      // eta="GET THIS PERK";
       etaClass += " perk-eta-hidden";
     }
 

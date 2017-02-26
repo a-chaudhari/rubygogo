@@ -10,11 +10,7 @@ const SessionReducer = (state={errors:[]},action)=>{
       return {};
 
     case RECEIVE_SESSION_ERRORS:
-      // debugger
       return merge({},state,action.errors.responseJSON)
-    //
-    // case UPDATE_SESSION:
-    //   return merge({},state,action.session);
 
     default:
       return state;

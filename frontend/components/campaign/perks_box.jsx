@@ -7,7 +7,6 @@ class PerksBox extends React.Component{
   }
 
   perks(){
-    // debugger
     return this.props.perks.map((perk,idx)=>(
       <Perk key={idx} perk={perk}/>
     ))

@@ -9,7 +9,6 @@ class TopFive extends React.Component{
       move: false,
       dir: 'right'
     }
-    // debugger
   }
 
   componentDidMount(){
@@ -20,7 +19,6 @@ class TopFive extends React.Component{
   }
 
   movementDone(e){
-    // debugger
     if(e.animationName === 'moveleft' || e.animationName === 'moveright'){
       if(this.state.dir =='right') this.movementDoneRight();
       else if(this.state.dir =='left') this.movementDoneLeft();
@@ -28,25 +26,16 @@ class TopFive extends React.Component{
   }
 
   movementDoneRight(){
-    // console.log("movement done right")
-    // this.setState({move:false});
     this.state.camps.unshift(this.state.camps.pop())
     this.setState({move:false, camps:this.state.camps})
   }
   movementDoneLeft(){
-    // console.log("movement done left")
-    // this.setState({move:false});
     this.state.camps.push(this.state.camps.shift())
     this.setState({move:false, camps:this.state.camps})
   }
 
   componentWillReceiveProps(newProps){
-    // console.log("new props in topfive")
     this.setState({camps:newProps.topfive})
-    // const elm = document.getElementById('featuretopfive')
-    // debugger
-    // elm.addEventListener('animationend', this.movementDone)
-
   }
   componentWillUnmount(){
     const elm = this.topfive;
@@ -56,33 +45,16 @@ class TopFive extends React.Component{
   scrollerClick(idx){
     return (e)=>{
       clearInterval(this.loop);
-      // // console.log("registeredscroller click!")
-      // console.log(idx+" is clicked")
       if(idx === 3){
-        // // console.log("3 clicked, so shift left")
-        // debugger
-        // this.state.camps.push(this.state.camps.shift())
-        // this.setState({camps:this.state.camps})
+        //right clicked, so shift left
         this.setState({move:true, dir:'left'});
-
       }
       else if(idx==1){
-        // // console.log("1 clicked, so shift right")
-        // this.state.camps.unshift(this.state.camps.pop())
-        // this.setState({camps:this.state.camps})
+        // left clicked, so shift right
         this.setState({move:true, dir:'right'});
-      }
-      else if(idx ===2){
-        // // console.log("center click. trying something new...");
       }
     }
   }
-
-  // detailsGen(){
-  //   return(
-  //
-  //   )
-  // }
 
   moveToImage(id){
     return(e)=>(this.props.router.push(`/campaign/${id}`));
@@ -96,10 +68,6 @@ class TopFive extends React.Component{
     }
     return "";
   }
-
-  // fadeOutClassGen(id){
-  //   return "";
-  // }
 
   renderScroller(){
 
@@ -126,21 +94,8 @@ class TopFive extends React.Component{
       </div>
     )
   }
-  // <div className="feature-topfive-floatingdiv">
-  //   <div className="feature-topfive-leftpane"></div>
-  //   <div className="feature-topfive-centerpane">
-  //     <h1>test</h1>
-  //   </div>
-  //   <div className="feature-topfive-rightpane"></div>
-  // </div>
-
 
   render(){
-    // debugger
-    // if(this.state.camps.length === 0){
-    //   return null;
-    // }
-    // this.state.camps.forEach(camp=>( console.log(camp.id)))
     return(
       <div>
 
@@ -157,7 +112,6 @@ import {fetchTopFive} from '../../actions/feature_actions';
 import {withRouter} from 'react-router';
 
 const mapStateToProps = (state, ownProps) =>{
-  // debugger
   return(
     {
       topfive: state.features.topfive

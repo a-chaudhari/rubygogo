@@ -19,7 +19,6 @@ class Api::ContributionsController < ApplicationController
     end
 
     if(contribution.save)
-      # debugger
       contribution.campaign.add_contribution(contribution.amount)
       if !contribution.perk.nil?
         contribution.perk.receive_perk

@@ -11,7 +11,6 @@ class Campaigns extends React.Component{
   }
 
   printCreated(){
-    // debugger
     return this.props.campaigns.created.map(
       (camp,idx)=>(
         this.printEntry(camp,true,idx)
@@ -19,7 +18,6 @@ class Campaigns extends React.Component{
     )
   }
   printFunded(){
-    // debugger
     return this.props.campaigns.contributed.map(
       (camp,idx)=>(
         this.printEntry(camp,false,idx)

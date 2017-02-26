@@ -9,14 +9,12 @@ class Contribution extends React.Component{
       visibility: "public",
       other_name: '',
       amount: 1
-      // remember_cc: false
     };
     this.update = this.update.bind(this);
     this.updateRadio = this.updateRadio.bind(this);
   }
 
   componentDidMount(){
-    // debugger
     this.props.fetchCampaign(this.props.location.state.campaign_id)
   }
 
@@ -64,7 +62,6 @@ class Contribution extends React.Component{
   }
 
   getPerk(target, props = this.props){
-    // debugger
     const perks = props.campaign.perks;
     const len = perks.length;
     for(let i =0;i<perks.length;i++){
@@ -73,19 +70,15 @@ class Contribution extends React.Component{
   }
 
   componentWillReceiveProps(newProps){
-    // // console.log
     const perk_id = newProps.location.state.perk_id
     if(perk_id !== undefined){
-      // debugger
       const perk = this.getPerk(newProps.location.state.perk_id,newProps)
       this.setState({amount:perk.price})
     }
   }
 
   perkSection(){
-    // debugger
     if(this.props.location.state.perk_id === undefined){
-      // debugger
       return(
         <div className="perk-none">
           <div className="perk-hint">Your Contribution <a>Add Perk</a></div>
@@ -100,9 +93,7 @@ class Contribution extends React.Component{
       );
     }
     else{
-      // debugger
       const perk = this.getPerk(this.props.location.state.perk_id);
-      // debugger
 
       return(
         <div className="perk-section">
@@ -121,7 +112,6 @@ class Contribution extends React.Component{
       const perk = this.getPerk(this.props.location.state.perk_id);
       item = perk.title;
     }
-    // const item = (this.withPerk ? perkName : "Your Contribution");
     return(
       <div className="total-section">
         <h2>Review & Pay</h2>

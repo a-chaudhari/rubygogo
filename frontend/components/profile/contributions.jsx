@@ -6,7 +6,6 @@ class Contributions extends React.Component{
   }
 
   componentDidMount(){
-    // debugger
     this.props.fetchContributions(this.props.params.profile_id)
   }
 

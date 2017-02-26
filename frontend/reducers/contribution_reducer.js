@@ -7,7 +7,6 @@ const ContributionReducer=(state={errors:{}},action)=>{
       return merge({},state,action.contribution);
 
     case RECEIVE_CONTRIBUTION_ERRORS:
-    // debugger
       return merge({},state,{errors:action.errors.responseJSON});
 
     default:

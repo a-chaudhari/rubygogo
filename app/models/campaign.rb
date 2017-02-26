@@ -65,7 +65,6 @@ class Campaign < ActiveRecord::Base
 
   def postCampaign(saveIt=true)
     #sets the start_date and end_date fields
-    # self.duration
     self.start_date = Time.current
     self.end_date = self.start_date + self.duration.days
     self.save! if saveIt

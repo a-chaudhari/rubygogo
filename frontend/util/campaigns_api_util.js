@@ -75,15 +75,3 @@ export const fetchEditor = (id)=>(
     url: `/api/campaigns/${id}/editor`
   })
 );
-//
-// export const cr
-
-// window.getCampaignBackers = getCampaignBackers
-
-// export const fetchCampaignMeta=(type,id)=>(
-//   $.ajax({
-//     method: 'GET',
-//     url: `/api/campaigns/${id}`,
-//     data:{type}
-//   })
-// )

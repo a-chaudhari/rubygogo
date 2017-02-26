@@ -1,5 +1,4 @@
 export const fetchCategory = (category)=>{
-  // debugger
   return(
 $.ajax({
   method: 'GET',

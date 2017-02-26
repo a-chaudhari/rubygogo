@@ -19,9 +19,6 @@ class Slider extends React.Component{
   fetchCampsUsingFilters(category, mode){
     const filter = {funded: 0, goal_type: 'all', status: 'open'};
     return this.props.fetchCategory({category: category, quickfilter: mode, filter: filter})
-    // .then(res => (
-    //   this.setState({camps:res.category})
-    // ))
   }
 
   changeMenu(mode){
@@ -29,7 +26,6 @@ class Slider extends React.Component{
     let nmode = "soonest";
     switch(mode){
       case 'soonest':
-        //defaults fine, do nothing
         break;
 
       case 'richest':
@@ -44,15 +40,12 @@ class Slider extends React.Component{
         cate="film";
         break;
     }
-    // debugger
     return(e)=>{
-      // console.log(cate + " " + nmode)
       this.fetchCampsUsingFilters(cate,nmode).then(this.setState({mode: mode}))
     }
   }
 
   sliderLeft(){
-    // console.log("slidingleft")
     let newIdx = this.state.index-4;
     if(newIdx < 0 ){
       newIdx += this.props.category.length;
@@ -62,17 +55,10 @@ class Slider extends React.Component{
   }
 
   sliderRight(){
-    // console.log("slidingright")
     let newIdx = this.state.index+4;
     if(newIdx > this.props.category.length){
       newIdx -= this.props.category.length
     }
-    // if(this.props.category.length <=4 ){
-    //   newIdx = 0;
-    // }
-    // else if(newIdx+4 > this.props.category.length ){
-    //   newIdx = this.props.category.length-4;
-    // }
 
     this.setState({index: newIdx});
 
@@ -98,7 +84,6 @@ class Slider extends React.Component{
     const tiles = tilesToAdd.map((camp,idx)=>(
       <CampaignTile key={"slidetile"+idx} campaign={camp}/>
     ))
-    // debugger
     return(
       <div className="feature-slider">
         <div onClick={this.sliderLeft.bind(this)} className="slider-left-button slider-button"><i className="fa fa-chevron-left fa-5x"></i></div>

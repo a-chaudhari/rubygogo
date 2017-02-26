@@ -13,7 +13,6 @@ class Header extends React.Component{
 
 
   toggleUserMenu(e){
-    // // console.log("toggling")
     this.setState({
       showUserMenu: !this.state.showUserMenu
     });

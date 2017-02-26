@@ -9,15 +9,6 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  # def privateshow
-  #   @user=User.find_by(id: params[:id])
-  #   if @user.id == current_user
-  #     render partial: 'api/users/user_private', user: @user
-  #   else
-  #     render json: {"unauthorized"}, status: 401
-  #   end
-  # end
-
   def contributions
     user=User.find_by(id: params[:user_id])
     if(user)
@@ -49,13 +40,11 @@ class Api::UsersController < ApplicationController
       sign_in(@user)
       render partial: 'api/users/user_private', locals: {user: @user}
     else
-      # debugger
       render json: @user.errors.messages, status: 422
     end
   end
 
   def update
-    # debugger
     user = User.find_by(id: params[:user][:id])
     if user && user.id == current_user.id
       user.update(user_params)

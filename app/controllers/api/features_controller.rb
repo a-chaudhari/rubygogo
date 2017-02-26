@@ -3,8 +3,4 @@ class Api::FeaturesController < ApplicationController
     @camps = Campaign.order('id').limit(5)
   end
 
-
-
-
-
 end

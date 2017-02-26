@@ -25,7 +25,6 @@ class Api::PerksController < ApplicationController
   end
 
   def update
-    # camp = Campaign.find_by(id: params[:campaign_id])
     perk = Perk.find_by(id: params[:id])
     unless perk
       render json: "cannot find perk id", status: 404

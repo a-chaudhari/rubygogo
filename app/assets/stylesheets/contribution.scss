@@ -24,12 +24,10 @@
 
   .contribution-left{
     width: 65%;
-    // border: 1px solid black;
     box-sizing: border-box;
     display: inline-block;
     h3{
       margin-top: 10px;
-      // margin-bottom: 15px;
       font-weight: bold;
       font-size: 14px;
     }
@@ -41,7 +39,6 @@
       //the about me type box
 
       display: flex;
-      // flex-direction: row;
       img{
         height: 90px;
         width: 90px;
@@ -53,7 +50,6 @@
         list-style: none;
         display: flex;
         flex-direction: column;
-        // align-content: center;
         height: 70%;
         justify-content: center;
       }
@@ -65,22 +61,18 @@
       font-family: $indie-font-family;
       .contribution-ccbox{
         margin-top: 20px;
-        // display: flex;
-        // flex-direction: row;
         height: 110px;
         margin-bottom: 10px;
         div{
           display: flex;
           margin-bottom: 10px;
 
-          // justify-content: center;
           input{
             margin-right: 10px;
             flex-grow: 1;
             height: 50px;
             display: inline-block;
             box-sizing: border-box;
-            // border: none;
             border: 1px solid $indie-lightgray;
             padding-left: 10px;
             border-radius: 2px;
@@ -105,7 +97,6 @@
           //holds the radio divs
           .list-element{
             background-color: white;
-            // box-sizing: content-box;
             width: 100%;
             height: 50px;
             border: 1px solid $indie-lightgray;
@@ -117,18 +108,15 @@
               padding: 0;
               font-size: 14px;
               display: inline-block;
-              // border: 1px solid red;
               height: 100%;
               vertical-align: top;
               line-height: 325%;
               color: $indie-xgray;
             }
             .circle-container{
-              // border: 1px solid purple;
               width: 5%;
               display: inline-block;
               height: 100%;
-              // padding: 5px;
               .custom-circle{
                 box-sizing: border-box;
                 border: 1px solid $indie-gray;
@@ -141,7 +129,6 @@
 
               }
               .custom-circle-selected{
-                // border-color: black;
                 border: 7px solid black;
               }
             }
@@ -150,35 +137,28 @@
             background-color: $indie-contrib-babyblue;
           }
           .otherBox{
-            // box-sizing: border-box;
             position: relative;
             margin: 0;
             padding: 0;
-            // background-color: green;
             .inner-div{
               box-sizing: border-box;
               width: 94%;
               display: inline-block;
               background-color: inherit;
-              // background-color: orange;
               height: 100%;
               box-sizing: border-box;
               margin: 0;
               padding: 0;
               position: relative;
               vertical-align: top;
-              // background-color: purple;
               h4{
                 margin: 0;
                 padding: 0;
-                // z-index: 10;
 
               }
               .otherField{
-                // display: none;
                 box-sizing: border-box;
                 position: absolute;
-                // right: 0;
                 top: 0;
                 right: 0;
                 width: 100%;
@@ -186,8 +166,6 @@
                 border: none;
                 font-size: 16px;
                 background-color: inherit;
-                // display:
-                // z-index: 11;
               }
 
               .otherhidden{
@@ -203,7 +181,6 @@
     //the right column
     width: 35%;
     box-sizing: border-box;
-    // border: 1px solid black;
     display: inline-block;
     vertical-align: top;
     padding-top: 100px;
@@ -212,15 +189,12 @@
     .contribution-summary{
       //the floating box
       width: 100%;
-      // min-height: 500px;
       border: 1px solid $indie-lightgray;
       .contribution-perk{
         //the info about the perk selected
-        // padding: 20px;
         background-color: $indie-contrib-babyblue;
         .perk-none{
           height: 100%;
-          // background-color: inherit;
           .perk-hint{
             margin-left: 20px;
             margin-right: 20px;
@@ -228,7 +202,6 @@
             margin-bottom: 10px;
             font-size: 14px;
             font-weight: bold;
-            // margin-top: 20px;
             background-color: $indie-contrib-babyblue;
             a{
               margin-left: 5px;
@@ -237,7 +210,6 @@
           }
           .input-container{
             position: relative;
-            // display: inline-block;
             display: block;
             margin: 0 auto;
             padding: 0;
@@ -245,23 +217,16 @@
             height: auto;
             margin-bottom: 30px;
             background-color: white;
-            // margin: 0 auto;
-            // background-color: purple;
             .perk-amount-input{
-              // display:block;
               position: relative;
               height: 50px;
               box-sizing: border-box;
               width: 100%;
               margin: 0 auto;
-              // margin-bottom: 30px;
-              // margin-left: 20px;
               padding-left: 25px;
               font-size: 16px;
               padding-bottom: 3px;
               background-color: transparent;
-              // z-index: 110;
-              // margin: 20px;
             }
             .input-overlay{
               position: absolute;
@@ -269,29 +234,19 @@
               display: flex;
               width: 100%;
               justify-content: space-between;
-              // align-items:
               top: 15px;
               padding-left: 12px;
               padding-right: 10px;
-              // z-index: 10;
-              // padding-bottom: 5px;
-              // border: 1px solid black;
-              // margin-right: 10px;
               left: 0px;
               span{
                 display: inline-block;
               }
-              // span{
-              //   width: 85%;
-              //   margin: 0 auto;
-              // }
             }
           }
         }
 
         .perk-section{
           padding: 30px;
-          // pa
           font-size: 13px;
           h3{
             font-weight: bold;
@@ -310,15 +265,12 @@
       }
 
       .contribution-review{
-        //the total price and other stuff
         background-color: $indie-form-gray;
         display: flex;
         flex-direction: column;
         border-top: 1px solid $indie-lightgray;
         .total-section{
           margin: 0 20px 0 20px;
-          // height: 200px;
-          // height: 400px;
           div{
             display: flex;
             justify-content: space-between;
@@ -337,7 +289,6 @@
           .total-line{
             padding-bottom: 20px;
             border-bottom: 1px solid $indie-perk-text-gray;
-            // margin-bottom: 20px;
 
           }
         }

@@ -12,9 +12,3 @@ export const signOut = ()=>(
     url: '/api/session'
   })
 );
-
-// export const signUp=(info)=>(
-//   $.ajax({
-//     method: 'POST',
-//   })
-// )

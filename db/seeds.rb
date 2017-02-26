@@ -184,7 +184,6 @@ Campaign.destroy_all
 Comment.destroy_all
 
 100.times do
-  # user = users.sample
   user=users.sample
   camp = Campaign.create!(
     title: Faker::Commerce.unique.product_name,
@@ -261,5 +260,3 @@ Contribution.destroy_all
   )
   camp.add_contribution(amount)
 end
-
-# Category.destroy_all

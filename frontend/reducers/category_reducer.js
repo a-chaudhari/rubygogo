@@ -9,7 +9,6 @@ const CategoryReducer = (state={results:{},categories:[]},action) =>{
 
 
     case RECEIVE_CATEGORIES:
-      // debugger
       return merge({},state,{categories:null},{categories:action.categories});
 
     default:

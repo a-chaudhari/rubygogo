@@ -27,7 +27,6 @@
 
   .backers-container{
     font-family: $indie-font-family;
-    // border: 1px solid black;
 
     h2,h3,img,div{
       margin: 0;
@@ -39,25 +38,19 @@
 
     .backerEntry{
       border-bottom: 1px solid $indie-lightgray;
-      // border: 1px solid black;
       height: 75px;
       vertical-align: top;
       display: flex;
       width: 100%;
       .backer-avatar-box{
         box-sizing: border-box;
-        // background-color: purple;
-        // border: 1px solid black;
         height: 100%;
         width: 90px;
         flex-basis: 90px;
         overflow: hidden;
         img{
-          // vertical-align: middle;
-          // clip-path:
           height: 100%;
           width: 100%;
-          // -webkit-clip-path: circle(50% at 50% 50%);
           clip-path: circle(35% at 50% 50%);
         }
       }
@@ -65,24 +58,15 @@
       .backer-info-box{
         height: 100%;
         width: 50%;
-        // background-color: orange;
         vertical-align: top;
-        // display: block;
-        // padding-left: 10px;
         h3{
           display: block;
           font-weight: normal;
           color: $indie-xgray;
-          // line-height: 300%;
-          // margin-top:
-          // margin-left: 10px;
-          // line-height: 100%;
         }
         h3:first-of-type{
           font-weight: bold;
           margin-top: 17px;
-          // line-height: -55%;
-          // font-size: 14px;
           margin-bottom: 3px;
           a{
             color: $indie-pink;
@@ -96,14 +80,10 @@
         height: 100%;
         flex-grow: 1;
 
-        // font-weight: normal;
         vertical-align: top;
-        // background-color: green;
         align-self: flex-end;
         text-align: right;
         line-height: 300%;
-        // line-height:
-        // justify-content: center;
         h2{
           color: $indie-xgray;
           font-weight: normal;
@@ -132,7 +112,7 @@
   }
 
   .update-container{
-    // border: 1px solid black;
+
     .add-update-container{
       //the form shown when making a new update
 
@@ -146,7 +126,6 @@
         background-color: $indie-form-gray;
         width: 100;
         textarea{
-          // width: 95%;
           display: block;
           box-sizing: border-box;
           width: 100%;
@@ -154,8 +133,6 @@
           border: 1px solid $indie-lightgray;
           resize:vertical;
           margin-bottom: 20px;
-          // padding-left: 20px;
-          // padding-right: 20px;
           padding: 10px 20px;
           font-size: 14px;
           height: 100px;
@@ -173,7 +150,6 @@
           height: 40px;
           text-transform: uppercase;
           letter-spacing: 1px;
-          // font-weight: bold;
           color: white;
           font-size: 16px;
           float: right;
@@ -192,7 +168,6 @@
 
     .update-entry{
       border-bottom: 1px solid $indie-lightgray;
-      // overflow: hidden;
       .update-entry-dateline{
         h1{
 
@@ -208,18 +183,13 @@
           display: inline-block;
 
           box-sizing: border-box;
-          // background-color: purple;
-          // border: 1px solid black;
           height: 100%;
           width: 90px;
           flex-basis: 90px;
           overflow: hidden;
           img{
-            // vertical-align: middle;
-            // clip-path:
             height: 100%;
             width: 100%;
-            // -webkit-clip-path: circle(50% at 50% 50%);
             clip-path: circle(35% at 50% 50%);
           }
         }
@@ -243,14 +213,11 @@
   .comments-container{
     padding-top: 20px;
     .comment-create-container{
-      // padding-bottom: 30px;
       form{
         padding: 20px;
         background-color: $indie-form-gray;
         overflow: hidden;
-        // width: 100%;
         textarea{
-          // width: 95%;
           display: block;
           box-sizing: border-box;
           width: 100%;
@@ -258,8 +225,6 @@
           border: 1px solid $indie-lightgray;
           resize:vertical;
           margin-bottom: 20px;
-          // padding-left: 20px;
-          // padding-right: 20px;
           padding: 10px 20px;
           font-size: 14px;
           height: 100px;
@@ -277,7 +242,6 @@
           height: 40px;
           text-transform: uppercase;
           letter-spacing: 1px;
-          // font-weight: bold;
           color: white;
           font-size: 16px;
           float: right;
@@ -293,27 +257,19 @@
     }
 
     .comment-entry{
-      // background-color: blue;
       font-size: 14px;
-      // padding-top: 10px;
-      // padding-bottom: 10px;
       padding: 10px;
       .avatar-box{
         display: inline-block;
         vertical-align: top;
         box-sizing: border-box;
-        // background-color: purple;
-        // border: 1px solid black;
         height: 100%;
         width: 90px;
         flex-basis: 90px;
         overflow: hidden;
         img{
-          // vertical-align: middle;
-          // clip-path:
           height: 100%;
           width: 100%;
-          // -webkit-clip-path: circle(50% at 50% 50%);
           clip-path: circle(35% at 50% 50%);
         }
       }
@@ -323,10 +279,8 @@
         display: inline-block;
         margin-top: 12px;
         width: 84%;
-        // background-color: green;
         margin-bottom: 10px;
         .comment-byline{
-          // display: inline-block;
           vertical-align: top;
           margin-bottom: 15px;
           span{
@@ -357,7 +311,6 @@
           }
         }
       }
-      // margin-bottom: 10px;
 
     }
 

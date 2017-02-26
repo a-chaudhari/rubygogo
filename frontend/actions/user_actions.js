@@ -61,6 +61,3 @@ export const updateUser = user => dispatch => (
     user=>dispatch(receiveUser(user))
   )
 );
-
-// window.fetchUser = fetchUser;
-// window.updateUser = updateUser;

@@ -19,7 +19,6 @@ import Create from './create';
 import EditorContainer from './create/editor_container';
 import CategoryContainer from './explore/category_container';
 import HomeContainer from './home_container';
-// import EditorPreview from './create/editor_preview';
 
 const Root = (props) =>{
   return(
@@ -47,11 +46,5 @@ const Root = (props) =>{
     </Provider>
   );
 }
-// <Route path='/campaign/:id/preview' component={EditorPreview}/>
-// <IndexRoute component={Story}/>
-// <Route path='story' component={Story}/>
-// <Route path='updates' component={Updates}/>
-// <Route path='comments' component={Comments}/>
-// <Route path='backers' component={Backers}/>
 
 export default Root;

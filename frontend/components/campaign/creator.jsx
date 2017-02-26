@@ -10,7 +10,6 @@ class Creator extends React.Component{
     if(c===undefined){
       return(null)
     }
-    // debugger
     let location = ""
     let parts = []
     location += (c.city !== undefined? c.city : "")

@@ -12,7 +12,6 @@ json.daysLeft distance_of_time_in_words(@campaign.created_at, @campaign.created_
 json.stats do
   json.updates @campaign.updates.count
   json.comments @campaign.comments.count
-  # json.backers @campaign.contributions.count
 end
 
 json.is_backer @campaign.contributors.include?(current_user)

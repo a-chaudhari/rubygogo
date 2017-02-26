@@ -85,7 +85,6 @@ export const createCampaign = camp => dispatch=>(
 );
 
 export const updateCampaign = camp => dispatch=>{
-  // debugger
   return(
   CampaignAPIUtil.updateCampaign(camp).then(camp=>dispatch(receiveEditor(camp),
   err=>dispatch(receiveCampaignErrors(err))))
@@ -102,12 +101,3 @@ export const fetchCampaignUpdates = (id) => dispatch=> (
 export const createCampaignUpdate = (id,body)=> dispatch=> (
   CampaignAPIUtil.createCampaignUpdate(id,body).then(update=>dispatch(receiveUpdate(update)))
 );
-
-window.fetchEditor = fetchEditor;
-
-// export const fetchCampaignMeta = (type,id)=> dispatch=> (
-//   CampaignAPIUtil.fetchCampaignMeta(type,id)=>then(data=>dispatch(receiveCampaignMeta(data)))
-// );
-
-// window.CampaignAPIUtil = CampaignAPIUtil;
-// window.fetchCampaignBackers = fetchCampaignBackers;

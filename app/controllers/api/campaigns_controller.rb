@@ -39,16 +39,10 @@ class Api::CampaignsController < ApplicationController
       return
     end
 
-    # debugger
-    # debugger
-    # output = camp.attributes
-    # output[:]
     render partial: 'api/campaigns/editor', locals:{camp: camp}
-
   end
 
   def update
-    # debugger
     camp = Campaign.find_by(id: params[:campaign][:id])
     unless camp
       render json: "cannot find that campaign id", status: 404
@@ -82,10 +76,8 @@ class Api::CampaignsController < ApplicationController
 
   def backers
     start_point = params[:start]
-    # debugger
     campaign = Campaign.find_by(id: params[:campaign_id])
     if campaign
-      # debugger
       contribs = campaign.contributions.order('id DESC')
       if start_point != nil && start_point != ""
         contribs = contribs.where('created_at < ?', start_point)
@@ -173,7 +165,5 @@ class Api::CampaignsController < ApplicationController
   def edit_params
     params.require(:campaign).permit(:title, :goal_amount, :currency, :tagline, :duration, :funding_type, :video_url, :status, :category, :overview_text,:overview_img, :campaign_card_img, :main_img, :pitch_text)
   end
-
-
 
 end

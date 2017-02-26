@@ -15,7 +15,6 @@ class Debug extends React.Component{
   }
 
   campaignList(){
-    // debugger
     if( this.props.campaigns.constructor  !== Array){
       return(null)
     }
@@ -27,7 +26,6 @@ class Debug extends React.Component{
     )})
   }
   updateUrl(errs,out){
-    // debugger
     this.setState({url:(out[0].url)});
   }
   open(){
@@ -53,7 +51,6 @@ class Debug extends React.Component{
           <button onClick={this.open.bind(this)}>open</button>
           <button id="opener"></button>
           <div id="widget" width="500px" height="500px"></div>
-          // <img src={this.state.url}/>
 
         </div>
       </div>

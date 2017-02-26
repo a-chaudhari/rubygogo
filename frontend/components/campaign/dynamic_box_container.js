@@ -3,7 +3,6 @@ import DynamicBox from './dynamic_box';
 import { fetchCampaign, fetchCampaignBackers, fetchCampaignUpdates, createCampaignUpdate, fetchComments, createComment } from '../../actions/campaign_actions';
 
 const mapStateToProps = (state, ownProps) =>{
-  // debugger
   return(
     {
       campaign: state.campaign,

@@ -53,7 +53,6 @@ class Updates extends React.Component{
       enabled = true;
     }
 
-    // <div className="add-update-title">Post A New Update</div>
     return(
       <div className="add-update-container">
         <form className="clearfix" onSubmit={this.createUpdate.bind(this)}>
@@ -66,13 +65,9 @@ class Updates extends React.Component{
   }
 
   render(){
-    // debugger
     if(this.props.campaign.updates === undefined){
       return null;
     }
-    // debugger
-
-    // debugger
     return(
       <div className="update-container">
         {this.addUpdateBox()}

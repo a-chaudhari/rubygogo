@@ -32,35 +32,23 @@ class Backers extends React.Component{
   }
 
   componentWillReceiveProps(newProps){
-    // console.log("new props in backers");
     this.setState({
       backers: (this.state.backers.concat(newProps.campaign.backers))
     });
   }
 
   getMoreBackers(){
-    // console.log("fetching more backers");
-    // debugger
     this.props.fetchCampaignBackers(this.props.campaign.id, this.state.backers.slice(-1)[0].created_at)
   }
-
-  // getBackersButton(){
-  //   if(this.state.backers.length === this.campaign)
-  //
-  // }
 
   render(){
     if(this.props.campaign.backers === undefined){
       return null;
     }
-    // debugger
 
     const morebutton = (<div onClick={this.getMoreBackers.bind(this)} className="see-more-button"> <span>See More Backers</span></div>);
 
-    // console.log(this.props.totalNum )
-    // console.log( this.state.backers.length)
     return(
-      // debugger
       <div className="backers-container">
         {this.getBackers()}
         {(this.props.totalNum > this.state.backers.length) && morebutton}

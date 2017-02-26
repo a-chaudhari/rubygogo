@@ -21,7 +21,6 @@ class Category extends React.Component{
   }
 
   componentDidMount(){
-    // this.props.fetchCategoryInfo(this.props.params.category_id);
     this.props.fetchCategory({category: this.state.category, quickfilter: this.state.quickfilter, filter: this.state.filter}).then(this.appendToState.bind(this));
     if(this.props.category.categories.length === 0){
       this.props.fetchCategories();
@@ -29,24 +28,18 @@ class Category extends React.Component{
   }
 
   appendToState(res){
-    // debugger
     this.setState({camps: this.state.camps.concat(res.category)})
   }
 
   componentWillReceiveProps(newProps){
-    // console.log("new props!")
-    // debugger
     if(newProps.params.category_id !== this.state.category){
-      // debugger
       this.setState({category:newProps.params.category_id})
       this.props.fetchCategory({category: newProps.params.category_id, quickfilter: this.state.quickfilter, filter: this.state.filter}).then(res=>this.appendToState(res))
     }
-    // this.setState({camps: this.state.camps.concat(newProps.category.results)})
   }
 
   renderTiles(){
     return this.state.camps.map((camp)=>{
-      // const camp = this.props.category.results[key];
       return(
         <CampaignTile key={"tile" + camp.id} campaign={camp}/>
       );
@@ -64,28 +57,22 @@ class Category extends React.Component{
   }
 
   categoryChange(e){
-    // debugger;
-    // this.setState({category:e.target.value})
     this.setState({camps:[]})
     this.props.router.push(`/category/${e.target.value}`)
   }
 
   handleQFChange(e){
-    // this.setState({camps:[]});
     this.setState({quickfilter:e.target.value, camps:[]})
     this.props.fetchCategory({category: this.state.category ,quickfilter: e.target.value, filter: this.state.filter}).then(this.appendToState.bind(this));
 
   }
 
   generateCategorySelect(){
-    // debugger
     const options = this.props.category.categories.map(cat=>{
       return(
         <option key={"cat"+cat.id} value={cat.category}>{cat.alt_name}</option>
       );
     })
-    // debugger
-    // <option value="all">All Categories</option>
     return(
       <select value={this.state.category} onChange={this.categoryChange.bind(this)} >
         {options}
@@ -114,9 +101,6 @@ class Category extends React.Component{
   }
 
   filterBox(name, value,...bubbles){
-    //name=Percent funded
-    //value = funded
-    //bubble = {name: "0-25%", value: "1"}
     const entries = bubbles.map(bub=>{
       return(
         <div key={"bub"+value+bub.v} onClick={this.updateBox(value,bub.v).bind(this)} className="dropdown-filter-line">
@@ -146,15 +130,10 @@ class Category extends React.Component{
   }
 
   render(){
-    // debugger
-    // // console.log(this.state.camps)
     if(this.props.category.categories.length===0){
       return null;
     }
     const cat = this.getCategory(this.state.category);
-    // debugger
-    // if(this.props.category.title === undefined)
-    // debugger
     return(
       <div className="category-listing-page">
         <div className="category-page-title">

@@ -17,15 +17,12 @@ class Create extends React.Component{
   }
 
   submitForm(e){
-    // console.log("in submit form")
     e.preventDefault();
     this.props.createCampaign(this.state).then(res=>(this.props.router.push(`/editor/${res.editor.id}`)))
   }
 
   validator(){
-    // debugger
     if(this.state.goal_amount < 500) return false;
-    // if(this.)
 
     return true;
   }
@@ -33,7 +30,6 @@ class Create extends React.Component{
   render(){
 
     const active = this.validator();
-    // const active = false;
 
 
     return(

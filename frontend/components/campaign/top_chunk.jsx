@@ -8,7 +8,6 @@ class TopChunk extends React.Component{
   }
 
   numberWithCommas(x) {
-    // debugger
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
@@ -18,11 +17,9 @@ class TopChunk extends React.Component{
 
   render(){
     const camp = this.props.campaign
-    // debugger
     if(camp.id === undefined){
       return(null)
     }
-    // debugger
     let percentDone = '100%'
 
     if(camp.percentDone<100){

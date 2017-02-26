@@ -29,7 +29,6 @@ import {withRouter} from 'react-router';
     }
 
     closeWindow(){
-      // console.log("closing sign in")
       this.setState({show:false});
     }
 
@@ -58,7 +57,6 @@ import {withRouter} from 'react-router';
       }
 
       const cname = "header-login-container " + ( this.state.show ? "" : " header-hide")
-      // console.log(switcher);
  	    return(
         <div className="header-right-signedout">
           <ul className="header-right-ul">

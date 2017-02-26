@@ -4,11 +4,9 @@ import merge from 'lodash/merge';
 const UserReducer = (state={contributions: [], campaigns:{created:[], contributed:[]}},action)=>{
   switch(action.type){
     case RECEIVE_USER_ERRORS:
-      // debugger
       return merge({},state,{errors:null},{errors:action.errors.responseJSON});
 
     case CLEAR_USER_ERRORS:
-      // debugger
       return merge({},state,{errors:null},{errors:new Object});
 
     case RECEIVE_USER:
@@ -18,7 +16,6 @@ const UserReducer = (state={contributions: [], campaigns:{created:[], contribute
       return merge({},state, {contributions:action.contributions});
 
     case RECEIVE_CAMPAIGNS:
-      // debugger
       return merge({},state, {campaigns:null},{campaigns:action.campaigns});
 
     default:

@@ -7,7 +7,6 @@ const FeatureReducer = (state = {topfive:[], category:[]}, action)=>{
       return merge({},state,{category:action.category});
 
     case RECEIVE_TOP_FIVE:
-    // debugger
       return merge({},state,{topfive:action.topfive});
 
     default:

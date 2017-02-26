@@ -13,12 +13,10 @@ class Home extends React.Component{
   }
 
   render(){
-    // debugger
     const cats = this.props.categories.slice(1).map(cat=>(
       <CategoryTile key={cat.id} category={cat}/>
     ))
 
-    // debugger
     return(
       <div className="home-page">
         <TopFive/>

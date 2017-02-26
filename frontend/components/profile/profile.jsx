@@ -13,7 +13,6 @@ class Profile extends React.Component{
   }
 
   componentDidMount(){
-    // debugger
     this.props.fetchUser(this.props.params.profile_id)
   }
 
@@ -22,7 +21,6 @@ class Profile extends React.Component{
       let route = topic;
       if(topic === 'profile') route="profiledetails";
       this.props.router.push(`/profile/${this.props.params.profile_id}/${route}`);
-      // this.setState({mode:topic});
     };
   }
 
@@ -34,8 +32,6 @@ class Profile extends React.Component{
   menuGenerator(mode){
     let TOPICS = ['profile','campaigns'];
     if(!this.props.user.public){
-      // debugger
-      //no longer doing 'activity'
       TOPICS = ['profile','campaigns','contributions'];
     }
 
@@ -44,13 +40,11 @@ class Profile extends React.Component{
       if(mode === topic){
         cname = "dynamicbox-menu-selected"
       }
-      // debugger
       return(
       <li key={idx} onClick={this.menuClick(topic).bind(this)} className={cname}>
         {this.capFirstLtr(topic)}</li>
     )})
     return lis;
-    //generates a ul and li list of topics
   }
 
   showMode(){
@@ -75,12 +69,10 @@ class Profile extends React.Component{
   }
 
   render(){
-    // debugger
     if(this.props.user===undefined){
       return null;
     }
     const u  = this.props.user;
-    // debugger
     let mode = this.props.router.routes[this.props.router.routes.length-1].path
     if(mode === undefined || mode === 'profiledetails') mode = 'profile';
     let header = ""

@@ -6,7 +6,6 @@ import PerksBox from './perks_box';
 class Campaign extends React.Component{
   constructor(props){
     super(props);
-    // debugger
     this.cid=0;
     this.preview=false;
     if(this.props.params === undefined){
@@ -19,14 +18,10 @@ class Campaign extends React.Component{
   }
 
   componentDidMount(){
-    // // console.log("did mount");
-    // debugger
     this.props.fetchCampaign(this.cid);
   }
 
   componentWillReceiveProps(newProps){
-    // // console.log("new props -> new camp")
-    // debugger
     if(this.preview) return;
 
     if(newProps.params.campaign_id !== this.cid){
@@ -52,11 +47,9 @@ class Campaign extends React.Component{
   }
 
   render(){
-    // debugger
     if(this.props.campaign === undefined){
       return(<p>loading</p>)
     }
-    // debugger
     return(
       <div className='campaign'>
         <TopChunk campaign={this.props.campaign}/>

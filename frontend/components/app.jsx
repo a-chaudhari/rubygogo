@@ -9,8 +9,6 @@ class App extends React.Component{
   }
 
   render(){
-    // <Debug/>
-    // debugger
     return(
       <div className="wholeApp">
         <HeaderContainer/>

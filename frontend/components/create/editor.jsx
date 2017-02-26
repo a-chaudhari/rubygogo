@@ -32,23 +32,13 @@ class Editor extends React.Component{
   }
 
   componentDidMount(){
-
-    // cloudinary.openUploadWidget(window.cloudinary_options,(errs,out)=>{
-    //   this.updateUrl(errs,out)
-    // })
     this.props.fetchEditor(this.props.params.campaign_id);
   }
 
   componentWillReceiveProps(newProps){
-    // console.log(newProps.errors)
     const e = newProps.editor;
     this.setState({editor:newProps.editor, overviewURL:e.overview_img_url, cardURL:e.campaign_card_img_url, mainURL:e.main_img_url})
   }
-
-  // updateImages(){
-  //   const e = this.props.editor;
-  //   this.setState({overviewURL:e.overview_img_url, cardURL:e.campaign_card_img_url, mainURL:e.main_img_url})
-  // }
 
   createHeader(){
     let launchTitle = (this.state.ready ? "launch campaign" : "Not Ready, Missing Info")
@@ -63,23 +53,17 @@ class Editor extends React.Component{
         </div>
       </div>
     );
-    // <button className={(!this.state.ready ? "editor-launch-disabled" : "")} disabled={!this.state.ready} onClick={this.launchCampaign.bind(this)}>{launchTitle}</button>
   }
 
   launchCampaign(){
     this.saveCampaign({status: 'open'}).then(res=>(this.props.router.push(`/campaign/${res.editor.id}`)))
-    // this.props.updateCampaign(merge({},this.state.editor,{status: 'open'})).then(res=>(this.props.router.push(`/campaign/${res.editor.id}`)))
   }
 
   saveCampaign(addl={}){
-    // debugger
     if(!this.validation()){
-      // console.log("validation failed")
-      // // console.log(this.state.errors)
       return;
     }
     let formData = new FormData();
-    // formData.append()
     const addl_keys = Object.keys(addl);
     Object.keys(this.state.editor).forEach(key=>{
       if(!addl_keys.includes(key)){
@@ -101,10 +85,7 @@ class Editor extends React.Component{
       formData.append(`campaign[${key}]`,addl[key])
     })
 
-    // return
     return this.props.updateCampaign(formData)
-    // debugger
-    // return this.props.updateCampaign(merge({},this.state.editor,{overview_img: this.state.overviewFile}));
   }
 
   update(field,hash='editor'){
@@ -114,14 +95,10 @@ class Editor extends React.Component{
 
   renderPreview(){
     return  this.saveCampaign().then(res=>{
-      // debugger
       this.setState({mode:'preview'})
       });
   }
-  // <Campaign/>
-  //
   inputGen(name,field,hash,type='text'){
-    // debugger
     let counter = 0;
     if(this.state[hash][field] !== null){
       counter = (<span>{this.state[hash][field].length}</span>)
@@ -201,8 +178,6 @@ class Editor extends React.Component{
   }
 
   renderBasics(){
-    // debugger
-    // style="opacity: 0.0; position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height:100%;
     return(
       <div className="basics-form editor-form">
         <form>
@@ -247,17 +222,6 @@ class Editor extends React.Component{
   }
 
   renderStory(){
-    // let content = this.inputGen('Video URL','video_url')
-    // if(!this.state.video){
-    //   //TODO content = this.inputGen('Main Campaign Image URL','main_img_url');
-    // }
-    // debugger
-    // <img src={this.state.editor.campaign_card_img_url}/>
-    // <div className="media_selector">
-    //   <button onClick={this.toggleVideo(true).bind(this)}>Video</button>
-    //   <button onClick={this.toggleVideo(false).bind(this)}>Image</button>
-    // </div>
-    // debugger
     return(
       <div className="story-form editor-form">
         <form>
@@ -301,7 +265,6 @@ class Editor extends React.Component{
       </div>
     )
   }
-  // <div className={this.state.mode==='basics' ? sel : ""}></div>
 
   modeChange(mode){
     return (e) => (this.setState({mode:mode}))
@@ -310,13 +273,9 @@ class Editor extends React.Component{
 
 
   render(){
-    // debugger
-    // console.log("editor render")
-    // debugger
     if(this.props.editor === undefined || this.props.editor.title === undefined){
       return null;
     }
-    // console.log(this.state.errors)
     let content = "";
 
     switch(this.state.mode){
@@ -334,16 +293,13 @@ class Editor extends React.Component{
 
 
       case "preview":
-      // debugger
         content=(<CampaignContainer alt_cid={this.state.editor.id}/>);
         break;
 
 
     }
 
-    // debugger
     let e = this.state.editor;
-    // debugger
     return(
       <div className="editor-page">
         {this.createSideHeader()}

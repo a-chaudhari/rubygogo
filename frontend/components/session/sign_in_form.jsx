@@ -8,11 +8,9 @@ import React from 'react'
         password: '',
         errors: ''
       };
-      // console.log(this.props.errors);
  	  }
 
     componentWillReceiveProps(newProps){
-      // debugger
       this.setState({errors:newProps.errors})
     }
 
@@ -29,7 +27,6 @@ import React from 'react'
     }
 
  	  render(){
-      // debugger
  	    return(
         <form onSubmit={this.handleLogin.bind(this)}>
           <span>{this.state.errors}</span>

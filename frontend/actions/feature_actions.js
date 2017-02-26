@@ -1,6 +1,5 @@
 import * as FeaturesAPIUtil from '../util/features_api_util';
 
-
 export const RECEIVE_TOP_FIVE = 'RECEIVE_TOP_FIVE';
 export const RECEIVE_SLIDER = 'RECEIVE_SLIDER';
 

@@ -20,7 +20,6 @@
     label{
       display: block;
       color: $indie-xgray;
-      // margin-bottom: 5px;
     }
     input{
       margin-top: 10px;
@@ -30,7 +29,6 @@
       font-size: 16px;
       border: 1px solid $indie-lightgray;
       padding-left: 20px;
-      // margin-bottom: 50px;
       color: $indie-xgray;
     }
     span{
@@ -58,13 +56,8 @@
 }
 
 .editor-page{
-  // border: 1px solid black;
   background-color: $indie-perk-gray;
   font-family: $indie-font-family;
-  // span{
-  //   color: $indie-pink;
-  //   display: block;
-  // }
   label{
     margin-top: 20px;
     margin-bottom: 20px;
@@ -84,15 +77,12 @@
   input{
     height: 50px;
     border: 1px solid $indie-basics-gray;
-    // width: 70%;
-    // max-width: 700px;
     width: 100%;
     box-sizing: border-box;
     font-size: 14px;
     display: block;
     padding-left: 20px;
     padding-right: 20px;
-    // margin-bottom: 20px;
   }
   textarea{
     max-width: 700px;
@@ -121,14 +111,10 @@
   }
 
   .side-header{
-    // width:
-    // text-transform: uppercase;
     padding-top: 100px;
     color: white;
     width: 225px;
-    // padding-left: 20px;
     background-color: $indie-working-gray;
-    // overflow: scroll;
     letter-spacing: 1px;
     font-size: 14px;
     font-weight: normal;
@@ -139,7 +125,6 @@
     div{
       padding-left: 20px;
       padding-right: 20px;
-      // margin: 5px;
     }
 
     .side-header-statusline{
@@ -173,7 +158,6 @@
       font-size: 12px;
       letter-spacing: 1px;
 
-      // border: 1px solid white;
     }
     .side-header-preview{
       padding: 20px 30px;
@@ -181,9 +165,6 @@
     ul{
       width: 100%;
       li{
-        // padding-top: 10px;
-        // padding-bottom: 10px;
-        // padding-left: 20px;
         box-sizing: content-box;
         padding: 20px 30px;
         display: block;
@@ -193,16 +174,8 @@
         font-weight: normal;
         font-size: 12px;
         background-color: black;
-        // display: inline;
-        // width: auto;
         cursor: pointer;
       }
-      // li:first-of-type{
-      //   background-color: $indie-working-yellow;
-      //   color: $indie-working-gray;
-      //   border-radius: 2px;
-      //   padding: 3px;
-      // }
       li:hover{
         background-color: $indie-purple;
         color: white;
@@ -220,19 +193,15 @@
       }
       .sideheader-selected{
         border-color: $indie-purple !important;
-        // padding-left: 15px;
       }
     }
   }
   .editorContent{
-    // height: 100vh;
-    // overflow: scroll;
     background-color: $indie-perk-gray;
     margin-left: 225px;
     .top-headers{
       background-color: $indie-form-gray;
       .editor-topheader{
-        // height: 40px;
         border-top: 1px solid $indie-basics-gray;
         border-bottom: 1px solid $indie-basics-gray;
         margin-bottom: 20px;
@@ -243,8 +212,6 @@
           display: inline-block;
           text-transform: capitalize;
           margin-top: 5px;
-          // margin-top: 20px;
-          // margin-bottom: 20px;
           font-size: 20px;
           letter-spacing: 1px;
           font-weight: normal;
@@ -255,12 +222,8 @@
         }
         .editor-header-button-group{
           float: right;
-          // vertical-align: top;
           button{
-            // vertical-align: top;
-            // margin-top: 5px;
             padding: 10px 20px;
-            // float: right;
             background-color: inherit;
             font-size: 12px;
             color: $indie-purple;
@@ -289,16 +252,10 @@
       padding-left: 40px;
     }
     .editor-generated-input{
-      // display: inline-block;
-      // width: 600px;
       div{
         width: 70%;
         max-width: 700px;
         display: inline-block;
-        // width: 100%;
-        // input{
-        //   100
-        // }
         span{
           display: inline-block;
           font-size: 14px;
@@ -324,16 +281,11 @@
         display: flex;
         justify-content: center;
         img{
-          // width: 100%;
-          // height: auto;
-          // height: 100%;
           width: auto;
-          // height: 100%;
           position: absolute;
           display: block;
           margin-left: auto;
           margin-right: auto;
-          // top: -50%;
 
         }
       }
@@ -365,36 +317,22 @@
       .perks-table-container{
         width: 95%;
         .perks-table{
-          // min-width: 800px;
-          // display: block;
           text-align: left;
-          // margin-top: 20px;
-          // margin-right: 20px;
-          // margin-left: 20px;
           border-collapse: collapse;
           width: 100%;
           tr{
             border: 1px solid $indie-basics-gray;
-            // padding-left: 20px;
-            // padding-right: 20px;
             cursor: pointer;
             background-color: white;
           }
           tr:hover{
             background-color: $indie-lightpink;
           }
-          // td{
-          //   padding-top:20px;
-          //   padding-right: 20px;
-          //   padding-left: 20px;
-          // }
           tr,th,td{
             height: 50px;
           }
           td:first-of-type{
             padding-left: 20px;
-            // margin-left: 20px;
-            // text-align: center;
           }
           td:last-of-type{
             padding-right: 20px;
@@ -416,11 +354,6 @@
           }
           .table-eta{
             width: 150px;
-            // min-width: 400px
-          }
-          .table-desc{
-            // width: 400px;
-            // width: 100%;
           }
         }
         .perks-creator-addbutton{

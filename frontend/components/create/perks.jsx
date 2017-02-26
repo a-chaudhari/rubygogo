@@ -23,11 +23,6 @@ class Perks extends React.Component{
     this.props.fetchPerks(this.props.id)
   }
 
-
-  componentWillReceiveProps(newProps){
-    // console.log("new props in perks ")
-  }
-
   editPerkHandler(id){
     return(e)=>{
       this.setState({editMode:true,perk:this.findPerk(id)})
@@ -47,10 +42,7 @@ class Perks extends React.Component{
     }
   }
 
-
-
   createTable(){
-    // debugger
     const rows = this.props.perks.map(perk=>(
       <tr key={"perks"+perk.id} className="perk-table-entry" onClick={this.editPerkHandler(perk.id).bind(this)}>
         <td>{perk.price}</td>
@@ -97,9 +89,7 @@ class Perks extends React.Component{
 
   savePerk(e){
     e.preventDefault();
-    // console.log("in save perk")
     if(!this.validate()){
-      // console.log("failed validation")
       return;
     }
     if(this.state.perk.id === -1){
@@ -148,8 +138,6 @@ class Perks extends React.Component{
   }
 
   deletePerk(){
-    // console.log("in delete perk")
-    // console.log(this.state.perk)
     this.props.deletePerk(this.state.perk.id).then(this.cancelChanges())
   }
 

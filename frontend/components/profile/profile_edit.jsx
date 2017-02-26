@@ -40,8 +40,6 @@ class ProfileEdit extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     let formData = new FormData();
-    // formData.append()
-    // const addl_keys = Object.keys(addl);
     Object.keys(this.state.user).forEach(key=>{
         formData.append(`user[${key}]`, this.state.user[key])
     });
@@ -51,7 +49,6 @@ class ProfileEdit extends React.Component{
     if(this.state.profileFile !== null){
       formData.append("user[profile_img]", this.state.profileFile)
     }
-    // debugger
     this.props.updateUser(formData).then(res=>(
       this.props.receiveLogin({
         firstName: res.user.firstName,
@@ -115,7 +112,5 @@ class ProfileEdit extends React.Component{
     );
   }
 }
-// {this.inputGen('Profile Image','profile_img_url')}
-// {this.inputGen('Avatar','avatar_img_url')}
 
 export default ProfileEdit;
