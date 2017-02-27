@@ -7,69 +7,50 @@ Rubygogo is a full-stack web application inspired by Rubygogo.  It utilizes Ruby
 
 ## Features & Implementation
 
- **NB**: don't copy and paste any of this.  Many folks will implement similar features, and many employers will see the READMEs of a lot of a/A grads.  You must write in a way that distinguishes your README from that of other students', but use this as a guide for what topics to cover.  
-
 ### Campaigns and Perks
+Campaigns and any data describing them are stored in one table in the database.  A user foreign key connects the authoring user account to the campaign.  Perks are stored in a different perks table due to the many-to-one relationship with campaigns. Comments and updates are likewise stored in their own tables with a campaign_id connecting them to their respective parent campaigns.
+
+The campaigns can be rendered in three forms.  First is a complete version used for the campaign's show page. This view also brings in other information such as number of contributors and total funds raised.  Second is a reduced subset required to render a campaign tile.  Campaign tiles are used when browsing campaign categories.  And lastly, a campaign can be rendered in its unmodified raw data fields.  This is used when a user is creating or editing a campaign.  
+
+### Contributions
+Contributions are stored on their own table.  They link users and campaigns and also store amounts, perks chosen (if any), and visibility settings, along with a timestamp. These are requested through either the campaign or user association as contribution history can be seen on the site by user or by campaign.
 
 ### Campaign Editing
 
+Campaign editing is handled by a dedicated editor component.  The editor will request the raw data fields from the server.  Assuming the user is authorized to do this, the server will send them back.  The user can then manipulate the fields and then either save, launch, or preview.  
+
+Save will simply update the modified fields.  Preview will save the fields and allow the user to see the campaign without leaving the editor component.  And lastly launch will save the campaign, toggle the `status` field to `open`, which allows others to see the campaign, and then redirect the user to the newly launched campaign.
+
+The editor component can also modify perks.  As Perks are stored on their own table, perks has its own dedicated api calls to create, update, and destroy.
+
 ### Users and Profiles
+The users table stores all profile and user data, including password digests and session tokens.  Users can be rendered in a private mode or public mode.  Private mode is only sent out when the user is requesting his or her own profile.  Otherwise a redacted version is sent out for public display.  The api call is the same in either case.  The server will send the appropriate version.  The private version can be used the by profile editor component to allow the user to change his or her own profile.
 
 ### Categories
+The category table holds a short list of categories along with metadata.  Campaign entries have a foreign key that points to the category they fall under.
 
-### Front Page carousels
+The category api requires the category to display along with the filters to be used.  It can also take an optional offset parameter that can be used to request additional search results after the initial 12.
+
+Current search filters include: ending soonest, most funded, campaign status, category, percent funded, and funding type.
+
+The filters work in the backend by taking the filter parameters and building a single WHERE ActiveRecord query.
+
+The front end category component presents all filter options to the user and allows live updating and allows the user to request more pages.  Any additional pages are appended to the existing results.
+
+
+### Front Page Carousels
+
+The front page has two carousels.  The top one is the `topfive` component.  Which grabs the top five list using a unique api call.  These values can be set to whatever the site administrator wishes.  
+
+The animation is done via CSS transformations.  The contents of the carousel are stored in an array. When the user clicks on either the left or right side, a css animation is triggered that moves the div container in the appropriate direction.  Immediately after the animation is complete, the array contents are modified to reflect the new on-screen arrangement. When React re-renders the page, the position of the old post-transform elements will be identical to the new pre-transform positions of the new modified array elements.  The user will perceive no change and the component will be prepared for the next animation cycle.
+
+The 2nd carousel is essentially a reduced version of the category component.  It uses the same api but displays the content in a different UI element.  It's not capable of requesting more pages or modifies the filters beyond the presets given.
 
 ## Future directions
 
-### search
-
-### overhauled editor
-
-
-
-### Note Rendering and Editing
-
-  On the database side, the notes are stored in one table in the database, which contains columns for `id`, `user_id`, `content`, and `updated_at`.  Upon login, an API call is made to the database which joins the user table and the note table on `user_id` and filters by the current user's `id`.  These notes are held in the `NoteStore` until the user's session is destroyed.  
-
-  Notes are rendered in two different components: the `CondensedNote` components, which show the title and first few words of the note content, and the `ExpandedNote` components, which are editable and show all note text.  The `NoteIndex` renders all of the `CondensedNote`s as subcomponents, as well as one `ExpandedNote` component, which renders based on `NoteStore.selectedNote()`. The UI of the `NoteIndex` is taken directly from Evernote for a professional, clean look:  
-
-![image of notebook index](wireframes/home-logged-in.png)
-
-Note editing is implemented using the Quill.js library, allowing for a Word-processor-like user experience.
-
-### Notebooks
-
-Implementing Notebooks started with a notebook table in the database.  The `Notebook` table contains two columns: `title` and `id`.  Additionally, a `notebook_id` column was added to the `Note` table.  
-
-The React component structure for notebooks mirrored that of notes: the `NotebookIndex` component renders a list of `CondensedNotebook`s as subcomponents, along with one `ExpandedNotebook`, kept track of by `NotebookStore.selectedNotebook()`.  
-
-`NotebookIndex` render method:
-
-```javascript
-render: function () {
-  return ({this.state.notebooks.map(function (notebook) {
-    return <CondensedNotebook notebook={notebook} />
-  }
-  <ExpandedNotebook notebook={this.state.selectedNotebook} />)
-}
-```
-
-### Tags
-
-As with notebooks, tags are stored in the database through a `tag` table and a join table.  The `tag` table contains the columns `id` and `tag_name`.  The `tagged_notes` table is the associated join table, which contains three columns: `id`, `tag_id`, and `note_id`.  
-
-Tags are maintained on the frontend in the `TagStore`.  Because creating, editing, and destroying notes can potentially affect `Tag` objects, the `NoteIndex` and the `NotebookIndex` both listen to the `TagStore`.  It was not necessary to create a `Tag` component, as tags are simply rendered as part of the individual `Note` components.  
-
-![tag screenshot](wireframes/tag-search.png)
-
-## Future Directions for the Project
-
-In addition to the features already implemented, I plan to continue work on this project.  The next steps for FresherNote are outlined below.
-
 ### Search
 
-Searching notes is a standard feature of Evernote.  I plan to utilize the Fuse.js library to create a fuzzy search of notes and notebooks.  This search will look go through tags, note titles, notebook titles, and note content.  
+I'd like to add fuzzy searching.  While category views and direct linking of campaign pages are arguably more important means of finding campaigns than a search bar, a search function is still a critical component.
 
-### Direct Messaging
-
-Although this is less essential functionality, I also plan to implement messaging between FresherNote users.  To do this, I will use WebRTC so that notifications of messages happens seamlessly.  
+### Overhauled Editor
+The current editor can be overhauled to provide more meaningful and immediate feedback.  Currently any invalid fields are labeled as such, but the user needs to go page by page to find them.  The real Indiegogo has an errors header that is persistent across pages.  This allows the user an easier experience.
