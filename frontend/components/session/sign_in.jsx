@@ -63,6 +63,7 @@ import {withRouter} from 'react-router';
             <li onClick={()=>(this.props.router.push("start-a-campaign"))} className="header-create-button">START A CAMPAIGN</li>
             <li onClick={this.signUpButton.bind(this)}>Sign Up</li>
             <li onClick={this.logInButton.bind(this)}>Log In</li>
+            <li onClick={this.guestSignIn.bind(this)}>Demo Acct</li>
           </ul>
           <div onClick={this.closeWindow.bind(this)} className={cname}>
             <div onClick={this.stopProp.bind(this)} className="header-login-form">
