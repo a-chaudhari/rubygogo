@@ -80,10 +80,12 @@ class Slider extends React.Component{
       tilesToAdd.push(this.props.category[newIdx])
       indexToAdd.push(newIdx)
     }
-    // console.log(indexToAdd)
+    
     const tiles = tilesToAdd.map((camp,idx)=>(
       <CampaignTile key={"slidetile"+idx} campaign={camp}/>
     ))
+
+
     return(
       <div className="feature-slider">
         <div onClick={this.sliderLeft.bind(this)} className="slider-left-button slider-button"><i className="fa fa-chevron-left fa-5x"></i></div>

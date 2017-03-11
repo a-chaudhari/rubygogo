@@ -1,7 +1,9 @@
 # RubyGogo
 
-[Rubygogo live][heroku]
+[Rubygogo Live][heroku]
 [heroku]: http://rubygogo.herokuapp.com
+
+![rubygogo's show page](/docs/rgg.png)
 
 Rubygogo is a full-stack web application inspired by Rubygogo.  It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.  
 
