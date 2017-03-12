@@ -35,15 +35,20 @@
   .search-results{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    // justify-content: space-between;
+    // justify-content: flex-start;
+    // align-self: center;
+    // align-items: center;
+    // align-content: center;
+    // justify-content: center;
     flex-direction: row;
     .search-result-entry{
       margin-top: 30px;
-
+      margin: 10px;
     }
     .search-result-entry:last-of-type{
       margin-right: auto;
-      margin-left: 30px;
+      // margin-left: 30px;
     }
   }
 
