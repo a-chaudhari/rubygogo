@@ -23,8 +23,11 @@ class Search extends React.Component{
   }
 
   componentWillReceiveProps(newProps){
+    if(this.props.location.query.q !== newProps.location.query.q){
+      this.setState({results: [], hasMore:false, searching: true})
+      this.props.sendSearch(newProps.location.query.q)
+    }
     if(this.props.search.timestamp === newProps.search.timestamp) return;
-
     let res = [];
     let more = false;
     if(this.props.location.query.q === newProps.location.query.q){
@@ -43,7 +46,6 @@ class Search extends React.Component{
     this.title = this.state.query;
     this.setState({results:[], hasMore:false, searching: true})
     this.props.router.replace({pathname:"/search", query:{q: this.state.query}})
-    this.props.sendSearch(this.state.query);
   }
 
   getMore(e){
@@ -85,7 +87,7 @@ class Search extends React.Component{
                 <i className="fa fa-search fa-2x"></i>
               </div>
             </div>
-            
+
           </form>
         </div>
 

@@ -29,8 +29,10 @@ class Header extends React.Component{
 
   search(e){
     e.preventDefault();
+    const query = this.state.query;
+    // this.props.sendSearch(query).then(()=>this.props.router.push({pathname:"/search", query:{q:query}}))
+    this.props.router.push({pathname:"/search", query:{q:query}})
     this.setState({query:""})
-    this.props.router.push({pathname:"/search", query:{q:this.state.query}})
   }
 
 
