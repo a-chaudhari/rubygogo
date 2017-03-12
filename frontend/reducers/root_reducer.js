@@ -7,6 +7,7 @@ import CategoryReducer from './category_reducer';
 import PerkReducer from './perk_reducer';
 import ErrorReducer from './error_reducer';
 import FeatureReducer from './feature_reducer';
+import SearchReducer from './search_reducer';
 
 const rootReducer = combineReducers({
   errors: ErrorReducer,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   contribution: ContributionReducer,
   category: CategoryReducer,
   perks: PerkReducer,
-  features: FeatureReducer
+  features: FeatureReducer,
+  search: SearchReducer
 });
 
 export default rootReducer;

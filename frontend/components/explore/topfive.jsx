@@ -40,6 +40,7 @@ class TopFive extends React.Component{
   componentWillUnmount(){
     const elm = this.topfive;
     elm.removeEventListener('animationend',this.movementDone);
+    clearInterval(this.loop);
   }
 
   scrollerClick(idx){

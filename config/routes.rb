@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     end
     # get 'allcats', to: 'categories#all_cats'
     get 'topfive', to: 'features#topfive'
+    get 'search/:q', to: 'search#search'
 
   end
 

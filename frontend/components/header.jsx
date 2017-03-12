@@ -7,8 +7,13 @@ class Header extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      showUserMenu: false
+      showUserMenu: false,
+      query: ""
     }
+  }
+
+  update(field){
+    return(e)=>(this.setState({[field]:e.target.value}))
   }
 
 
@@ -20,6 +25,12 @@ class Header extends React.Component{
 
   signOut(){
     this.props.logOut().then(()=>(this.setState({showUserMenu: false})))
+  }
+
+  search(e){
+    e.preventDefault();
+    this.setState({query:""})
+    this.props.router.push({pathname:"/search", query:{q:this.state.query}})
   }
 
 
@@ -52,6 +63,14 @@ class Header extends React.Component{
             <li><a href="https://github.com/a-chaudhari/rubygogo">GitHub Repo</a></li>
             <li><a href="http://www.amitchaudhari.com">Amit's Portfolio</a></li>
           </ul>
+          <form onSubmit={this.search.bind(this)}>
+            <div className="header-searchbar">
+              <input onChange={this.update("query").bind(this)} value={this.state.query}/>
+              <div className="header-search-overlay">
+                <i className="fa fa-search fa-lg"></i>
+              </div>
+            </div>
+          </form>
         </div>
         {rightHeader}
 

@@ -19,6 +19,7 @@ import Create from './create';
 import EditorContainer from './create/editor_container';
 import CategoryContainer from './explore/category_container';
 import HomeContainer from './home_container';
+import SearchContainer from './search_container';
 
 const Root = (props) =>{
   return(
@@ -40,6 +41,7 @@ const Root = (props) =>{
           <Route path='debug' component={Debug}/>
           <Route path='start-a-campaign' component={Create}/>
           <Route path='category/:category_id' component={CategoryContainer}/>
+          <Route path='search' component={SearchContainer}/> 
         </Route>
         <Route path='/editor/:campaign_id' component={EditorContainer}/>
       </Router>
