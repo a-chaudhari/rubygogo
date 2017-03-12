@@ -100,7 +100,7 @@ class Category extends React.Component{
     );
   }
 
-  filterBox(name, value,...bubbles){
+  filterBox(name, value, ...bubbles){
     const entries = bubbles.map(bub=>{
       return(
         <div key={"bub"+value+bub.v} onClick={this.updateBox(value,bub.v).bind(this)} className="dropdown-filter-line">
