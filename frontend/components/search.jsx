@@ -1,8 +1,6 @@
 import React from 'react';
 import CampaignTile from './explore/campaign_tile';
 import {withRouter} from 'react-router';
-import {reduce, isEqual} from 'lodash'
-
 
 class Search extends React.Component{
   constructor(props){
@@ -16,20 +14,6 @@ class Search extends React.Component{
     this.title = ""
   }
 
-  getObjectDiff(obj1, obj2) {
-      const diff = Object.keys(obj1).reduce((result, key) => {
-          if (!obj2.hasOwnProperty(key)) {
-              result.push(key);
-          } else if (_.isEqual(obj1[key], obj2[key])) {
-              const resultKeyIndex = result.indexOf(key);
-              result.splice(resultKeyIndex, 1);
-          }
-          return result;
-      }, Object.keys(obj2));
-
-      return diff;
-  }
-
   componentDidMount(){
     if (this.props.location.query.q === undefined) return;
 
@@ -39,10 +23,10 @@ class Search extends React.Component{
   }
 
   componentWillReceiveProps(newProps){
+    if(this.props.search.timestamp === newProps.search.timestamp) return;
+
     let res = [];
     let more = false;
-
-    if(this.props.search.timestamp === newProps.search.timestamp) return;
     if(this.props.location.query.q === newProps.location.query.q){
       res = this.state.results.concat(newProps.search.results);
       more = newProps.search.more
@@ -87,27 +71,32 @@ class Search extends React.Component{
     else{
       title = `Results for ${this.title}`;
     }
+
     return(
       <div className="search-page">
+
         <div className="search-page-header">
           <h1>{title}</h1>
           <form onSubmit={this.search.bind(this)}>
+
             <div className="search-input-container">
               <input value={this.state.query} onChange={this.update("query").bind(this)}/>
               <div className="search-input-overlay">
                 <i className="fa fa-search fa-2x"></i>
               </div>
             </div>
-
+            
           </form>
         </div>
+
         <div className="search-results">
           {results}
         </div>
-        <div className="search-results-button-div">
 
+        <div className="search-results-button-div">
           {(this.state.hasMore ? <button className="search-results-more" onClick={this.getMore.bind(this)}>Get More</button> : null)}
         </div>
+
       </div>
     );
   }

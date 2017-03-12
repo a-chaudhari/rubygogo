@@ -118,11 +118,12 @@ The animation is done via CSS transformations.  The contents of the carousel are
 
 The 2nd carousel is essentially a reduced version of the category component.  It uses the same api but displays the content in a different UI element.  It's not capable of requesting more pages or modifying the filters beyond the presets given.  It utilizes animations similarly to the primary carousel.
 
+## Fuzzy Search
+This site supports fuzzy searching.  The search function uses trigram searching provided through the pg_tgrm module that ships with PostgreSQL. The search function will accept a query (and optional offset for pagination) and search through all campaign titles and taglines. Results are sent 12 results at a time.
+
+The module settings have been tuned to be significantly more "fuzzy" than default settings.  This yielded the best results.
+
 # Future directions
-
-## Search
-
-I'd like to add fuzzy searching.  While category views and direct linking of campaign pages are arguably more important means of finding campaigns than a search bar, a search function is still a critical component.
 
 ## Overhauled Editor
 The current editor can be overhauled to provide more meaningful and immediate feedback.  Currently any invalid fields are labeled as such, but the user needs to go page by page to find them.  The real Indiegogo has an errors header that is persistent across pages.  This allows the user an easier experience.
