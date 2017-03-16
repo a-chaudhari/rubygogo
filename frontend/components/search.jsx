@@ -24,7 +24,8 @@ class Search extends React.Component{
 
   componentWillReceiveProps(newProps){
     if(this.props.location.query.q !== newProps.location.query.q){
-      this.setState({results: [], hasMore:false, searching: true})
+      this.title = newProps.location.query.q;
+      this.setState({results: [], hasMore:false, searching: true, query: newProps.location.query.q})
       this.props.sendSearch(newProps.location.query.q)
     }
     if(this.props.search.timestamp === newProps.search.timestamp) return;
